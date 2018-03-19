@@ -1,0 +1,20 @@
+{{#data-table
+   content=model
+   isLoading=isLoadingModel
+   sort=sort
+   page=page
+   size=20
+   onClickRow=(action 'selection')
+   as |t|
+}}
+  {{#t.content as |c|}}
+    {{#c.header}}
+      {{th-sortable field='naam' currentSorting=sort label='naam'}}
+      {{th-sortable field='classificatie' currentSorting=sort label='classificatie'}}
+    {{/c.header}}
+    {{#c.body as |row|}}
+      <td>{{row.naam}}</td>
+      <td>{{row.classificatie.label}}</td>
+    {{/c.body}}
+  {{/t.content}}
+{{/data-table}}

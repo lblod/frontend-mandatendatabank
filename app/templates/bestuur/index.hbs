@@ -1,0 +1,103 @@
+<div class="data-table__actions u-padding--rl--small u-border--bottom">
+  <div class="grid u-spacer--top--tiny">
+    <div class="col--6-12 col--9-12--xs">
+      <nav class="dropdown-navigation u-spacer--tiny toggle-sidebar--slide toggle">
+        <h2 class="h2 dropdown-navigation__title">Bestuur: {{bestuur.classificatie.label}} {{bestuur.naam}}</h2>
+        <!-- <div class="dropdown-navigation__wrapper js-popover">
+             <button class="dropdown-navigation__toggle">Open navigatie</button>
+             </div> -->
+      </nav>
+    </div>
+    <div class="col--6-12 col--3-12--xs u-align-right">
+      <ul class="data-table__actions__list">
+        <li class="data-table__action u-spacer--top--tiny">
+          {{#wu-popover-button label="Downloaden" as |p|}}
+            {{p.item label="CSV file (Excel)" onClick=(action "download" '/files/mandaten.csv')}}
+            {{p.item label="JSON file" onClick=(action "download" '/files/mandaten.json')}}
+            {{p.item label="Turtle file (Excel)" onClick=(action "download" '/files/mandaten.ttl')}}
+          {{/wu-popover-button}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid u-spacer--bottom--small">
+    <div class="col--4-12">
+      <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
+        {{#power-select
+           options=lijsten
+           onchange=(action "filterLijst")
+           allowClear=true
+           selected=lijst
+           placeholder="Lijst"
+           as |lijst|
+        }}
+          {{lijst.lijstnaam}}
+        {{/power-select}}
+      </div>
+      <div class="js-select js-select js-select--small">
+      </div>
+    </div>
+    <div class="col--4-12">
+      <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
+        {{#power-select
+           options=periodes
+           onchange=(action "filterPeriode")
+           allowClear=true
+           selected=periode
+           placeholder="Bestuursperiode"
+           as |periode|
+        }}
+          {{moment-format periode.bindingStart 'DD-MM-YYYY'}} - {{moment-format periode.bindingEinde 'DD-MM-YYYY'}}
+        {{/power-select}}
+      </div>
+      <div class="js-select js-select js-select--small">
+      </div>
+    </div>
+    <div class="col--4-12">
+      <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
+        {{#power-select
+           options=mandaten
+           onchange=(action "filterMandaat")
+           allowClear=true
+           selected=mandaat
+           placeholder="Mandaat"
+           as |mandaat|
+        }}
+          {{get (await mandaat.bestuursfunctie) "label"}}
+        {{/power-select}}
+
+      </div>
+      <div class="js-select js-select js-select--small">
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#data-table content=model isLoading=isLoadingModel noDataMessage="Geen mandatarissen gevonden"
+     sort=sort page=page size=size as |t|}}
+  {{#t.content as |c|}}
+    {{#c.header}}
+      <th>Lijst</th>
+      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Voornaam'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Achternaam'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht'}}
+      {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
+      {{th-sortable field='start' currentSorting=sort label='Start mandaat'}}
+      {{th-sortable field='einde' currentSorting=sort label='Einde mandaat'}}
+      <th>Bevoegdheden</th>
+    {{/c.header}}
+    {{#c.body as |row|}}
+      <!-- TODO: should actually filter to get correct list based on mandate -->
+      <td>{{row.isBestuurlijkeAliasVan.isKandidaatVoor.firstObject.lijstnaam}}</td>
+      <td>{{row.heeftLidmaatschap.binnenFractie.naam}}</td>
+      <td>{{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}</td>
+      <td>{{row.isBestuurlijkeAliasVan.achternaam}}</td>
+      <td>{{row.isBestuurlijkeAliasVan.geslacht.label}}</td>
+      <td>{{row.bekleedt.bestuursfunctie.label}}</td>
+      <td>{{moment-format row.start 'DD/MM/YYYY'}}</td>
+      <td>{{moment-format row.einde 'DD/MM/YYYY'}}</td>
+      <td>{{join ", " (map-by "label" row.beleidsdomein)}}</td>
+    {{/c.body}}
+  {{/t.content}}
+{{/data-table}}
