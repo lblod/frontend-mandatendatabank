@@ -3,6 +3,7 @@ import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
 const filters = [
   { paramKey: 'mandaat_id',  type: 'mandaat', property: 'mandaat', backendFilter: 'filter[bekleedt][id]' },
+  { paramKey: 'beleidsdomein_id',  type: 'beleidsdomein-code', property: 'beleidsdomein', backendFilter: 'filter[beleidsdomein][id]' },
   { paramKey: 'bestuursorgaan',  type: 'bestuursorgaan', property: 'periode', backendFilter: 'filter[bekleedt][bevat-in][id]'},
   { paramKey: 'lijst_id', type: 'kandidatenlijst', property: 'lijst', backendFilter: 'filter[is-bestuurlijke-alias-van][is-kandidaat-voor][id]'}
 ];
@@ -12,9 +13,10 @@ export default Route.extend(DataTableRouteMixin, {
     page: { refreshModel: true },
     size: { refreshModel: true },
     sort: { refreshModel: true },
-    mandaat_id:     {refreshModel: true},
-    bestuursorgaan: {refreshModel: true},
-    lijst_id:       {refreshModel: true}
+    mandaat_id: { refreshModel: true },
+    bestuursorgaan: { refreshModel: true },
+    beleidsdomein_id: { refreshModel: true },
+    lijst_id: { refreshModel: true }
   },
   modelName: 'mandataris',
   beforeModel(params) {

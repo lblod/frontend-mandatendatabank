@@ -21,9 +21,10 @@
     </div>
   </div>
   <div class="grid u-spacer--bottom--small">
-    <div class="col--4-12">
+    <div class="col--3-12">
       <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
         {{#power-select
+           searchField="lijstnaam"
            options=lijsten
            onchange=(action "filterLijst")
            allowClear=true
@@ -37,9 +38,10 @@
       <div class="js-select js-select js-select--small">
       </div>
     </div>
-    <div class="col--4-12">
+    <div class="col--3-12">
       <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
         {{#power-select
+           searchEnabled=false
            options=periodes
            onchange=(action "filterPeriode")
            allowClear=true
@@ -53,9 +55,10 @@
       <div class="js-select js-select js-select--small">
       </div>
     </div>
-    <div class="col--4-12">
+    <div class="col--3-12">
       <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
         {{#power-select
+           searchField="bestuursfunctie.label"
            options=mandaten
            onchange=(action "filterMandaat")
            allowClear=true
@@ -63,11 +66,27 @@
            placeholder="Mandaat"
            as |mandaat|
         }}
-          {{get (await mandaat.bestuursfunctie) "label"}}
+          {{mandaat.bestuursfunctie.label}}
         {{/power-select}}
 
       </div>
       <div class="js-select js-select js-select--small">
+      </div>
+    </div>
+    <div class="col--3-12">
+      <div class="js-select js-select js-select--small">
+        {{#power-select
+             searchField="label"
+             options=beleidsdomeinen
+             onchange=(action "filterBeleidsdomein")
+             allowClear=true
+             selected=beleidsdomein
+             placeholder="Bevoegdheid"
+             as |beleidsdomein|
+        }}
+          {{beleidsdomein.label}}
+        {{/power-select}}
+
       </div>
     </div>
   </div>
