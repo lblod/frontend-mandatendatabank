@@ -97,7 +97,11 @@
       <td>{{row.bekleedt.bestuursfunctie.label}}</td>
       <td>{{moment-format row.start 'DD/MM/YYYY'}}</td>
       <td>{{moment-format row.einde 'DD/MM/YYYY'}}</td>
-      <td>{{join ", " (map-by "label" row.beleidsdomein)}}</td>
+      <td>
+        {{#each (map-by "label" row.beleidsdomein) as |beleidsdomein|}}
+          {{beleidsdomein}}<br>
+        {{/each}}
+      </td>
     {{/c.body}}
   {{/t.content}}
 {{/data-table}}
