@@ -14,7 +14,7 @@
           {{#wu-popover-button label="Downloaden" as |p|}}
             {{p.item label="CSV file (Excel)" onClick=(action "download" '/files/mandaten.csv')}}
             {{p.item label="JSON file" onClick=(action "download" '/files/mandaten.json')}}
-            {{p.item label="Turtle file (Excel)" onClick=(action "download" '/files/mandaten.ttl')}}
+            {{p.item label="Turtle file" onClick=(action "download" '/files/mandaten.ttl')}}
           {{/wu-popover-button}}
         </li>
       </ul>
@@ -24,13 +24,13 @@
     <div class="col--3-12">
       <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
         {{#power-select
-           searchField="lijstnaam"
-           options=lijsten
-           onchange=(action "filterLijst")
-           allowClear=true
-           selected=lijst
-           placeholder="Lijst"
-           as |lijst|
+             options=lijsten
+             searchField="lijstnaam"
+             onchange=(action "filter" "lijst")
+             allowClear=true
+             selected=lijst
+             placeholder="Lijst"
+             as |lijst|
         }}
           {{lijst.lijstnaam}}
         {{/power-select}}
@@ -41,15 +41,15 @@
     <div class="col--3-12">
       <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
         {{#power-select
-           searchEnabled=false
-           options=periodes
-           onchange=(action "filterPeriode")
-           allowClear=true
-           selected=periode
-           placeholder="Bestuursperiode"
-           as |periode|
+             searchEnabled=false
+             options=bestuursorganen
+             onchange=(action "filter" "bestuursorgaan")
+             allowClear=true
+             selected=bestuursorgaan
+             placeholder="Bestuursperiode"
+             as |bestuursorgaan|
         }}
-          {{moment-format periode.bindingStart 'DD-MM-YYYY'}} - {{moment-format periode.bindingEinde 'DD-MM-YYYY'}}
+          {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}} - {{#if bestuursorgaan.bindingEinde}}{{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}{{else}}huidig{{/if}}
         {{/power-select}}
       </div>
       <div class="js-select js-select js-select--small">
@@ -58,13 +58,13 @@
     <div class="col--3-12">
       <div class="js-select js-select js-select--small u-spacer--bottom--tiny">
         {{#power-select
-           searchField="bestuursfunctie.label"
-           options=mandaten
-           onchange=(action "filterMandaat")
-           allowClear=true
-           selected=mandaat
-           placeholder="Mandaat"
-           as |mandaat|
+             options=mandaten
+             searchField="bestuursfunctie.label"
+             onchange=(action "filter" "mandaat")
+             allowClear=true
+             selected=mandaat
+             placeholder="Mandaat"
+             as |mandaat|
         }}
           {{mandaat.bestuursfunctie.label}}
         {{/power-select}}
@@ -76,9 +76,9 @@
     <div class="col--3-12">
       <div class="js-select js-select js-select--small">
         {{#power-select
-             searchField="label"
              options=beleidsdomeinen
-             onchange=(action "filterBeleidsdomein")
+             searchField="label"
+             onchange=(action "filter" "beleidsdomein")
              allowClear=true
              selected=beleidsdomein
              placeholder="Bevoegdheid"
@@ -86,7 +86,6 @@
         }}
           {{beleidsdomein.label}}
         {{/power-select}}
-
       </div>
     </div>
   </div>
