@@ -9,11 +9,17 @@
         </div>
       </div>
     </div>
-    <div class="u-padding--tb">
-      <h1 class="h1 h1 u-spacer--bottom--tiny" style="max-width: 80rem;">
-        Bevoegdheid: TODO
-      </h1>
-    </div>
+    {{#with model.firstObject.isBestuurlijkeAliasVan as |persoon|}}
+      <div class="u-padding--tb">
+        <h1 class="h1 h1 u-spacer--bottom--tiny" style="max-width: 80rem;">
+          Mandataris: {{persoon.gebruikteVoornaam}} {{persoon.achternaam}}
+        </h1>
+        <ul class="inline-list inline-list--bordered">
+          <li>Roepnaam: {{persoon.gebruikteVoornaam}}</li>
+          <li>{{persoon.geslacht.label}}</li>
+        </ul>
+      </div>
+    {{/with}}
   </div>
 
   <div class="u-padding--rl--small u-padding--tb--small">
@@ -39,7 +45,7 @@
   </div>
 
   <div class="u-padding--round--small">
-    {{mandataris-table scope="beleidsdomein" content=model isLoading=isLoadingModel sort=sort page=page size=size}}
+    {{mandataris-table scope="persoon" content=model isLoading=isLoadingModel sort=sort page=page size=size}}
   </div>
 </div>
 

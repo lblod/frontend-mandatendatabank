@@ -4,5 +4,6 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   aantalHouders: attr(),
-  bestuursfunctie: belongsTo('bestuursfunctie-code', { inverse: null })
+  bestuursfunctie: belongsTo('bestuursfunctie-code', { inverse: null }),
+  bevatIn: belongsTo('bestuursorgaan', { inverse: 'bevat' })
 });

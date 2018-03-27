@@ -13,8 +13,8 @@ export default Route.extend(DataTableRouteMixin, {
   mergeQueryOptions(params) {
     const queryOptions = {
       filter: {
-        beleidsdomein: {
-          id: params.beleidsdomein_id
+        'is-bestuurlijke-alias-van': {
+          id: params.persoon_id
         },
         bekleedt: {
           'bevat-in': {

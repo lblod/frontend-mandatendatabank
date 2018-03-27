@@ -1,0 +1,59 @@
+{{#data-table content=content isLoading=isLoading noDataMessage="Geen mandatarissen gevonden"
+     sort=sort page=page size=size as |t|}}
+  {{#t.content as |c|}}
+    {{#c.header}}
+      <th>Orgaan</th>
+      <th>Fractie</th>
+      <th>Mandaten</th>
+      {{#unless isScopeMandataris}}
+        <th>Naam</th>
+        <th>Familienaam</th>
+        <th>Geslacht</th>
+      {{/unless}}
+      {{#unless isScopeBeleidsdomein}}<th>Bevoegdheden</th>{{/unless}}
+      <th>Start mandaat</th>
+      <th>Eind mandaat</th>
+    {{/c.header}}
+    {{#c.body as |row|}}
+      <td>
+        {{#link-to 'mandatarissen.orgaan' row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.id}}
+          {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
+        {{/link-to}}
+      </td>
+      <td>
+        {{#link-to 'mandatarissen.fractie' row.heeftLidmaatschap.binnenFractie.id}}
+          {{row.heeftLidmaatschap.binnenFractie.naam}}
+        {{/link-to}}
+      </td>
+      <td>
+        {{#link-to 'mandatarissen.mandaat' row.bekleedt.bestuursfunctie.id}}
+          {{row.bekleedt.bestuursfunctie.label}}
+        {{/link-to}}
+      </td>
+      {{#unless isScopePersoon}}
+        <td>
+          {{#link-to 'mandatarissen.persoon' row.isBestuurlijkeAliasVan.id}}
+            {{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{#link-to 'mandatarissen.persoon' row.isBestuurlijkeAliasVan.id}}
+            {{row.isBestuurlijkeAliasVan.achternaam}}
+          {{/link-to}}
+        </td>
+        <td>{{row.isBestuurlijkeAliasVan.geslacht.label}}</td>
+      {{/unless}}
+      {{#unless isScopeBeleidsdomein}}
+        <td>
+          {{#each row.beleidsdomein as |beleidsdomein|}}
+            {{#link-to 'mandatarissen.beleidsdomein' beleidsdomein.id}}
+              {{beleidsdomein.label}}
+            {{/link-to}}<br>
+          {{/each}}
+        </td>
+      {{/unless}}
+      <td>{{moment-format row.start 'DD/MM/YYYY'}}</td>
+      <td>{{moment-format row.einde 'DD/MM/YYYY'}}</td>
+    {{/c.body}}
+  {{/t.content}}
+{{/data-table}}
