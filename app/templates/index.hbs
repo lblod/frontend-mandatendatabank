@@ -1,11 +1,131 @@
+<div class="mandaten-overview">
+  <header class="content-header content-header--large content-header--alt">
+    <div class="content-header__wrapper">
+      <picture class="content-header__bg">
+        <img sizes="100vw" src="http://lblod.miet.be/images/banner-bruges.jpg" srcset="http://lblod.miet.be/images/banner-bruges-320.jpg 320w, http://lblod.miet.be/images/banner-bruges-1024.jpg 1024w, http://lblod.miet.be/images/banner-bruges-1600.jpg 1600w" alt="" title="">
+      </picture>
+      <div class="layout layout--wide">
+        <div class="content-header__content">
+          <div class="content-header__logo-wrapper">
+            <h1 class="content-header__entity-logo content-header__entity-logo">
+              <span class="content-header__entity-logo__title">Mandatendatabank</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="region">
+    <div class="layout layout--wide u-spacer--tb--large">
+      <h1 class="h2">Kies welke mandaten of mandatarissen je zoekt.</h1>
+      <div class="grid grid--is-stacked grid--equal-height u-spacer--tb">
+        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
+          {{#wu-info-tile center=true size="medium" as |t|}}
+            {{#t.header title="Bestuur"}}
+              {{wu-badge size="large" isAccent=true icon="fa-building-o"}}
+            {{/t.header}}
+            {{#t.content}}
+              <p>Bijvoorbeeld de provincieraad, gemeentebestuur of OCMW.</p>
+            {{/t.content}}
+            {{#t.footer}}
+              <p>{{wu-link-button label="Zoek bestuur" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+            {{/t.footer}}
+          {{/wu-info-tile}}
+        </div>
+        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
+          {{#wu-info-tile center=true size="medium" as |t|}}
+            {{#t.header title="Fractie"}}
+              {{wu-badge size="large" isAccent=true icon="fa-tag"}}
+            {{/t.header}}
+            {{#t.content}}
+              <p>Bijvoorbeeld CD&V, Groen, N-VA of Open VLD.</p>
+            {{/t.content}}
+            {{#t.footer}}
+              <p>{{wu-link-button label="Zoek fractie" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+            {{/t.footer}}
+          {{/wu-info-tile}}
+        </div>
+        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
+          {{#wu-info-tile center=true size="medium" as |t|}}
+            {{#t.header title="Persoon"}}
+              {{wu-badge size="large" isAccent=true icon="fa-user"}}
+            {{/t.header}}
+            {{#t.content}}
+              <p>Bijvoorbeeld de naam van jouw burgemeester of een raadslid.</p>
+            {{/t.content}}
+            {{#t.footer}}
+              <p>{{wu-link-button label="Zoek persoon" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+            {{/t.footer}}
+          {{/wu-info-tile}}
+        </div>
+        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
+          {{#wu-info-tile center=true size="medium" as |t|}}
+            {{#t.header title="Bevoegdheid"}}
+              {{wu-badge size="large" isAccent=true icon="fa-list-ul"}}
+            {{/t.header}}
+            {{#t.content}}
+              <p>Bijvoorbeeld de schepen van geluk.</p>
+            {{/t.content}}
+            {{#t.footer}}
+              <p>{{wu-link-button label="Zoek bevoegdheid" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+            {{/t.footer}}
+          {{/wu-info-tile}}
+        </div>
+      </div>
+    </div>
+    <div class="layout layout--wide u-spacer--tb--large">
+      <div class="u-hr u-hr--label u-hr--label--centered">
+        <label>of</label>
+      </div>
+    </div>
+    <div class="layout layout--wide">
+      <div class="grid u-spacer--tb--large">
+        <div class="col--8-12 col--12-12--s">
+          <h2 class="h3">Download mandatendatabank</h2>
+        </div>
+        <div class="col--4-12 col--12-12--s u-align-right--medium-up">
+          <!-- TODO bestuursperiode select here -->
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col--4-12 col--12-12--s">
+          {{wu-document-miniature class="u-spacer--bottom" type="CSV"
+              label="CSV: voor spreadsheet editors zoals Excel of Numbers."
+              metadata="CSV - 3.6MB" onClick=(action "download" '/files/mandaten.csv')}}
+        </div>
+        <div class="col--4-12 col--12-12--s">
+          {{wu-document-miniature class="u-spacer--bottom" type="JSON"
+              label="JSON: voor spreadsheet editors zoals Excel of Numbers."
+              metadata="JSON - 31MB" onClick=(action "download" '/files/mandaten.json')}}
+        </div>
+        <div class="col--4-12 col--12-12--s">
+          {{wu-document-miniature class="u-spacer--bottom" type="Turtle"
+              label="Turtle: voor spreadsheet editors zoals Excel of Numbers."
+              metadata="Turtle - 25MB" onClick=(action "download" '/files/mandaten.ttl')}}
+        </div>
+      </div>
+      <p>Mail naar
+        <a href="mailto:mandaten@vlaanderen.be">mandaten@vlaanderen.be</a> voor meer informatie, of surf naar
+        <a href="http://www.binnenland.vlaanderen.be" target="_blank">www.binnenland.vlaanderen.be</a>.</p>
+    </div>
+  </div>
+
+  <footer class="u-border--top u-padding--tb--large">
+    <div class="layout layout--wide">
+      <p class="u-spacer">footer not received yet</p>
+    </div>
+  </footer>
+</div>
+
 {{#data-table
-   content=model
-   isLoading=isLoadingModel
-   sort=sort
-   page=page
-   size=20
-   onClickRow=(action 'selection')
-   as |t|
+     content=model
+     isLoading=isLoadingModel
+     sort=sort
+     page=page
+     size=20
+     onClickRow=(action 'selection')
+     as |t|
 }}
   {{#t.content as |c|}}
     {{#c.header}}
