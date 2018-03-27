@@ -11,31 +11,13 @@
     </div>
     <div class="u-padding--tb">
       <h1 class="h1 h1 u-spacer--bottom--tiny" style="max-width: 80rem;">
-        Bevoegdheid: TODO
+        Bevoegdheid: {{beleidsdomein.label}}
       </h1>
     </div>
   </div>
 
   <div class="u-padding--rl--small u-padding--tb--small">
-    <div class="grid">
-      <div class="col--9-12">
-        <ul class="inline-list">
-          <li>
-            <nav class="dropdown-navigation u-spacer--none">
-              <a class="dropdown-navigation__title">
-                Bestuur:
-                {{#if bestuurseenheidId}}
-                  {{model.firstObject.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.classificatie.label}}
-                  {{model.firstObject.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam}}
-                {{else}}
-                  Heel Vlaanderen
-                {{/if}}
-              </a>
-            </nav>
-          </li>
-        </ul>
-      </div>
-    </div>
+    {{mandataris-table-header bestuurseenheidId=bestuurseenheidId bestuursorgaanId=bestuursorgaanId}}
   </div>
 
   <div class="u-padding--round--small">

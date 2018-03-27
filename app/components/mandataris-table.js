@@ -4,5 +4,5 @@ import { equal } from '@ember/object/computed';
 export default Component.extend({
   scope: null,
   isScopeBeleidsdomein: equal('scope', 'beleidsdomein'),
-  isScopeMandataris: equal('scope', 'mandataris')
+  isScopePersoon: equal('scope', 'persoon')
 });

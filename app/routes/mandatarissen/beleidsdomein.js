@@ -1,45 +1,18 @@
-import Route from '@ember/routing/route';
-import DataTableRouteMixin from 'ember-data-table/mixins/route';
+import ScopedMandatarissenController from './scoped-mandatarissen';
 
-export default Route.extend(DataTableRouteMixin, {
-  modelName: 'mandataris',
-  queryParams: {
-    page: { refreshModel: true },
-    size: { refreshModel: true },
-    sort: { refreshModel: true },
-    bestuurseenheidId: { refreshModel: true },
-    bestuursorgaanId: { refreshModel: true }
+export default ScopedMandatarissenController.extend({
+  model(params, transition) {
+    this.set('idParam', params.beleidsdomein_id);
+    return this._super(params, transition);
   },
   mergeQueryOptions(params) {
-    const queryOptions = {
-      filter: {
-        beleidsdomein: {
-          id: params.beleidsdomein_id
-        },
-        bekleedt: {
-          'bevat-in': {
-            id: params.bestuursorgaanId,
-            'is-tijdsspecialisatie-van': {
-              bestuurseenheid: {
-                id: params.bestuurseenheidId
-              }
-            }
-          }
-        }
-      },
-      include: [
-        'is-bestuurlijke-alias-van',
-        'is-bestuurlijke-alias-van.geslacht',
-        'is-bestuurlijke-alias-van.is-kandidaat-voor',
-        'bekleedt',
-        'bekleedt.bestuursfunctie',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van.classificatie',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid.classificatie',
-        'heeft-lidmaatschap',
-        'heeft-lidmaatschap.binnen-fractie',
-        'beleidsdomein'
-      ].join(',')
+    return {
+      'filter[beleidsdomein][id]': params.beleidsdomein_id
     };
-    return queryOptions;
+  },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('beleidsdomeinId', this.get('idParam'));
   }
+
 });

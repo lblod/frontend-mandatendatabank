@@ -1,0 +1,21 @@
+<div class="grid">
+  <div class="col--9-12">
+    <ul class="inline-list">
+      <li>
+        <nav class="dropdown-navigation u-spacer--none">
+          <a class="dropdown-navigation__title">
+            Bestuur:
+            {{#if bestuurseenheid}}
+              {{bestuurseenheid.classificatie.label}}
+              {{bestuurseenheid.naam}}
+            {{else}}
+              Heel Vlaanderen
+            {{/if}}
+          </a>
+          {{wu-button label="Gooik" onClick=(route-action "updateBestuurseenheid" '5ab12111496009290c00aa27')}}
+          {{wu-button label="Kortenaken" onClick=(route-action "updateBestuurseenheid" '5ab12111496009290c00a9e1')}}
+        </nav>
+      </li>
+    </ul>
+  </div>
+</div>
