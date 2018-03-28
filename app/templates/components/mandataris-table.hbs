@@ -2,7 +2,9 @@
      sort=sort page=page size=size as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
-      <th>Orgaan</th>
+      {{#unless isScopeOrgaan}}
+        <th>Orgaan</th>
+      {{/unless}}
       <th>Fractie</th>
       {{#unless isScopeBestuursfunctie}}
         <th>Mandaten</th>
@@ -17,11 +19,13 @@
       <th>Eind mandaat</th>
     {{/c.header}}
     {{#c.body as |row|}}
-      <td>
-        {{#link-to 'mandatarissen.orgaan' row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.id}}
-          {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
-        {{/link-to}}
-      </td>
+      {{#unless isScopeOrgaan}}
+        <td>
+          {{#link-to 'mandatarissen.orgaan' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
+            {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
+          {{/link-to}}
+        </td>
+      {{/unless}}
       <td>
         {{#link-to 'mandatarissen.fractie' row.heeftLidmaatschap.binnenFractie.id}}
           {{row.heeftLidmaatschap.binnenFractie.naam}}
