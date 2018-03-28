@@ -29,7 +29,8 @@
               <p>Bijvoorbeeld de provincieraad, gemeentebestuur of OCMW.</p>
             {{/t.content}}
             {{#t.footer}}
-              <p>{{wu-link-button label="Zoek bestuur" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+              <p>{{wu-link-button label="Zoek bestuur" isLink=true isButton=false class="link--icon--caret"
+                     onClick=(action "goTo" "mandatarissen.orgaan" "5ab12111496009290c00a865")}}</p>
             {{/t.footer}}
           {{/wu-info-tile}}
         </div>
@@ -55,7 +56,8 @@
               <p>Bijvoorbeeld de naam van jouw burgemeester of een raadslid.</p>
             {{/t.content}}
             {{#t.footer}}
-              <p>{{wu-link-button label="Zoek persoon" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+              <p>{{wu-link-button label="Zoek persoon" isLink=true isButton=false class="link--icon--caret"
+                     onClick=(action "goTo" "mandatarissen.persoon" "5ab12107496009290c003c14")}}</p>
             {{/t.footer}}
           {{/wu-info-tile}}
         </div>
@@ -68,7 +70,8 @@
               <p>Bijvoorbeeld de schepen van geluk.</p>
             {{/t.content}}
             {{#t.footer}}
-              <p>{{wu-link-button label="Zoek bevoegdheid" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
+              <p>{{wu-link-button label="Zoek bevoegdheid" isLink=true isButton=false class="link--icon--caret"
+                     onClick=(action "goTo" "mandatarissen.beleidsdomein" "5ab10d3a4c934f28dc00005a")}}</p>
             {{/t.footer}}
           {{/wu-info-tile}}
         </div>
