@@ -11,13 +11,13 @@
       {{#unless isScopeFractie}}
         <th>Fractie</th>
       {{/unless}}
-      {{#unless isScopeBestuursfunctie}}
-        <th>Mandaten</th>
-      {{/unless}}
       {{#unless isScopePersoon}}
         <th>Naam</th>
         <th>Familienaam</th>
         <th>Geslacht</th>
+      {{/unless}}
+      {{#unless isScopeBestuursfunctie}}
+        <th>Mandaten</th>
       {{/unless}}
       {{#unless isScopeBeleidsdomein}}<th>Bevoegdheden</th>{{/unless}}
       <th>Start mandaat</th>
@@ -43,13 +43,6 @@
           {{/link-to}}
         </td>
       {{/unless}}
-      {{#unless isScopeBestuursfunctie}}
-        <td>
-          {{#link-to 'mandatarissen.bestuursfunctie' row.bekleedt.bestuursfunctie.id}}
-            {{row.bekleedt.bestuursfunctie.label}}
-          {{/link-to}}
-        </td>
-      {{/unless}}
       {{#unless isScopePersoon}}
         <td>
           {{#link-to 'mandatarissen.persoon' row.isBestuurlijkeAliasVan.id}}
@@ -62,6 +55,13 @@
           {{/link-to}}
         </td>
         <td>{{row.isBestuurlijkeAliasVan.geslacht.label}}</td>
+      {{/unless}}
+      {{#unless isScopeBestuursfunctie}}
+        <td>
+          {{#link-to 'mandatarissen.bestuursfunctie' row.bekleedt.bestuursfunctie.id}}
+            {{row.bekleedt.bestuursfunctie.label}}
+          {{/link-to}}
+        </td>
       {{/unless}}
       {{#unless isScopeBeleidsdomein}}
         <td>
