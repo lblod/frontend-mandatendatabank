@@ -1,10 +1,7 @@
-import Controller from '@ember/controller';
+import ScopedMandatarissenController from './scoped-mandatarissen';
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
-import DefaultMandatarisTableParamsMixin from '../../mixins/default-mandataris-table-params';
 
-export default Controller.extend(DefaultMandatarisTableParamsMixin, {
-  store: service(),
+export default ScopedMandatarissenController.extend({
   beleidsdomein: computed('beleidsdomeinId', function() {
     if (this.get('beleidsdomeinId'))
       return this.get('store').findRecord('beleidsdomein-code', this.get('beleidsdomeinId'));

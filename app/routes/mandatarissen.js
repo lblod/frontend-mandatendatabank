@@ -6,10 +6,10 @@ export default Route.extend({
     bestuursorgaanId: { refreshModel: true }
   },
   actions: {
-    updateBestuurseenheid(id) {
+    updateBestuurseenheidParam(id) {
       this.controllerFor(this.get('routeName')).set('bestuurseenheidId', id);
     },
-    updateBestuursorgaan(id) {
+    updateBestuursorgaanParam(id) {
       this.controllerFor(this.get('routeName')).set('bestuursorgaanId', id);
     }
   }
