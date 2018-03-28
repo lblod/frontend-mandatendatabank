@@ -8,7 +8,9 @@
       {{#unless isScopeOrgaan}}
         <th>Orgaan</th>
       {{/unless}}
-      <th>Fractie</th>
+      {{#unless isScopeFractie}}
+        <th>Fractie</th>
+      {{/unless}}
       {{#unless isScopeBestuursfunctie}}
         <th>Mandaten</th>
       {{/unless}}
@@ -34,11 +36,13 @@
           {{/link-to}}
         </td>
       {{/unless}}
-      <td>
-        {{#link-to 'mandatarissen.fractie' row.heeftLidmaatschap.binnenFractie.id}}
-          {{row.heeftLidmaatschap.binnenFractie.naam}}
-        {{/link-to}}
-      </td>
+      {{#unless isScopeFractie}}
+        <td>
+          {{#link-to 'mandatarissen.fractie' row.heeftLidmaatschap.binnenFractie.id}}
+            {{row.heeftLidmaatschap.binnenFractie.naam}}
+          {{/link-to}}
+        </td>
+      {{/unless}}
       {{#unless isScopeBestuursfunctie}}
         <td>
           {{#link-to 'mandatarissen.bestuursfunctie' row.bekleedt.bestuursfunctie.id}}
