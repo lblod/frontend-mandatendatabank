@@ -35,6 +35,7 @@ export default Route.extend(DataTableRouteMixin, {
         'bekleedt',
         'bekleedt.bestuursfunctie',
         'bekleedt.bevat-in.is-tijdsspecialisatie-van.classificatie',
+        'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid',
         'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid.classificatie',
         'heeft-lidmaatschap',
         'heeft-lidmaatschap.binnen-fractie',

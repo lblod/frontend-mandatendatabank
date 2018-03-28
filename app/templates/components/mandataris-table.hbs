@@ -2,6 +2,9 @@
      sort=sort page=page size=size as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
+      {{#unless selectedBestuurseenheidId}}
+        <th>Locatie</th>
+      {{/unless}}
       {{#unless isScopeOrgaan}}
         <th>Orgaan</th>
       {{/unless}}
@@ -19,6 +22,11 @@
       <th>Eind mandaat</th>
     {{/c.header}}
     {{#c.body as |row|}}
+      {{#unless selectedBestuurseenheidId}}
+        <td>
+          {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam}}
+        </td>
+      {{/unless}}
       {{#unless isScopeOrgaan}}
         <td>
           {{#link-to 'mandatarissen.orgaan' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
