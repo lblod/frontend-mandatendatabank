@@ -15,10 +15,22 @@
         </div>
         <div class="col--5-12 col--1-1--s u-align-right--medium-up">
           {{#wu-button-group}}
-            {{#wu-button isLink=true isDark=true isNarrow=true isSmall=true onClick=null}}
+            {{#wu-button isLink=true isDark=true isNarrow=true isSmall=true onClick=(action "resetFilters")}}
               {{wu-icon "vi-cross vi-u-link"}} Herstel alle filters
             {{/wu-button}}
           {{/wu-button-group}}
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col--4-12 col--6-12--m col--1-1--s"></div>
+        <div class="col--4-12 col--6-12--m col--1-1--s"></div>
+        <div class="col--4-12 col--12-12--m col--1-1--s">
+          {{#power-select placeholder="Alle bevoegdheden"
+               options=beleidsdomeinOptions searchField="label"
+               onchange=(action "filter" "beleidsdomein") allowClear=true
+               selected=beleidsdomein as |option|}}
+            {{option.label}}
+          {{/power-select}}
         </div>
       </div>
     </div>
