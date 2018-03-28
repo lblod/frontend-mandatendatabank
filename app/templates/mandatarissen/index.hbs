@@ -1,3 +1,32 @@
-<p>Hier komt het zoekscherm</p>
+<div class="container-flex--contain">
+  <div class="data-table__actions u-border--fat--bottom">
+    <div class="u-padding--round--small">
+      <div class="grid u-spacer--tb--tiny">
+        <div class="col--7-12 col--1-1--s">
+          <div class="u-spacer--bottom--tiny" type="button" title="Pas bestuur aan">
+            <h2 class="h2">Bestuur:
+              {{#if bestuurseenheid}}
+                {{bestuurseenheid.classificatie.label}} {{bestuurseenheid.naam}}
+              {{else}}
+                Heel Vlaanderen
+              {{/if}}
+            </h2>
+          </div>
+        </div>
+        <div class="col--5-12 col--1-1--s u-align-right--medium-up">
+          {{#wu-button-group}}
+            {{#wu-button isLink=true isDark=true isNarrow=true isSmall=true onClick=null}}
+              {{wu-icon "vi-cross vi-u-link"}} Herstel alle filters
+            {{/wu-button}}
+          {{/wu-button-group}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="data-table__scroll">
+    {{mandataris-table selectedBestuurseenheidId=bestuurseenheidId
+        content=model isLoading=isLoadingModel sort=sort page=page size=size}}
+  </div>
+</div>
 
 {{outlet}}

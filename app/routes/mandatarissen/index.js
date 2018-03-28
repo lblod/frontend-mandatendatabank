@@ -1,4 +1,9 @@
-import Route from '@ember/routing/route';
+import ScopedMandatarissenController from './scoped-mandatarissen';
 
-export default Route.extend({
+export default ScopedMandatarissenController.extend({
+  mergeQueryOptions(params) {
+    return {
+
+    };
+  }
 });
