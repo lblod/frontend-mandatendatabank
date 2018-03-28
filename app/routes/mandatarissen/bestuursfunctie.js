@@ -2,16 +2,16 @@ import ScopedMandatarissenController from './scoped-mandatarissen';
 
 export default ScopedMandatarissenController.extend({
   model(params, transition) {
-    this.set('idParam', params.beleidsdomein_id);
+    this.set('idParam', params.bestuursfunctie_id);
     return this._super(params, transition);
   },
   mergeQueryOptions(params) {
     return {
-      'filter[beleidsdomein][id]': params.beleidsdomein_id
+      'filter[bekleedt][bestuursfunctie][id]': params.bestuursfunctie_id
     };
   },
   setupController(controller, model) {
     this._super(controller, model);
-    controller.set('beleidsdomeinId', this.get('idParam'));
+    controller.set('bestuursfunctieId', this.get('idParam'));
   }
 });

@@ -4,7 +4,9 @@
     {{#c.header}}
       <th>Orgaan</th>
       <th>Fractie</th>
-      <th>Mandaten</th>
+      {{#unless isScopeBestuursfunctie}}
+        <th>Mandaten</th>
+      {{/unless}}
       {{#unless isScopePersoon}}
         <th>Naam</th>
         <th>Familienaam</th>
@@ -25,11 +27,13 @@
           {{row.heeftLidmaatschap.binnenFractie.naam}}
         {{/link-to}}
       </td>
-      <td>
-        {{#link-to 'mandatarissen.mandaat' row.bekleedt.bestuursfunctie.id}}
-          {{row.bekleedt.bestuursfunctie.label}}
-        {{/link-to}}
-      </td>
+      {{#unless isScopeBestuursfunctie}}
+        <td>
+          {{#link-to 'mandatarissen.bestuursfunctie' row.bekleedt.bestuursfunctie.id}}
+            {{row.bekleedt.bestuursfunctie.label}}
+          {{/link-to}}
+        </td>
+      {{/unless}}
       {{#unless isScopePersoon}}
         <td>
           {{#link-to 'mandatarissen.persoon' row.isBestuurlijkeAliasVan.id}}

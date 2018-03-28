@@ -11,7 +11,7 @@ Router.map(function() {
   });
   this.route('mandatarissen', function() {
     this.route('fractie', { path: '/fractie/:fractie_id' });
-    this.route('mandaat', { path: '/mandaat/:mandaat_id' });
+    this.route('bestuursfunctie', { path: '/bestuursfunctie/:bestuursfunctie_id' });
     this.route('orgaan',  { path: '/orgaan/:orgaan_id' });
     this.route('beleidsdomein', { path: '/beleidsdomein/:beleidsdomein_id' });
     this.route('persoon', { path: '/persoon/:persoon_id' });
