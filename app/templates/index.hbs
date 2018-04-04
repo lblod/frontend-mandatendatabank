@@ -18,64 +18,8 @@
 
   <div class="region">
     <div class="layout layout--wide u-spacer--tb--large">
-      <h1 class="h2">Kies welke mandaten of mandatarissen je zoekt.</h1>
-      <div class="grid grid--is-stacked grid--equal-height u-spacer--tb">
-        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
-          {{#wu-info-tile center=true size="medium" as |t|}}
-            {{#t.header title="Bestuur"}}
-              {{wu-badge size="large" isAccent=true icon="fa-building-o"}}
-            {{/t.header}}
-            {{#t.content}}
-              <p>Bijvoorbeeld de provincieraad, gemeentebestuur of OCMW.</p>
-            {{/t.content}}
-            {{#t.footer}}
-              <p>{{wu-link-button label="Zoek bestuur" isLink=true isButton=false class="link--icon--caret"
-                     onClick=(action "goTo" "mandatarissen.orgaan" "5ab12111496009290c00a865")}}</p>
-            {{/t.footer}}
-          {{/wu-info-tile}}
-        </div>
-        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
-          {{#wu-info-tile center=true size="medium" as |t|}}
-            {{#t.header title="Fractie"}}
-              {{wu-badge size="large" isAccent=true icon="fa-tag"}}
-            {{/t.header}}
-            {{#t.content}}
-              <p>Bijvoorbeeld CD&V, Groen, N-VA of Open VLD.</p>
-            {{/t.content}}
-            {{#t.footer}}
-              <p>{{wu-link-button label="Zoek fractie" isLink=true isButton=false class="link--icon--caret" onClick=null}}</p>
-            {{/t.footer}}
-          {{/wu-info-tile}}
-        </div>
-        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
-          {{#wu-info-tile center=true size="medium" as |t|}}
-            {{#t.header title="Persoon"}}
-              {{wu-badge size="large" isAccent=true icon="fa-user"}}
-            {{/t.header}}
-            {{#t.content}}
-              <p>Bijvoorbeeld de naam van jouw burgemeester of een raadslid.</p>
-            {{/t.content}}
-            {{#t.footer}}
-              <p>{{wu-link-button label="Zoek persoon" isLink=true isButton=false class="link--icon--caret"
-                     onClick=(action "goTo" "mandatarissen.persoon" "5ab12107496009290c003c14")}}</p>
-            {{/t.footer}}
-          {{/wu-info-tile}}
-        </div>
-        <div class="col--3-12 col--6-12--m col--6-12--s col--1-1--xs">
-          {{#wu-info-tile center=true size="medium" as |t|}}
-            {{#t.header title="Bevoegdheid"}}
-              {{wu-badge size="large" isAccent=true icon="fa-list-ul"}}
-            {{/t.header}}
-            {{#t.content}}
-              <p>Bijvoorbeeld de schepen van geluk.</p>
-            {{/t.content}}
-            {{#t.footer}}
-              <p>{{wu-link-button label="Zoek bevoegdheid" isLink=true isButton=false class="link--icon--caret"
-                     onClick=(action "goTo" "mandatarissen.beleidsdomein" "5ab10d3a4c934f28dc00005a")}}</p>
-            {{/t.footer}}
-          {{/wu-info-tile}}
-        </div>
-      </div>
+      <h1 class="h2">Bekijk de mandaten in een bestuur</h1>
+      {{#link-to 'bestuursorgaan.subject.index' '5ab12113496009290c00b465'}}Bestuursorgaan Dendermonde subject page (to be removed){{/link-to}}
     </div>
     <div class="layout layout--wide u-spacer--tb--large">
       <div class="u-hr u-hr--label u-hr--label--centered">

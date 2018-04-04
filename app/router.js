@@ -16,6 +16,12 @@ Router.map(function() {
     this.route('beleidsdomein', { path: '/beleidsdomein/:beleidsdomein_id' });
     this.route('persoon', { path: '/persoon/:persoon_id' });
   });
+
+  this.route('bestuursorgaan', function() {
+    this.route('subject', { path: '/:bestuursorgaan_id' }, function() {
+      this.route('administratieve-gegevens');
+    });
+  });
 });
 
 export default Router;

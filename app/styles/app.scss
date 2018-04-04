@@ -2,3 +2,20 @@
 @import 'ember-power-select';
 
 @import 'main';
+
+/* Active tab */
+.tab .tab__link.active {
+  color: #333;
+  border-bottom: 3px solid #333;
+  background-color: transparent;
+}
+
+/* Preloader */
+.loader-wrapper {
+  margin: 25px;
+}
+
+/* Data table */
+.mandataris-data-table .data-table__actions--top {
+  display: none;
+}

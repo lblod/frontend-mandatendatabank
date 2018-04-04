@@ -1,77 +1,43 @@
 {{#data-table content=content isLoading=isLoading noDataMessage="Geen mandatarissen gevonden"
-     sort=sort page=page size=size as |t|}}
+     sort=sort page=page size=size class="mandataris-data-table" as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
-      {{#unless selectedBestuurseenheidId}}
-        <th>Locatie</th>
-      {{/unless}}
-      {{#unless isScopeOrgaan}}
-        <th>Orgaan</th>
-      {{/unless}}
-      {{#unless isScopeFractie}}
-        <th>Fractie</th>
-      {{/unless}}
-      {{#unless isScopePersoon}}
-        <th>Naam</th>
-        <th>Familienaam</th>
-        <th>Geslacht</th>
-      {{/unless}}
-      {{#unless isScopeBestuursfunctie}}
-        <th>Mandaten</th>
-      {{/unless}}
-      {{#unless isScopeBeleidsdomein}}<th>Bevoegdheden</th>{{/unless}}
-      <th>Start mandaat</th>
-      <th>Eind mandaat</th>
+      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam' currentSorting=sort label='Locatie'}}
+      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan'}}
+      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht'}}
+      {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
+      <th>Bevoegdheden</th>
+      {{th-sortable field='start' currentSorting=sort label='Start mandaat'}}
+      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat'}}
     {{/c.header}}
     {{#c.body as |row|}}
-      {{#unless selectedBestuurseenheidId}}
-        <td>
-          {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam}}
-        </td>
-      {{/unless}}
-      {{#unless isScopeOrgaan}}
-        <td>
-          {{#link-to 'mandatarissen.orgaan' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
-            {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
-          {{/link-to}}
-        </td>
-      {{/unless}}
-      {{#unless isScopeFractie}}
-        <td>
-          {{#link-to 'mandatarissen.fractie' row.heeftLidmaatschap.binnenFractie.id}}
-            {{row.heeftLidmaatschap.binnenFractie.naam}}
-          {{/link-to}}
-        </td>
-      {{/unless}}
-      {{#unless isScopePersoon}}
-        <td>
-          {{#link-to 'mandatarissen.persoon' row.isBestuurlijkeAliasVan.id}}
-            {{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}
-          {{/link-to}}
-        </td>
-        <td>
-          {{#link-to 'mandatarissen.persoon' row.isBestuurlijkeAliasVan.id}}
-            {{row.isBestuurlijkeAliasVan.achternaam}}
-          {{/link-to}}
-        </td>
-        <td>{{row.isBestuurlijkeAliasVan.geslacht.label}}</td>
-      {{/unless}}
-      {{#unless isScopeBestuursfunctie}}
-        <td>
-          {{#link-to 'mandatarissen.bestuursfunctie' row.bekleedt.bestuursfunctie.id}}
-            {{row.bekleedt.bestuursfunctie.label}}
-          {{/link-to}}
-        </td>
-      {{/unless}}
-      {{#unless isScopeBeleidsdomein}}
-        <td>
-          {{#each row.beleidsdomein as |beleidsdomein|}}
-            {{#link-to 'mandatarissen.beleidsdomein' beleidsdomein.id}}
-              {{beleidsdomein.label}}
-            {{/link-to}}<br>
-          {{/each}}
-        </td>
-      {{/unless}}
+      <td>
+        {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam}}
+      </td>
+      <td>
+        {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
+      </td>
+      <td>
+        {{row.heeftLidmaatschap.binnenFractie.naam}}
+      </td>
+      <td>
+        {{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}
+      </td>
+      <td>
+        {{row.isBestuurlijkeAliasVan.achternaam}}
+      </td>
+      <td>{{row.isBestuurlijkeAliasVan.geslacht.label}}</td>
+      <td>
+        {{row.bekleedt.bestuursfunctie.label}}
+      </td>
+      <td>
+        {{#each row.beleidsdomein as |beleidsdomein|}}
+          {{beleidsdomein.label}}<br>
+        {{/each}}
+      </td>
       <td>{{moment-format row.start 'DD/MM/YYYY'}}</td>
       <td>{{moment-format row.einde 'DD/MM/YYYY'}}</td>
     {{/c.body}}
