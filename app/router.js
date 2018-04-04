@@ -12,6 +12,9 @@ Router.map(function() {
       this.route('administratieve-gegevens');
     });
   });
+  this.route('persoon', function() {
+    this.route('subject', { path: '/:persoon_id' }, function() {});
+  });
 });
 
 export default Router;
