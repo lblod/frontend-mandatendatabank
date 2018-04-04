@@ -19,3 +19,23 @@
 .mandataris-data-table .data-table__actions--top {
   display: none;
 }
+
+
+table.data-table thead {
+  color: #212121;
+}
+
+.data-table tbody tr[data-table-selectable], .scheduler-option__info table tbody tr[data-table-selectable], .scheduler-slot__text__info table tbody tr[data-table-selectable], .typography table tbody tr[data-table-selectable] {
+    cursor: auto;
+}
+
+.data-table tbody a {
+  color: #3184d6;
+  text-decoration: underline;
+}
+
+.data-table tbody a:focus,
+.data-table tbody a:hover {
+  color: #3184d6;
+  text-decoration: none;
+}
