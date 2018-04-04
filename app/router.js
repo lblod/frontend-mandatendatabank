@@ -7,16 +7,6 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('bestuur', {path: 'bestuur/:id'}, function() {
-  });
-  this.route('mandatarissen', function() {
-    this.route('fractie', { path: '/fractie/:fractie_id' });
-    this.route('bestuursfunctie', { path: '/bestuursfunctie/:bestuursfunctie_id' });
-    this.route('orgaan',  { path: '/orgaan/:orgaan_id' });
-    this.route('beleidsdomein', { path: '/beleidsdomein/:beleidsdomein_id' });
-    this.route('persoon', { path: '/persoon/:persoon_id' });
-  });
-
   this.route('bestuursorgaan', function() {
     this.route('subject', { path: '/:bestuursorgaan_id' }, function() {
       this.route('administratieve-gegevens');
