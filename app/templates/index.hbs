@@ -18,78 +18,12 @@
 
   <div class="region">
 
-    <div class="layout layout--wide u-spacer--bottom--large">
-      <h2 class="h3 u-spacer">Bekijk de mandaten in een bestuur</h2>
-      <ul class="steps steps--has-line">
-        <li class="step step--no-box">
-          <div class="step__icon">1</div>
-          <div class="step__wrapper">
-            <div class="step__header">
-              <h3 class="step__title">Stap 1: Zoek een gemeente, provincie of district.</h3>
-            </div>
-            <div class="step__content-wrapper">
-              <div class="step__content">
-                {{#power-select
-                   search=(perform searchWerkingsgebied)
-                   selected=werkingsgebied
-                   onchange=(action "listBestuurseenheden")
-                   as |gebied|}}
-                  {{gebied.longName}}
-                {{/power-select}}
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="step {{unless werkingsgebiedId "step--disabled"}} step-toggle step--no-box">
-          <div class="step__icon">2</div>
-          <div class="step__wrapper">
-            <div class="step__header">
-              <div class="step__header__titles">
-                <h3 class="step__title">Stap 2: Kies een bestuurseenheid</h3>
-              </div>
-            </div>
-            <div class="step__content-wrapper">
-              <div class="step__content">
-                <div class="grid grid--is-stacked grid--equal-height">
-                  {{#each bestuurseenheden as |eenheid|}}
-                    <div class="col--6-12 col--6-12--m col--6-12--s col--1-1--xs">
-                      {{organisation-card organisationId=eenheid.id
-                        classification=eenheid.classificatie.label
-                        name=(concat eenheid.classificatie.label " " eenheid.naam) onSelect=(action "listBestuursorganen")}}
-                    </div>
-                  {{/each}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="step {{unless bestuurseenheidId "step--disabled u-spacer--top"}} step-toggle step--no-box">
-          <div class="step__icon">3</div>
-          <div class="step__wrapper">
-            <div class="step__header">
-              <div class="step__header__titles">
-                <h3 class="step__title">Stap 3: Kies een bestuursorgaan</h3>
-              </div>
-            </div>
-            <div class="step__content-wrapper">
-              <div class="step__content">
-                <div class="grid grid--is-stacked grid--equal-height">
-                  {{#each bestuursorganen as |orgaan|}}
-                    <div class="col--6-12 col--6-12--m col--6-12--s col--1-1--xs">
-                      {{organisation-card organisationId=orgaan.id
-                        classification=orgaan.classificatie.label
-                        name=orgaan.naam onSelect=(action "viewBestuursorgaan")}}
-                    </div>
-                  {{/each}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+    {{bestuursorgaan-search-wizard model=model
+      searchTask=searchWerkingsgebied
+      onListBestuurseenheden=(action "listBestuurseenheden")
+      onListBestuursorganen=(action "listBestuursorganen")
+      onViewBestuursorgaan= (action "viewBestuursorgaan")
+    }}
 
     <div class="layout layout--wide u-spacer--tb--large">
       <div class="u-hr u-hr--label u-hr--label--centered">

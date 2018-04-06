@@ -1,13 +1,9 @@
 import Controller from '@ember/controller';
 import { task, timeout } from 'ember-concurrency';
-import { alias } from '@ember/object/computed';
 
 export default Controller.extend({
   werkingsgebiedId: '',
   bestuurseenheidId: '',
-  werkingsgebied: alias('model.werkingsgebied'),
-  bestuurseenheden: alias('model.bestuurseenheden'),
-  bestuursorganen: alias('model.bestuursorganen'),
 
   searchWerkingsgebied: task(function* (term) {
     yield timeout(250);
