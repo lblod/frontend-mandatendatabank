@@ -56,7 +56,7 @@
                     <div class="col--6-12 col--6-12--m col--6-12--s col--1-1--xs">
                       {{organisation-card organisationId=eenheid.id
                         classification=eenheid.classificatie.label
-                        name=eenheid.naam onSelect=(action "listBestuursorganen")}}
+                        name=(concat eenheid.classificatie.label " " eenheid.naam) onSelect=(action "listBestuursorganen")}}
                     </div>
                   {{/each}}
                 </div>
