@@ -1,19 +1,17 @@
-<div class="info-tile info-tile--m info-tile--center info-tile--v-center grid--equal-height__item">
-  <header class="info-tile__header">
-    <div class="info-tile__header__icon badge badge--accent badge--l badge--icon">
-      <i class="badge__icon fa fa-list-ul" aria-hidden="true"></i>
-    </div>
-    <div class="info-tile__header__wrapper">
-      <h3 class="info-tile__header__title">{{name}}</h3>
-    </div>
-  </header>
-  <div class="info-tile__content">
-    <p>BESCHRIJVING: TODO</p>
+<header class="info-tile__header">
+  <div class="info-tile__header__icon badge badge--accent badge--l badge--icon">
+    <i class="badge__icon fa fa-list-ul" aria-hidden="true"></i>
   </div>
-  <footer class="info-tile__footer">
-    <p>
-      <a class="button button--block button--large" {{action "select" organisationId}}>
-        <i class="vi vi-magnifier"></i>Kies {{classification}}</a>
-    </p>
-  </footer>
+  <div class="info-tile__header__wrapper">
+    <h3 class="info-tile__header__title">{{name}}</h3>
+  </div>
+</header>
+<div class="info-tile__content">
+  <p>{{description}}</p>
 </div>
+<footer class="info-tile__footer">
+  <p>
+    <a class="button button--block button--large" {{action "select" organisationId}}>
+      <i class="vi vi-magnifier"></i>Kies {{classification}}</a>
+  </p>
+</footer>

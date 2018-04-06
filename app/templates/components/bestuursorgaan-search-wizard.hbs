@@ -35,7 +35,7 @@
               {{#each bestuurseenheden as |eenheid|}}
                 <div class="col--6-12 col--6-12--m col--6-12--s col--1-1--xs">
                   {{organisation-card organisationId=eenheid.id
-                    classification=eenheid.classificatie.label
+                    classification=eenheid.classificatie.label description=eenheid.classificatie.scopeNote
                     name=(concat eenheid.classificatie.label " " eenheid.naam) onSelect=(action "listBestuursorganen")}}
                 </div>
               {{/each}}
@@ -59,7 +59,7 @@
               {{#each bestuursorganen as |orgaan|}}
                 <div class="col--6-12 col--6-12--m col--6-12--s col--1-1--xs">
                   {{organisation-card organisationId=orgaan.id
-                    classification=orgaan.classificatie.label
+                    classification=orgaan.classificatie.label description=orgaan.classificatie.scopeNote
                     name=orgaan.naam onSelect=(action "viewBestuursorgaan")}}
                 </div>
               {{/each}}
