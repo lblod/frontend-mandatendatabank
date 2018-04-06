@@ -4,11 +4,17 @@ import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
 export default Route.extend(DataTableRouteMixin, {
   modelName: 'mandataris',
-  beforeModel() {
-    const bestuursorgaan = this.modelFor('bestuursorgaan.subject');
+
+  async getLastBestuursorgaan(bestuursorgaan){
+    let organenInTijd = await bestuursorgaan.get('heeftTijdsspecialisaties');
+    return organenInTijd.sortBy('bindingStart').get('lastObject');
+  },
+  async beforeModel() {
+    const bestuursorgaan = await this.modelFor('bestuursorgaan.subject');
     if (!bestuursorgaan.get('isTijdsspecialisatieVan').content) { // niet-tijdsgebonden bestuursorgaan
-      debug('Accessing a niet-tijdsgebonden bestuursorgaan. Redirect to most recent time period.');
-      this.transitionTo('bestuursorgaan.subject.index', '5ab12113496009290c00b465');
+      debug('Redirect to most recent time period.');
+      let lastOrgaan = await this.getLastBestuursorgaan(bestuursorgaan);
+      this.transitionTo('bestuursorgaan.subject.index', lastOrgaan.get('id'));
     }
   },
   mergeQueryOptions(params) {
