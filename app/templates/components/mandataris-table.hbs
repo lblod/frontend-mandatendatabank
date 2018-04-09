@@ -2,7 +2,7 @@
      sort=sort page=page size=size class="mandataris-data-table" as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam' currentSorting=sort label='Locatie'}}
+      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam' currentSorting=sort label='Locatie'}}
       {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan'}}
       {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie'}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
@@ -15,9 +15,7 @@
     {{/c.header}}
     {{#c.body as |row|}}
       <td>
-        {{#link-to 'bestuursorgaan.subject.index' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
-          {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.naam}}
-        {{/link-to}}
+        {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}
       </td>
       <td>
         {{#link-to 'bestuursorgaan.subject.index' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
