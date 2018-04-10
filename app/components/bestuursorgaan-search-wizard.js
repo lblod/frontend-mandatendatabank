@@ -1,13 +1,14 @@
 import Component from '@ember/component';
-import { alias } from '@ember/object/computed';
+import { alias, sort } from '@ember/object/computed';
 
 export default Component.extend({
   selectedBestuurseenheidId: null,
   selectedBestuursorgaanId: null,
   werkingsgebied: alias('model.werkingsgebied'),
-  bestuurseenheden: alias('model.bestuurseenheden'),
-  bestuursorganen: alias('model.bestuursorganen'),
-
+  bestuurseenheden: sort('model.bestuurseenheden', 'generalSort'),
+  bestuursorganen: sort('model.bestuursorganen', 'generalSort'),
+  generalSort: Object.freeze(['classificatie.label']),
+  
   actions: {
     listBestuurseenheden(gebied){
       return this.get('onListBestuurseenheden')(gebied);
