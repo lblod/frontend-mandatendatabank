@@ -4,7 +4,8 @@ import RSVP from 'rsvp';
 export default Route.extend({
   queryParams: {
     werkingsgebiedId: { refreshModel: true },
-    bestuurseenheidId: { refreshModel: true }
+    bestuurseenheidId: { refreshModel: true },
+    bestuursorgaanId: {}
   },
 
   getBestuurseenheden: function(gebiedId){
