@@ -30,6 +30,7 @@
   {{/contact-card}}
 </section>
 
+{{#if model.politiezone}}
 <section class="contact-card u-spacer--bottom">
   {{#contact-card as |c|}}
     {{#c.header}}Politiezone{{/c.header}}
@@ -44,3 +45,4 @@
     {{/c.content}}
   {{/contact-card}}
 </section>
+{{/if}}
