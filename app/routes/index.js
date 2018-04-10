@@ -10,13 +10,15 @@ export default Route.extend({
 
   getBestuurseenheden: function(gebiedId){
     let queryParams = {'include': 'classificatie',
-                       'filter[werkingsgebied][id]': gebiedId};
+                       'filter[werkingsgebied][id]': gebiedId,
+                       'sort': 'naam'};
     return this.get('store').query('bestuurseenheid', queryParams);
     },
 
   getBestuursorganen: function(bestuurseenheidId){
     let queryParams = {'include': 'classificatie',
-                       'filter[bestuurseenheid][id]': bestuurseenheidId};
+                       'filter[bestuurseenheid][id]': bestuurseenheidId,
+                       'sort': 'naam'};
     return this.get('store').query('bestuursorgaan', queryParams);
   },
 
