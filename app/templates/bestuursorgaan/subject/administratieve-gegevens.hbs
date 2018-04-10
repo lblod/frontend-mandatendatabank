@@ -10,38 +10,40 @@
     {{/c.content}}
   {{/contact-card}}
 </section>
+
+{{#if model.posities}}
 <section class="contact-card u-spacer--bottom">
   {{#contact-card as |c|}}
     {{#c.header}}Andere functies{{/c.header}}
     {{#c.content as |content|}}
-      {{#content.row label="Secretaris"}}
-        {{secretaris.gebruikteVoornaam}} {{secretaris.achternaam}}
-      {{/content.row}}
-      {{#content.row label="Adjunct Secretaris"}}
-        {{adjunctSecretaris.gebruikteVoornaam}} {{adjunctSecretaris.achternaam}}
-      {{/content.row}}
-      {{#content.row label="Financieel beheerder"}}
-        {{financieelBeheerder.gebruikteVoornaam}} {{financieelBeheerder.achternaam}}
-      {{/content.row}}
-      {{#content.row label="Informatie-ambtenaar"}}
-        {{informatieAmbtenaar.gebruikteVoornaam}} {{informatieAmbtenaar.achternaam}}
-      {{/content.row}}
+      {{#each sortedPosities as |positie|}}
+        {{#content.row label=positie.rol.label}}
+          {{#each positie.wordtIngevuldDoor as |person|}}
+            {{person.gebruikteVoornaam}} {{person.achternaam}}
+          {{/each}}
+        {{/content.row}}
+      {{/each}}
     {{/c.content}}
   {{/contact-card}}
 </section>
+{{/if}}
 
 {{#if model.politiezone}}
-<section class="contact-card u-spacer--bottom">
-  {{#contact-card as |c|}}
-    {{#c.header}}Politiezone{{/c.header}}
-    {{#c.content contactInfo=model.politiezone.contactinfo.firstObject as |content|}}
-      {{#content.row label="Politiezone"}}
-        {{model.politiezone.naam}}
-      {{/content.row}}
-      {{#content.row label="Zonechef"}}
-        {{zoneChef.gebruikteVoornaam}} {{zoneChef.achternaam}}
-      {{/content.row}}
-      {{content.address}}
+  <section class="contact-card u-spacer--bottom">
+    {{#contact-card as |c|}}
+      {{#c.header}}Politiezone{{/c.header}}
+      {{#c.content contactInfo=model.politiezone.contactinfo.firstObject as |content|}}
+        {{#content.row label="Politiezone"}}
+          {{model.politiezone.naam}}
+        {{/content.row}}
+        {{#each model.politiezone.posities as |positie|}}
+          {{#content.row label=positie.rol.label}}
+            {{#each positie.wordtIngevuldDoor as |person|}}
+              {{person.gebruikteVoornaam}} {{person.achternaam}}
+            {{/each}}
+          {{/content.row}}
+        {{/each}}
+        {{content.address}}
     {{/c.content}}
   {{/contact-card}}
 </section>

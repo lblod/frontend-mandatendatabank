@@ -15,33 +15,6 @@ export default Route.extend({
     const eenheid = await rootBestuursOrgaan.get('bestuurseenheid');
     return this.getBestuurseenheid(eenheid.get('id'));
   },
-  setupController: function(controller, model){
-    this._super(controller,model);
-    controller.set('secretaris', null);
-    controller.set('adjunctSecretaris', null);
-    controller.set('financieelBeheerder', null);
-    controller.set('informatieAmbtenaar', null);
-    controller.set('zoneChef', null);
-    model.get('posities').then( (posities) => {
-      posities.forEach( async (positie) => {
-        const wordtIngevuldDoor = await positie.get('wordtIngevuldDoor');
-        const rol = await positie.get('rol');
-        if (wordtIngevuldDoor.get('length') > 0 )
-          controller.set(roles[rol.get('id')], wordtIngevuldDoor.get('firstObject'));
-      });
-    });
-    this.setPolitieChef(controller, model);
-  },
-  async setPolitieChef(controller, model) {
-    const zone = await model.get('politiezone');
-    const posities = await zone.get('posities');
-    posities.forEach( async (positie) => {
-      const wordtIngevuldDoor = await positie.get('wordtIngevuldDoor');
-      const rol = await positie.get('rol');
-      if (wordtIngevuldDoor.get('length') > 0 && rol.get('id') === 'a2e91f2b-6353-4042-ba8c-71d0015ea1d1')
-        controller.set('zoneChef', wordtIngevuldDoor.get('firstObject'));
-    });
-  },
   getBestuurseenheid(id) {
     return this.get('store').findRecord(
       'bestuurseenheid',
