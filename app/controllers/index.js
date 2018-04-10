@@ -26,6 +26,7 @@ export default Controller.extend({
     },
     listBestuurseenheden(gebied){
       this.flushQueryParams(1);
+      this.set('model.bestuursorganen', null);
       this.set('werkingsgebied', gebied);
       this.set('werkingsgebiedId', gebied.get('id'));
     },

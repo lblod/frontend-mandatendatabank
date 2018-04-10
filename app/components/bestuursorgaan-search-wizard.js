@@ -10,7 +10,6 @@ export default Component.extend({
 
   actions: {
     listBestuurseenheden(gebied){
-      this.set('bestuursorganen', null);
       return this.get('onListBestuurseenheden')(gebied);
     },
     listBestuursorganen(bestuurseenheidId){
