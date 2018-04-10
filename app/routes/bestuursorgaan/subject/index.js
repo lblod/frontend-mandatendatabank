@@ -11,7 +11,7 @@ export default Route.extend(DataTableRouteMixin, {
   },
   async beforeModel() {
     const bestuursorgaan = await this.modelFor('bestuursorgaan.subject');
-    if (!bestuursorgaan.get('isTijdsspecialisatieVan').content) { // niet-tijdsgebonden bestuursorgaan
+    if (! await bestuursorgaan.get('isTijdsspecialisatieVan')) { // niet-tijdsgebonden bestuursorgaan
       debug('Redirect to most recent time period.');
       let lastOrgaan = await this.getLastBestuursorgaan(bestuursorgaan);
       this.transitionTo('bestuursorgaan.subject.index', lastOrgaan.get('id'));

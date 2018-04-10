@@ -2,13 +2,14 @@ import Component from '@ember/component';
 import { alias } from '@ember/object/computed';
 
 export default Component.extend({
+  selectedBestuurseenheidId: null,
+  selectedBestuursorgaanId: null,
   werkingsgebied: alias('model.werkingsgebied'),
   bestuurseenheden: alias('model.bestuurseenheden'),
   bestuursorganen: alias('model.bestuursorganen'),
 
   actions: {
     listBestuurseenheden(gebied){
-      this.set('bestuursorganen', null);
       return this.get('onListBestuurseenheden')(gebied);
     },
     listBestuursorganen(bestuurseenheidId){

@@ -4,6 +4,7 @@ import { task, timeout } from 'ember-concurrency';
 export default Controller.extend({
   werkingsgebiedId: '',
   bestuurseenheidId: '',
+  bestuursorgaanId: '',
 
   searchWerkingsgebied: task(function* (term) {
     yield timeout(250);
@@ -11,9 +12,12 @@ export default Controller.extend({
     return this.get('store').query('werkingsgebied', queryParams);
   }),
 
-  flushQueryParams(){
-    this.set('werkingsgebiedId', '');
-    this.set('bestuurseenheidId', '');
+  flushQueryParams(step){
+    this.set('bestuursorgaanId', '');
+    if(step <= 1){
+      this.set('werkingsgebiedId', '');
+      this.set('bestuurseenheidId', '');
+    }
   },
 
   actions: {
@@ -21,14 +25,17 @@ export default Controller.extend({
       window.location = file;
     },
     listBestuurseenheden(gebied){
-      this.flushQueryParams();
+      this.flushQueryParams(1);
+      this.set('model.bestuursorganen', null);
       this.set('werkingsgebied', gebied);
       this.set('werkingsgebiedId', gebied.get('id'));
     },
     listBestuursorganen(bestuurseenheidId){
+      this.flushQueryParams(2);
       this.set('bestuurseenheidId', bestuurseenheidId);
     },
-    viewBestuursorgaan(bestuursorgaanId){
+    async viewBestuursorgaan(bestuursorgaanId){
+      await this.set('bestuursorgaanId', bestuursorgaanId);
       this.transitionToRoute('bestuursorgaan.subject', bestuursorgaanId);
     }
   }
