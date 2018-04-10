@@ -1,2 +1,46 @@
-<h4 class="h4">Administratieve gegevens</h4>
-{{outlet}}
+<section class="contact-card u-spacer--bottom">
+  {{#contact-card as |c|}}
+    {{#c.header}}Contactgegevens{{/c.header}}
+    {{#c.content contactInfo=model.primaireSite.vestigingsadres as |content|}}
+      {{content.address}}
+      {{content.telephone}}
+      {{content.fax}}
+      {{content.email}}
+      {{content.website}}
+    {{/c.content}}
+  {{/contact-card}}
+</section>
+<section class="contact-card u-spacer--bottom">
+  {{#contact-card as |c|}}
+    {{#c.header}}Andere functies{{/c.header}}
+    {{#c.content as |content|}}
+      {{#content.row label="Secretaris"}}
+        {{secretaris.gebruikteVoornaam}} {{secretaris.achternaam}}
+      {{/content.row}}
+      {{#content.row label="Adjunct Secretaris"}}
+        {{adjunctSecretaris.gebruikteVoornaam}} {{adjunctSecretaris.achternaam}}
+      {{/content.row}}
+      {{#content.row label="Financieel beheerder"}}
+        {{financieelBeheerder.gebruikteVoornaam}} {{financieelBeheerder.achternaam}}
+      {{/content.row}}
+      {{#content.row label="Informatie-ambtenaar"}}
+        {{informatieAmbtenaar.gebruikteVoornaam}} {{informatieAmbtenaar.achternaam}}
+      {{/content.row}}
+    {{/c.content}}
+  {{/contact-card}}
+</section>
+
+<section class="contact-card u-spacer--bottom">
+  {{#contact-card as |c|}}
+    {{#c.header}}Politiezone{{/c.header}}
+    {{#c.content contactInfo=model.politiezone.contactinfo.firstObject as |content|}}
+      {{#content.row label="Politiezone"}}
+        {{model.politiezone.naam}}
+      {{/content.row}}
+      {{#content.row label="Zonechef"}}
+        {{zoneChef.gebruikteVoornaam}} {{zoneChef.achternaam}}
+      {{/content.row}}
+      {{content.address}}
+    {{/c.content}}
+  {{/contact-card}}
+</section>
