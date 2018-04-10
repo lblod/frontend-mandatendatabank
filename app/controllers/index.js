@@ -21,9 +21,6 @@ export default Controller.extend({
   },
 
   actions: {
-    download(file) {
-      window.location = file;
-    },
     listBestuurseenheden(gebied){
       this.flushQueryParams(1);
       this.set('model.bestuursorganen', null);

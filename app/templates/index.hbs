@@ -24,7 +24,7 @@
       selectedBestuursorgaanId=bestuursorgaanId
       onListBestuurseenheden=(action "listBestuurseenheden")
       onListBestuursorganen=(action "listBestuursorganen")
-      onViewBestuursorgaan= (action "viewBestuursorgaan")
+      onViewBestuursorgaan=(action "viewBestuursorgaan")
     }}
 
     <div class="layout layout--wide u-spacer--tb--large">
@@ -38,26 +38,10 @@
           <h2 class="h3">Download mandatendatabank</h2>
         </div>
         <div class="col--4-12 col--12-12--s u-align-right--medium-up">
-          <!-- TODO bestuursperiode select here -->
+          <!-- bestuursperiode select here -->
         </div>
       </div>
-      <div class="grid">
-        <div class="col--4-12 col--12-12--s">
-          {{wu-document-miniature class="u-spacer--bottom" type="CSV"
-              label="CSV: voor spreadsheet editors zoals Excel of Numbers."
-              metadata="CSV - 3.6MB" onClick=(action "download" '/files/mandaten.csv')}}
-        </div>
-        <div class="col--4-12 col--12-12--s">
-          {{wu-document-miniature class="u-spacer--bottom" type="JSON"
-              label="JSON: voor spreadsheet editors zoals Excel of Numbers."
-              metadata="JSON - 31MB" onClick=(action "download" '/files/mandaten.json')}}
-        </div>
-        <div class="col--4-12 col--12-12--s">
-          {{wu-document-miniature class="u-spacer--bottom" type="Turtle"
-              label="Turtle: voor spreadsheet editors zoals Excel of Numbers."
-              metadata="Turtle - 25MB" onClick=(action "download" '/files/mandaten.ttl')}}
-        </div>
-      </div>
+      {{download-miniatures}}
       <p>Mail naar
         <a href="mailto:mandaten@vlaanderen.be">mandaten@vlaanderen.be</a> voor meer informatie, of surf naar
         <a href="http://www.binnenland.vlaanderen.be" target="_blank">www.binnenland.vlaanderen.be</a>.</p>
