@@ -1,38 +1,59 @@
 <div class="container-flex--contain" data-tabs-responsive-label="Navigatie">
-  <div class="u-padding--rl--small u-background--gray-lighter">
-    <div class="u-padding--top--tiny">
-      <div class="grid">
-        <div class="col--6-12">
-          {{#link-to 'index' class="link--icon"}}
-            <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar overzicht</small>
-          {{/link-to}}
+  {{#with-rdfa-resource resource=model as |ctx|}}
+    <div class="u-padding--rl--small u-background--gray-lighter">
+      <div class="u-padding--top--tiny">
+        <div class="grid">
+          <div class="col--6-12">
+            {{#link-to 'index' class="link--icon"}}
+              <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar overzicht</small>
+            {{/link-to}}
+          </div>
         </div>
       </div>
+      <div class="u-padding--tb">
+        <h1 class="h1 h1 u-spacer--bottom--tiny">
+          Orgaan:
+          {{#ctx.prop p="naam"}}
+            {{#if model.naam}}
+              {{model.naam}}
+            {{else}}
+              {{model.isTijdsspecialisatieVan.naam}}
+            {{/if}}
+          {{/ctx.prop}}
+        </h1>
+        <ul class="inline-list inline-list--bordered">
+          {{#if model.bindingStart}}
+            <li>
+              {{#ctx.prop p="bindingStart"}}
+                {{moment-format model.bindingStart 'DD-MM-YYYY'}}
+              {{/ctx.prop}}
+              -
+              {{#if model.bindingEinde}}
+                {{#ctx.prop p="bindingEinde"}}
+                  {{moment-format model.bindingEinde 'DD-MM-YYYY'}}
+                {{/ctx.prop}}
+              {{else}}
+                heden
+              {{/if}}
+            </li>
+          {{/if}}
+        </ul>
+      </div>
     </div>
-    <div class="u-padding--tb">
-      <h1 class="h1 h1 u-spacer--bottom--tiny">
-        Orgaan: {{#if model.naam}}{{model.naam}}{{else}}{{model.isTijdsspecialisatieVan.naam}}{{/if}}
-      </h1>
-      <ul class="inline-list inline-list--bordered">
-        {{#if model.bindingStart}}
-          <li>{{moment-format model.bindingStart 'DD-MM-YYYY'}} - {{#if model.bindingEinde}}{{moment-format model.bindingEinde 'DD-MM-YYYY'}}{{else}}heden{{/if}}</li>
-        {{/if}}
+
+    <div class="tabs__wrapper u-border--none u-border--fat--bottom">
+      <ul class="tabs u-spacer--none">
+        <li class="tab" role="presentation">
+          {{#link-to 'bestuursorgaan.subject.index' class="tab__link u-padding--rl--small"}}Mandaten{{/link-to}}
+        </li>
+        <li class="tab" role="presentation">
+          {{#link-to 'bestuursorgaan.subject.administratieve-gegevens' class="tab__link u-padding--rl--small"}}Administratieve gegevens{{/link-to}}
+        </li>
       </ul>
     </div>
-  </div>
 
-  <div class="tabs__wrapper u-border--none u-border--fat--bottom">
-    <ul class="tabs u-spacer--none">
-      <li class="tab" role="presentation">
-        {{#link-to 'bestuursorgaan.subject.index' class="tab__link u-padding--rl--small"}}Mandaten{{/link-to}}
-      </li>
-      <li class="tab" role="presentation">
-        {{#link-to 'bestuursorgaan.subject.administratieve-gegevens' class="tab__link u-padding--rl--small"}}Administratieve gegevens{{/link-to}}
-      </li>
-    </ul>
-  </div>
-
-  <div class="tab__pane container-flex--scroll">
-    {{outlet}}
-  </div>
+    <div class="tab__pane container-flex--scroll">
+      {{outlet}}
+    </div>
+  {{/with-rdfa-resource}}
 </div>
