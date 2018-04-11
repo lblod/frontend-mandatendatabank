@@ -1,16 +1,16 @@
 <div class="container-flex--contain" data-tabs-responsive-label="Navigatie">
-  {{#with-rdfa-resource resource=model as |ctx|}}
-    <div class="u-padding--rl--small u-background--gray-lighter">
-      <div class="u-padding--top--tiny">
-        <div class="grid">
-          <div class="col--6-12">
-            {{#link-to 'index' class="link--icon"}}
-              <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar overzicht</small>
-            {{/link-to}}
-          </div>
+  <div class="u-padding--rl--small u-background--gray-lighter">
+    <div class="u-padding--top--tiny">
+      <div class="grid">
+        <div class="col--6-12">
+          {{#link-to 'index' class="link--icon"}}
+            <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar overzicht</small>
+          {{/link-to}}
         </div>
       </div>
-      <div class="u-padding--tb">
+    </div>
+    <div class="u-padding--tb">
+      {{#with-rdfa-resource resource=model as |ctx|}}
         <h1 class="h1 h1 u-spacer--bottom--tiny">
           Orgaan:
           {{#ctx.prop p="naam"}}
@@ -38,22 +38,22 @@
             </li>
           {{/if}}
         </ul>
-      </div>
+        {{ctx.each-as-link p="bevat" class="u-hidden"}}
+      {{/with-rdfa-resource}}
     </div>
+  </div>
+  <div class="tabs__wrapper u-border--none u-border--fat--bottom">
+    <ul class="tabs u-spacer--none">
+      <li class="tab" role="presentation">
+        {{#link-to 'bestuursorgaan.subject.index' class="tab__link u-padding--rl--small"}}Mandaten{{/link-to}}
+      </li>
+      <li class="tab" role="presentation">
+        {{#link-to 'bestuursorgaan.subject.administratieve-gegevens' class="tab__link u-padding--rl--small"}}Administratieve gegevens{{/link-to}}
+      </li>
+    </ul>
+  </div>
 
-    <div class="tabs__wrapper u-border--none u-border--fat--bottom">
-      <ul class="tabs u-spacer--none">
-        <li class="tab" role="presentation">
-          {{#link-to 'bestuursorgaan.subject.index' class="tab__link u-padding--rl--small"}}Mandaten{{/link-to}}
-        </li>
-        <li class="tab" role="presentation">
-          {{#link-to 'bestuursorgaan.subject.administratieve-gegevens' class="tab__link u-padding--rl--small"}}Administratieve gegevens{{/link-to}}
-        </li>
-      </ul>
-    </div>
-
-    <div class="tab__pane container-flex--scroll">
-      {{outlet}}
-    </div>
-  {{/with-rdfa-resource}}
+  <div class="tab__pane container-flex--scroll">
+    {{outlet}}
+  </div>
 </div>
