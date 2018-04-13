@@ -1,4 +1,5 @@
-<div class="container-flex--contain" data-tabs-responsive-label="Navigatie">
+{{#with-rdfa-resource resource=model as |ctx|}}
+  <div class="container-flex--contain" data-tabs-responsive-label="Navigatie">
   <div class="u-padding--rl--small u-background--gray-lighter">
     <div class="u-padding--top--tiny">
       <div class="grid">
@@ -10,17 +11,23 @@
       </div>
     </div>
     <div class="u-padding--tb">
-      <h1 class="h1 h1 u-spacer--bottom--tiny">
-        Mandataris: {{model.gebruikteVoornaam}} {{model.achternaam}}
-      </h1>
-      <ul class="inline-list inline-list--bordered">
-        {{#if model.alternatieveNaam}}<li>Roepnaam: {{model.alternatieveNaam}}</li>{{/if}}
-        <li>Geslacht: {{model.geslacht.label}}</li>
-      </ul>
+
+        <h1 class="h1 h1 u-spacer--bottom--tiny">
+          Mandataris: {{ctx.prop p="gebruikteVoornaam"}} {{ctx.prop p="achternaam"}}
+        </h1>
+        <ul class="inline-list inline-list--bordered">
+          {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.prop p="alternatieveNaam"}}</li>{{/if}}
+          {{#ctx.linked-resource p="geslacht" as |geslacht gctx|}}
+            <li>Geslacht:
+              {{gctx.prop p="label"}}
+            </li>
+          {{/ctx.linked-resource}}
+        </ul>
     </div>
   </div>
 
   <div>
     {{outlet}}
   </div>
-</div>
+  </div>
+{{/with-rdfa-resource}}
