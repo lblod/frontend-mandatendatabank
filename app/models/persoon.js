@@ -13,7 +13,7 @@ export default Model.extend({
   isAangesteldAls: hasMany('mandataris', { inverse: 'isBestuurlijkeAliasVan' }),
   isKandidaatVoor: hasMany('kandidatenlijst', { inverse: 'kandidaten'}),
 
-  rdfaBindings: {
+  rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     class: "http://www.w3.org/ns/person#Person",
     achternaam: "http://xmlns.com/foaf/0.1/familyName",
     gebruikteVoornaam: "http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
