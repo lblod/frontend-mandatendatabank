@@ -8,7 +8,7 @@ export default Component.extend({
   bestuurseenheden: sort('model.bestuurseenheden', 'generalSort'),
   bestuursorganen: sort('model.bestuursorganen', 'generalSort'),
   generalSort: Object.freeze(['classificatie.label']),
-  
+
   actions: {
     listBestuurseenheden(gebied){
       return this.get('onListBestuurseenheden')(gebied);
