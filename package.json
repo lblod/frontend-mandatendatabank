@@ -19,7 +19,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@lblod/ember-rdfa-helpers": "git+ssh://git@github.com/lblod/ember-rdfa-helpers.git",
+    "@lblod/ember-rdfa-helpers": "git+https://github.com/lblod/ember-rdfa-helpers.git",
     "@lblod/ember-vo-webuniversum": "^0.11.0",
     "@lblod/ember-vo-webuniversum-data-table": "^0.2.1",
     "broccoli-asset-rev": "^2.4.5",
