@@ -12,13 +12,13 @@ module.exports = function(deployTarget) {
     'ssh-index': {
       username: 'root',
       host: 'dock.semte.ch',
-      remoteDir: '/data/digitaal-loket/dev-mdb/loket-app',
+      remoteDir: '/data/digitaal-loket/dev-mdb/mandatendatabank-app',
       agent: process.env.SSH_AUTH_SOCK,
       port: 2275,
       allowOverwrite: true
     },
     'rsync': {
-      dest: '/data/digitaal-loket/dev-mdb/loket-app',
+      dest: '/data/digitaal-loket/dev-mdb/mandatendatabank-app',
       username: 'root',
       host: 'dock.semte.ch',
       port: 2275,
@@ -33,14 +33,14 @@ module.exports = function(deployTarget) {
     ENV['ssh-index'] = {
       username: 'root',
       host: 'dock.semte.ch',
-      remoteDir: '/data/digitaal-loket/mdb/loket-app',
+      remoteDir: '/data/digitaal-loket/mdb/mandatendatabank-app',
       agent: process.env.SSH_AUTH_SOCK,
       port: 2275,
       allowOverwrite: true
     };
 
     ENV['rsync'] = {
-      dest: '/data/digitaal-loket/mdb/loket-app',
+      dest: '/data/digitaal-loket/mdb/mandatendatabank-app',
       username: 'root',
       host: 'dock.semte.ch',
       port: 2275,
