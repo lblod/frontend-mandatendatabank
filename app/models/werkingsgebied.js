@@ -13,7 +13,13 @@ export default Model.extend({
     return `${naam} (${niveau})`;
   }),
 
+  uri: attr(),
   naam: attr(),
   niveau: attr(),
-  bestuurseenheid: hasMany('bestuurseenheid', { inverse: 'werkingsgebied' })
+  bestuurseenheid: hasMany('bestuurseenheid', { inverse: 'werkingsgebied' }),
+
+  rdfaBindings: {
+    class: "prov:Location",
+    naam: "rdfs:label"
+  }
 });

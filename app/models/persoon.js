@@ -19,6 +19,7 @@ export default Model.extend({
     gebruikteVoornaam: "http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
     alternatieveNaam: "http://xmlns.com/foaf/0.1/name",
     geslacht: "http://data.vlaanderen.be/ns/persoon#geslacht",
-    isAangesteldAls: "http://data.vlaanderen.be/ns/mandaat#isAangesteldAls"
+    isAangesteldAls: "http://data.vlaanderen.be/ns/mandaat#isAangesteldAls",
+    geboorte: "http://data.vlaanderen.be/ns/persoon#heeftGeboorte"
   }
 });
