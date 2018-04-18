@@ -29,25 +29,7 @@ module.exports = function(deployTarget) {
   };
 
   if (deployTarget === 'production') {
-    ENV.build.environment = 'production';
-    ENV['ssh-index'] = {
-      username: 'root',
-      host: 'dock.semte.ch',
-      remoteDir: '/data/digitaal-loket/mdb/mandatendatabank-app',
-      agent: process.env.SSH_AUTH_SOCK,
-      port: 2275,
-      allowOverwrite: true
-    };
 
-    ENV['rsync'] = {
-      dest: '/data/digitaal-loket/mdb/mandatendatabank-app',
-      username: 'root',
-      host: 'dock.semte.ch',
-      port: 2275,
-      delete: false,
-      privateKey: process.env.SSH_AUTH_SOCK,
-      arg:['--verbose']
-    };
   }
 
   // Note: if you need to build some configuration asynchronously, you can return
