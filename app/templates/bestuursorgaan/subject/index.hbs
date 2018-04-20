@@ -2,30 +2,33 @@
    sort=sort page=page size=size class="mandataris-data-table" as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam' currentSorting=sort label='Locatie'}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan'}}
+      {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
+
       {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie'}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht'}}
-      {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
       <th>Bevoegdheden</th>
       {{th-sortable field='start' currentSorting=sort label='Start mandaat'}}
       {{th-sortable field='einde' currentSorting=sort label='Eind mandaat'}}
     {{/c.header}}
     {{#c.body as |row|}}
       <td>
-        {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}
+        {{#with-rdfa-resource resource=row as |ctx|}}
+          {{#ctx.linked-resource p="bekleedt" as |value mandaat|}}
+            {{#mandaat.linked-resource p="bestuursfunctie" as |value rol|}}
+              {{rol.prop resource=value p="label"}}
+            {{/mandaat.linked-resource}}
+          {{/ctx.linked-resource}}
+        {{/with-rdfa-resource}}
       </td>
-      <td>
-        {{#link-to 'bestuursorgaan.subject.index' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
-       </td>
+
       <td>
         {{row.heeftLidmaatschap.binnenFractie.naam}}
       </td>
       <td>
         {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |alias|}}
+          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |value alias|}}
             {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
               {{alias.prop p="gebruikteVoornaam"}}
             {{/link-to}}
@@ -34,17 +37,17 @@
       </td>
       <td>
         {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |alias|}}
+          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |value alias|}}
             {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
-              {{alias.prop p="achternaam"}}
+              {{alias.prop resource=value p="achternaam"}}
             {{/link-to}}
           {{/ctx.linked-resource}}
         {{/with-rdfa-resource}}
       </td>
       <td>
         {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |alias|}}
-            {{#alias.linked-resource p="geslacht" as |g|}}
+          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |value alias|}}
+            {{#alias.linked-resource p="geslacht" as |value g|}}
               {{g.prop p="label"}}
             {{/alias.linked-resource}}
           {{/ctx.linked-resource}}
@@ -52,16 +55,7 @@
       </td>
       <td>
         {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="bekleedt" as |mandaat|}}
-            {{#alias.linked-resource p="bestuursfunctie" as |rol|}}
-              {{rol.prop p="label"}}
-            {{/alias.linked-resource}}
-          {{/ctx.linked-resource}}
-        {{/with-rdfa-resource}}
-      </td>
-      <td>
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.each-resource p="beleidsdomein" as |beleidsdomein|}}
+          {{#ctx.each-resource p="beleidsdomein" as |value beleidsdomein|}}
             {{beleidsdomein.prop p="label"}}<br>
           {{/ctx.each-resource}}
         {{/with-rdfa-resource}}
