@@ -26,6 +26,245 @@
     opacity: 1; } }
 
 /* ==========================================================================
+  Annotations
+  Style the annotations here.
+ ========================================================================== */
+.annotation-snippet li,
+.annotation-snippet p,
+.annotation-snippet .h1,
+.annotation-snippet .h2,
+.annotation-snippet .h3,
+.annotation-snippet .h4,
+.annotation-snippet .h5,
+.annotation-snippet .h6,
+.annotation-structure li,
+.annotation-structure p,
+.annotation-structure .h1,
+.annotation-structure .h2,
+.annotation-structure .h3,
+.annotation-structure .h4,
+.annotation-structure .h5,
+.annotation-structure .h6 {
+  position: relative; }
+
+.annotation-structure {
+  margin-bottom: 3rem;
+  position: relative; }
+
+.annotation-structure--behandeling--open:after,
+.annotation-structure--behandeling--besloten:after {
+  position: absolute;
+  font-weight: 400;
+  font-size: 1.5rem;
+  width: 22rem;
+  text-align: right;
+  color: #666666;
+  opacity: 0;
+  right: -999rem;
+  top: 0;
+  display: block;
+  border-bottom: 1px solid #E8EBEE; }
+
+.annotation-structure--behandeling--open:hover:after,
+.annotation-structure--behandeling--besloten:hover:after {
+  right: -22rem;
+  opacity: 1; }
+
+.annotation-structure--behandeling--open:before,
+.annotation-structure--behandeling--besloten:before {
+  position: absolute;
+  font-family: "fontawesome";
+  left: -3rem;
+  font-size: 1.4rem;
+  top: 2px;
+  color: #B2B2B2; }
+
+.annotation-structure--behandeling--open:after {
+  content: "openbaar \a agendapunt"; }
+
+.annotation-structure--behandeling--besloten:after {
+  content: "besloten \a agendapunt"; }
+
+.annotation-structure--active:before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 0rem;
+  bottom: 0rem;
+  width: 2px;
+  border-left: 2px solid #E8EBEE;
+  z-index: -1;
+  transition: width 200ms; }
+
+.annotation {
+  border-bottom: 1px solid rgba(203, 210, 218, 0.7);
+  cursor: pointer;
+  padding-bottom: 4px; }
+  .annotation:hover {
+    color: #000;
+    background-color: rgba(254, 229, 57, 0.2); }
+  .annotation:after {
+    position: absolute;
+    font-weight: 400;
+    font-size: 1.5rem;
+    width: 22rem;
+    text-align: right;
+    color: #666666;
+    opacity: 0;
+    right: -999rem;
+    top: 0;
+    display: block;
+    border-bottom: 1px solid #E8EBEE; }
+  .annotation:hover:after {
+    right: -22rem;
+    opacity: 1; }
+  .annotation.highlight {
+    background-color: #FEE539; }
+  .annotation + .annotation {
+    z-index: 2; }
+  .annotation.annotation--person:after {
+    content: "person"; }
+  .annotation.annotation--mandataris:after {
+    content: "mandataris"; }
+  .annotation.annotation--voorzitter:after {
+    content: "voorzitter"; }
+  .annotation.annotation--burgemeester:after {
+    content: "burgemeester"; }
+  .annotation.annotation--secretaris:after {
+    content: "secretaris"; }
+  .annotation.annotation--schepenen:first-child {
+    margin-left: 10rem; }
+  .annotation.annotation--schepenen:first-child:before {
+    content: "Schepenen:\02002";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    pointer-events: none;
+    font-weight: 500;
+    color: #333333; }
+  .annotation.annotation--raadsleden:after {
+    content: "raadsleden"; }
+  .annotation.annotation--korpschef:after {
+    content: "korpschef"; }
+  .annotation.annotation--link:after {
+    content: "link"; }
+  .annotation.annotation--ground:after {
+    content: "juridische grond"; }
+  .annotation.annotation--motivation:after {
+    content: "motivatie"; }
+  .annotation.annotation--location:after {
+    content: "locatie"; }
+  .annotation.annotation--organ:after {
+    content: "orgaan"; }
+  .annotation.annotation--organisation:after {
+    content: "organisatie"; }
+  .annotation.annotation--logo:after {
+    content: "logo stad"; }
+  .annotation.annotation--date:after {
+    content: "datum zitting"; }
+  .annotation.annotation--article:after {
+    content: "article"; }
+  .annotation.annotation--content:after {
+    content: "inhoud"; }
+  .annotation.annotation--content--full-width:after {
+    content: "inhoud"; }
+  .annotation.annotation--number:after {
+    content: "nummer";
+    right: -75rem; }
+  .annotation .annotation.annotation--number:hover:after {
+    right: -88.3rem; }
+  .annotation.annotation--time:after {
+    content: "tijd zitting"; }
+  .annotation.annotation--agendapunt {
+    border-bottom: none; }
+  .annotation.annotation--agendapunt--open:after {
+    content: "openbaar \a agendapunt"; }
+  .annotation.annotation--agendapunt--besloten:after {
+    content: "besloten \a agendapunt"; }
+
+.annotation .annotation {
+  padding-bottom: 2px;
+  border-bottom-color: #bcc5cf; }
+  .annotation .annotation:hover {
+    color: #000;
+    background-color: rgba(254, 229, 57, 0.5); }
+  .annotation .annotation:hover:after {
+    border-left: 1px solid #CBD2DA;
+    border-bottom: none;
+    padding-left: 1rem;
+    right: -45.5rem;
+    text-align: left; }
+
+.annotation .annotation .annotation {
+  border-bottom-color: #A5B3C2;
+  padding-bottom: 0; }
+  .annotation .annotation .annotation:hover {
+    background-color: rgba(254, 229, 57, 0.8); }
+  .annotation .annotation .annotation:hover:after {
+    top: 2.2rem; }
+
+.annotation--agendapunt--besloten__icon,
+.annotation--agendapunt--open__icon {
+  font-size: 1.6rem;
+  position: absolute;
+  left: -3rem;
+  top: 0rem;
+  padding-left: 1px; }
+
+.annotation--agendapunt--besloten__icon {
+  color: #e9cc01; }
+
+.annotation--agendapunt--open__icon {
+  color: #B2B2B2; }
+
+.annotation-structure--behandeling--open .annotation--agendapunt--besloten__icon,
+.annotation-structure--behandeling--open .annotation--agendapunt--open__icon,
+.annotation-structure--behandeling--besloten .annotation--agendapunt--besloten__icon,
+.annotation-structure--behandeling--besloten .annotation--agendapunt--open__icon {
+  top: 0.4rem; }
+
+/* Suggestions & targets
+ ========================================================================== */
+.annotation-suggestion__suggestion {
+  position: absolute;
+  z-index: 1; }
+
+p > .annotation-suggestion__target {
+  margin: 0 0.8rem; }
+
+.annotation-suggestion__target {
+  position: relative;
+  margin-bottom: 0.5rem; }
+  .annotation-suggestion__target:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -0.7rem;
+    right: -0.7rem;
+    top: -0.5rem;
+    bottom: -0.2rem;
+    border: 1px dashed #CBD2DA; }
+
+/* Editing annotations warning
+ ========================================================================== */
+[data-flagged-remove="almost-complete"],
+[data-flagged-remove="complete"] {
+  min-height: 1.6rem;
+  display: inline;
+  cursor: text;
+  background-color: rgba(15, 104, 201, 0.25);
+  box-shadow: -2px 0 0 #0F68C9; }
+
+[data-flagged-remove="complete"] {
+  min-width: 8px;
+  display: inline-block;
+  box-shadow: -2px 0 0 black; }
+
+.annotation--edit [data-flagged-remove="almost-complete"],
+.annotation--edit [data-flagged-remove="complete"] {
+  background-color: transparent; }
+
+/* ==========================================================================
   Buttons
   Define alternative buttons here.
  ========================================================================== */
@@ -39,6 +278,12 @@ button.button {
   a.button i,
   button.button i {
     padding-right: 1rem; }
+  a.button i.button__icon,
+  button.button i.button__icon {
+    padding-right: 0; }
+
+a[class^="link--icon--"]:before {
+  overflow: visible; }
 
 a.button.button--disabled,
 button.button.button--disabled {
@@ -53,17 +298,29 @@ a {
   cursor: pointer;
   transition: all 200ms; }
 
-a.button, a.button.button--block, a.button.button--narrow, a.button.button--secondary, a.button.button--alt, a.button.button--large, a.button.button--small, a.button.button--tiny,
+a.button, a.button.button--block, a.button.button--narrow, a.button.button--secondary, a.button.button--alt, a.button.button--warning, a.button.button--large, a.button.button--small, a.button.button--tiny,
 button.button,
 button.button.button--block,
 button.button.button--narrow,
 button.button.button--secondary,
 button.button.button--alt,
+button.button.button--warning,
 button.button.button--large,
 button.button.button--small,
 button.button.button--tiny {
   position: relative;
   overflow: visible !important; }
+
+/* Link icon
+ ========================================================================== */
+.link--icon .fa {
+  font-size: 1.7rem;
+  position: absolute;
+  color: #333333;
+  left: 0;
+  top: -.2rem;
+  line-height: 1;
+  overflow: hidden; }
 
 /* Other sizes
  ========================================================================== */
@@ -234,6 +491,25 @@ button.button.button--alt.button--alt--blue {
     color: #CBD2DA;
     border-color: #CBD2DA; }
 
+a.button.button--alt.button--alt--warning,
+button.button.button--alt.button--alt--warning {
+  color: #DB3434; }
+  a.button.button--alt.button--alt--warning:hover,
+  button.button.button--alt.button--alt--warning:hover {
+    color: #fff;
+    background-color: #DB3434;
+    border-color: #DB3434; }
+  a.button.button--alt.button--alt--warning:focus, a.button.button--alt.button--alt--warning:active,
+  button.button.button--alt.button--alt--warning:focus,
+  button.button.button--alt.button--alt--warning:active {
+    color: #fff;
+    background-color: #F33;
+    border-color: #F33; }
+  a.button.button--alt.button--alt--warning.button--disabled,
+  button.button.button--alt.button--alt--warning.button--disabled {
+    color: #CBD2DA;
+    border-color: #CBD2DA; }
+
 a.button.button--alt.button--alt--fancy,
 button.button.button--alt.button--alt--fancy {
   border-bottom-color: #0F68C9;
@@ -318,21 +594,32 @@ a.link--dark {
   a.link--dark:hover {
     color: #0F68C9; }
 
-a.link-dark--light,
-a.link-dark--light i.vi,
 a.link--dark--light,
 a.link--dark--light i.vi {
   color: #666666; }
-  a.link-dark--light:hover,
-  a.link-dark--light i.vi:hover,
   a.link--dark--light:hover,
   a.link--dark--light i.vi:hover {
     color: #0F68C9; }
 
+.link--edit {
+  position: relative;
+  display: inline-block;
+  padding-right: 3rem; }
+
+.link--edit:after {
+  content: "\E014";
+  font-family: vlaanderen_iconfont !important;
+  font-size: 70%;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  color: #0F68C9;
+  top: 15%; }
+
 .button__info {
   font-size: 75%; }
 
-.button.button--tuny .button__info {
+.button.button--tiny .button__info {
   font-size: 1rem; }
 
 .button .button__info--inside {
@@ -434,8 +721,8 @@ a.link--dark--light i.vi {
  ========================================================================== */
 .button-group > a.button:last-child,
 .button-group > button.button:last-child,
-.button-group > .popover.popover--right.js-popover:last-child button.button,
-.button-group > .popover.popover--right.js-popover:last-child a.button {
+.button-group > .popover.popover--left.js-popover:last-child button.button,
+.button-group > .popover.popover--left.js-popover:last-child a.button {
   margin-right: 0; }
 
 .button-group__inline button.button,
@@ -454,7 +741,7 @@ a.link--dark--light i.vi {
   .button-group__inline button.button.button--alt, .button-group__inline button.button.button--dark,
   .button-group__inline a.button.button--alt,
   .button-group__inline a.button.button--dark {
-    margin-left: -1px; }
+    margin-left: -3px; }
   .button-group__inline button.button.button--active,
   .button-group__inline a.button.button--active {
     background-color: #0c56a5;
@@ -555,6 +842,9 @@ a.link--dark--light i.vi {
 
 /* Small switch checkbox
  ========================================================================== */
+.checkbox--switch__wrapper {
+  display: inline-block; }
+
 .checkbox--switch__wrapper.checkbox--switch--small {
   font-size: 0.8em; }
   .checkbox--switch__wrapper.checkbox--switch--small .checkbox--switch + .checkbox--switch__label {
@@ -626,6 +916,16 @@ a.link--dark--light i.vi {
       top: 0.05rem; }
   .js-select__input.js-select__input--small.js-select__input--multi:after {
     top: 0.1rem; }
+
+.input-field--min-content {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content; }
+
+.input-field--max-content {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content; }
 
 /* Labels
  ========================================================================== */
@@ -736,7 +1036,7 @@ i.input-field__icon {
     box-shadow: 0 2px 2px rgba(165, 179, 194, 0.5);
     position: absolute;
     width: 100%;
-    z-index: 1;
+    z-index: 5;
     background-color: #fff;
     margin-bottom: 1rem; }
   .temporary-select__wrapper .select__cta {
@@ -794,6 +1094,9 @@ i.input-field__icon {
     .temporary-select__wrapper .select__cta .select__cta:hover:after,
     .temporary-select__wrapper .select__cta .select__cta[data-selected=true]:after {
       background-color: #F3F5F6; }
+  .temporary-select__wrapper a {
+    position: relative;
+    z-index: 2; }
 
 .select__item.select__item--disabled {
   padding: 0.5rem 1rem; }
@@ -923,6 +1226,11 @@ i.input-field__icon {
     float: left;
     margin-left: -1px; }
 
+/* Errors
+ ========================================================================== */
+.form__error {
+  margin-bottom: 1.5rem; }
+
 /* ==========================================================================
   Style the layout of the grid here
  ========================================================================== */
@@ -944,13 +1252,9 @@ i.input-field__icon {
 
 /* Collapse
  ========================================================================== */
-@media (min-width: 1023px) {
-  .grid.grid--collapse > * {
-    padding-left: 0 !important; } }
-
 .grid.grid--collapse {
   margin: 0 !important; }
-  .grid.grid--collapse > div[class^="col--"] {
+  .grid.grid--collapse > * {
     padding: 0;
     margin: 0; }
 
@@ -973,13 +1277,43 @@ i.input-field__icon {
 table th {
   white-space: nowrap; }
 
+.data-table--zebra tbody tr:nth-child(odd).data-table__row-active,
 tr.data-table__row-active {
-  box-shadow: inset 4px 0 0 #0F68C9;
   background-color: #E8EBEE; }
+  .data-table--zebra tbody tr:nth-child(odd).data-table__row-active td:first-child,
+  tr.data-table__row-active td:first-child {
+    box-shadow: inset 4px 0 0 #0F68C9; }
 
 table.data-table.data-table--gray-head thead tr {
   background-color: #E8EBEE;
   border-bottom: 1px solid #CBD2DA; }
+
+.data-table--tight th,
+.data-table--tight td {
+  font-size: 1.5rem;
+  padding: 1rem 0.8rem; }
+
+tr.tr-expand {
+  background-color: #E8EBEE;
+  transition: all 200ms;
+  min-height: 1px;
+  height: auto; }
+  tr.tr-expand.u-hidden {
+    height: 0;
+    overflow: hidden; }
+  tr.tr-expand td:first-child {
+    position: relative; }
+  tr.tr-expand td:first-child:after {
+    display: block;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-left: 1px solid #CBD2DA;
+    border-bottom: 1px solid #CBD2DA;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.4rem;
+    bottom: 1rem; }
 
 /* ==========================================================================
   Typography
@@ -1086,6 +1420,32 @@ p.uppercase {
 .description-data__subdata {
   line-height: 1.4; }
 
+.description-data__label .toggle--plus-minus i.toggle__icon {
+  top: -1px; }
+
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
+  .text-overflow-ellipsis a,
+  .text-overflow-ellipsis p,
+  .text-overflow-ellipsis h1,
+  .text-overflow-ellipsis h2,
+  .text-overflow-ellipsis h3,
+  .text-overflow-ellipsis h4,
+  .text-overflow-ellipsis h5,
+  .text-overflow-ellipsis h6 {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; }
+
+.text-overflow-ellipsis--30 {
+  max-width: 30rem; }
+
+.text-overflow-ellipsis--40 {
+  max-width: 40rem; }
+
 /* ==========================================================================
   accordion
   Style the accordion here.
@@ -1100,6 +1460,34 @@ p.uppercase {
   display: block; }
 
 /* ==========================================================================
+  Alerts
+  Style annotations here
+ ========================================================================== */
+.alert--cta.alert--warning {
+  border-top-color: #FFC515; }
+
+/* Small
+ ========================================================================== */
+.alert.alert--small {
+  padding: 1rem; }
+  .alert.alert--small p {
+    font-size: 1.4rem; }
+
+/* Tiny
+ ========================================================================== */
+.alert.alert--tiny {
+  padding: 1rem; }
+  .alert.alert--tiny p {
+    font-size: 1.4rem; }
+  .alert.alert--tiny .alert__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1.5rem; }
+    .alert.alert--tiny .alert__icon:before {
+      font-size: 1rem;
+      top: -0.8rem; }
+
+/* ==========================================================================
   badges
   Style the badges here.
  ========================================================================== */
@@ -1107,16 +1495,6 @@ p.uppercase {
  ========================================================================== */
 .badge--l.badge--icon .fa {
   font-size: 2.5rem; }
-
-.badge--xs {
-  width: 2rem;
-  height: 2rem; }
-  .badge--xs .badge__icon {
-    font-size: 0.8rem; }
-
-a .badge--xs {
-  position: relative;
-  top: 3px; }
 
 /* ==========================================================================
   content card
@@ -1129,23 +1507,93 @@ a .badge--xs {
     background-color: #fff; }
 
 /* ==========================================================================
+  Document miniature
+  Style the document miniature here.
+ ========================================================================== */
+.document-miniature.document-miniature--small {
+  vertical-align: top; }
+  .document-miniature.document-miniature--small:last-child {
+    padding-bottom: 0; }
+  .document-miniature.document-miniature--small .document-miniature__type {
+    padding: 0rem 0.9rem;
+    min-height: 4rem; }
+  .document-miniature.document-miniature--small .document-miniature__type:before {
+    font-size: 3rem;
+    color: #333333;
+    left: 0;
+    top: 0; }
+  .document-miniature.document-miniature--small .document-miniature__type__text {
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 1px;
+    background-color: #666666;
+    border: 1px solid #666666;
+    border-radius: 2px;
+    position: relative;
+    width: auto;
+    left: 0.6rem;
+    top: 1rem;
+    padding: 0.2rem 3px 0.2rem 4px; }
+  .document-miniature.document-miniature--small .document-miniature__content {
+    padding-top: 1rem; }
+    .document-miniature.document-miniature--small .document-miniature__content .document-miniature__title {
+      margin-bottom: 0;
+      display: inline-block; }
+    .document-miniature.document-miniature--small .document-miniature__content .document-miniature__metadata {
+      font-size: 1.4rem;
+      display: inline-block; }
+
+.document-miniature.document-miniature--tiny {
+  position: relative;
+  margin-bottom: 1rem;
+  line-height: 1.2; }
+  .document-miniature.document-miniature--tiny:last-child {
+    margin-bottom: 0; }
+  .document-miniature.document-miniature--tiny .document-miniature__type {
+    margin: 0;
+    padding: 0 0.3rem 0 0;
+    min-height: 0;
+    width: 6.2rem;
+    position: relative;
+    left: 0; }
+  .document-miniature.document-miniature--tiny .document-miniature__type:before {
+    font-size: 1.8rem;
+    color: #333333;
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+    left: 0;
+    top: 0.05rem; }
+  .document-miniature.document-miniature--tiny .document-miniature__type__text {
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 1px;
+    position: absolute;
+    left: 1.5rem;
+    top: 0.3rem;
+    padding: 0.1rem 0.2rem 0.1rem 0.3rem;
+    width: 3.8rem;
+    border: none;
+    border-radius: 0;
+    background-color: #666666;
+    display: inline-block; }
+  .document-miniature.document-miniature--tiny .document-miniature__content .document-miniature__title {
+    margin-bottom: 0;
+    display: inline-block;
+    font-weight: 400; }
+  .document-miniature.document-miniature--tiny .document-miniature__content .document-miniature__metadata {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    display: inline-block; }
+
+/* ==========================================================================
   drawer
   Style the drawer here.
  ========================================================================== */
 /* toggle icon mixed with info tiles
  ========================================================================== */
-.info-tile.toggle--arrow-down:before {
-  content: normal; }
-
 .js-drawer-active-item .link--icon.link--icon--caret:before {
   transform: rotate(90deg); }
-
-.info-tile.toggle--arrow-down:hover {
-  background-color: #F3F5F6;
-  transition: all 200ms; }
-
-.info-tile.js-drawer-active-item {
-  background-color: #F3F5F6; }
 
 .drawer.drawer--white {
   background-color: #fff;
@@ -1165,10 +1613,6 @@ a .badge--xs {
       border-width: 0 2.6rem 2.6rem;
       border-bottom-color: #fff;
       z-index: 1; }
-
-.drawer .layout.layout--wide {
-  max-width: 100%;
-  min-width: 100%; }
 
 /* ==========================================================================
   drilldown
@@ -1200,21 +1644,88 @@ a .badge--xs {
 .dropdown-navigation__title {
   line-height: 1; }
 
-.button-group .dropdown-navigation {
-  margin-right: 1rem; }
+/* ==========================================================================
+  Editor
+  Style the editor here.
+ ========================================================================== */
+.editor-chrome {
+  padding: 1rem 1.5rem 0;
+  border-bottom: 1px solid #CBD2DA; }
+
+.editor {
+  background-color: #F3F5F6;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 1rem; }
+
+.editor__paper {
+  background-color: #fff;
+  margin: 2rem 0 5rem 2rem;
+  padding: 5rem 6.5rem 5rem 5rem;
+  width: 650px;
+  min-height: 950px;
+  box-shadow: 0 2px 6px 0 #CBD2DA; }
+  .editor__paper:focus {
+    outline: none; }
+
+.editor__annotations {
+  padding-top: 7rem; }
+
+.editor .h1 {
+  margin-bottom: 3rem; }
+
+.editor .h4 {
+  margin-bottom: 1rem; }
+
+.editor p, .editor li {
+  font-size: 1.6rem; }
+
+.editor__paper.js-scrollspy__content {
+  border-radius: 0; }
+
+.editor__paper--blankstate {
+  position: relative;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  margin-right: 1.5rem; }
+  .editor__paper--blankstate > * {
+    position: relative;
+    z-index: 2; }
+  .editor__paper--blankstate:before {
+    content: "";
+    display: block;
+    position: absolute;
+    border: 1px dashed #CBD2DA;
+    background-color: #F3F5F6;
+    top: -1.5rem;
+    right: 0;
+    bottom: -2rem;
+    left: -2rem;
+    z-index: 1; }
+
+.bijlagen__list li {
+  margin-bottom: 4rem; }
+
+.bijlage__bestand {
+  border: 1px solid #CBD2DA;
+  padding: 0.8rem 1rem 0.5rem; }
+
+.bijlage__sleepveld {
+  margin-top: 1rem;
+  background-color: #F3F5F6;
+  border: 2px dashed #CBD2DA;
+  padding: 1em;
+  text-align: center; }
+  .bijlage__sleepveld a {
+    display: block; }
+
+.bijlage__size {
+  color: #B2B2B2; }
 
 /* ==========================================================================
   Style the layout of the header here
  ========================================================================== */
 /* Temporary header topbar
  ========================================================================== */
-.official-header {
-  height: 44px;
-  color: #B2B2B2;
-  font-size: 1.2rem;
-  padding: 1rem;
-  border-bottom: 1px solid #CBD2DA; }
-
 .temporary-header {
   height: 38px; }
   @media (min-width: 767px) {
@@ -1313,13 +1824,6 @@ a .badge--xs {
     .temporary-header__name a.active {
       box-shadow: 0 3px 0 #FEE539; }
 
-.temporary-header__path {
-  height: 25px;
-  float: left;
-  padding: 0.4rem 1rem 0.2rem;
-  margin: 10px 0;
-  border-left: 1px solid #CBD2DA; }
-
 .temporary-header__info {
   height: 45px;
   padding: 0.9rem 1.5rem 0 2.5rem;
@@ -1327,29 +1831,6 @@ a .badge--xs {
   float: right;
   position: relative; }
   .temporary-header__info p:after {
-    display: block;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-bottom: 44px solid #fff;
-    border-right: 14.70687px solid transparent; }
-
-.temporary-header__contact {
-  height: 45px;
-  padding: 0.9rem 1.5rem 1.5rem;
-  background-color: #F3F5F6;
-  float: right;
-  border-right: 18px solid #F3F5F6;
-  position: relative; }
-  .temporary-header__contact:hover {
-    background-color: #FEE539;
-    cursor: pointer; }
-    .temporary-header__contact:hover .vi.vi-u-badge--neutral {
-      background-color: #fff; }
-  .temporary-header__contact .vi.vi-u-badge--neutral {
-    background-color: #CBD2DA; }
-  .temporary-header__contact .temporary-header__contact__button:after {
     display: block;
     content: '';
     position: absolute;
@@ -1402,6 +1883,14 @@ a .badge--xs {
 
 .info-tile:not(.info-tile--alt):not(.info-tile--clickable) {
   background-color: #fff; }
+
+/* for drawer */
+.info-tile.toggle--arrow-down:before {
+  content: normal; }
+
+.info-tile.toggle--arrow-down:hover {
+  background-color: #F3F5F6;
+  transition: all 200ms; }
 
 /* ==========================================================================
   Style the layout of the app here
@@ -1464,7 +1953,7 @@ body {
     .container-flex--contain > .grid > div[class^="col--"] {
       min-height: 0;
       height: 100%; }
-  .container-flex--contain.tab__pane {
+  .container-flex--contain.tab__pane[data-show=false] {
     display: none; }
   .container-flex--contain.tab__pane[data-show=true] {
     display: -ms-flexbox;
@@ -1485,10 +1974,36 @@ body {
   .inline-list.inline-list--bordered li:last-child {
     border-right: none; }
 
+ul.bullet-list {
+  padding-left: 2rem; }
+
+ul.bullet-list li {
+  list-style-type: disc;
+  list-style: disc; }
+
+/* ==========================================================================
+  loader
+  Style the loader here.
+ ========================================================================== */
+.loader-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: calc(50% - 3rem);
+  text-align: center;
+  padding: 1rem; }
+
 /* ==========================================================================
   Modals
   Style modals here.
  ========================================================================== */
+/* small modal
+ ========================================================================== */
+.modal-dialog.modal-dialog--small {
+  width: 35rem;
+  padding: 2rem 2rem 2.2rem; }
+
 /* modal overlay
  ========================================================================== */
 .modal-overlay {
@@ -1533,17 +2048,23 @@ body {
     .modal-dialog.modal-dialog--sectioned .modal-dialog__header .h6 {
       margin-bottom: 0; }
   .modal-dialog.modal-dialog--sectioned .modal-dialog__content {
-    padding: 1rem 1rem 1rem 1.5rem;
-    border-top: 1px solid #E8EBEE;
-    overflow-y: auto;
-    min-height: 15rem;
-    height: 60vh; }
+    border-top: 1px solid #CBD2DA;
+    padding: 1.5rem;
+    max-height: 25rem;
+    overflow: auto; }
+  .modal-dialog.modal-dialog--sectioned .modal-dialog__content.modal-dialog__content--sectioned {
+    padding: 0;
+    max-height: none; }
   .modal-dialog.modal-dialog--sectioned .modal-dialog__footer {
-    padding: 1.5rem 1.5rem 2rem;
-    border-top: 1px solid #E8EBEE; }
+    padding: 1.5rem 1.5rem 2.5rem;
+    border-top: 1px solid #CBD2DA; }
   .modal-dialog.modal-dialog--sectioned button.button,
   .modal-dialog.modal-dialog--sectioned a.button {
     margin-bottom: 0; }
+
+.modal-dialog--sectioned .pager {
+  background-color: #E8EBEE;
+  padding: 0.5rem 0; }
 
 @media (max-width: 766px) {
   .modal-dialog,
@@ -1554,29 +2075,49 @@ body {
     max-height: none; }
     .modal-dialog .modal-dialog__content,
     .modal-dialog.modal-dialog--sectioned .modal-dialog__content {
-      height: calc(100vh - 14rem);
+      height: calc(100vh - 20rem);
       max-height: none;
       min-height: none; } }
+
+/* input fields
+ ========================================================================== */
+.modal-dialog__content__search input.input-field {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: rgba(254, 229, 57, 0.15); }
+
+/* modal link lists
+ ========================================================================== */
+.modal-dialog__content .link-list {
+  max-height: 20rem;
+  overflow: auto; }
+
+.modal-dialog__content li.link-list__item {
+  margin: 0;
+  padding: 0; }
+  .modal-dialog__content li.link-list__item:last-child {
+    border-bottom: none; }
+
+.modal-dialog__content li.link-list__item a {
+  display: block;
+  padding: 1rem 1.5rem;
+  text-decoration: none; }
+  .modal-dialog__content li.link-list__item a:hover {
+    background-color: #F3F5F6; }
 
 /* ==========================================================================
   Popover
   Define alternative popover here.
  ========================================================================== */
-/* in popover checkboxes
- ========================================================================== */
 /* popover
  ========================================================================== */
 .popover.popover--left .popover__content {
-  right: auto !important;
-  left: 0 !important;
-  background-color: red; }
-
-.popover.popover--right .popover__content {
   right: 0 !important;
   left: auto !important; }
 
 @media (max-width: 766px) {
-  .popover.popover--right.popover--mobile--left .popover__content {
+  .popover.popover--left.popover--mobile--left .popover__content {
     left: 1rem !important;
     right: auto !important; } }
 
@@ -1602,8 +2143,11 @@ body {
 .pill--gray,
 .pill--gray-dark,
 .pill--primary-blue,
-.pill--primary-yellow {
-  background-color: white;
+.pill--primary-yellow,
+.pill--red,
+.pill--green,
+.pill--orange {
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0;
   position: relative;
   white-space: nowrap;
@@ -1612,7 +2156,10 @@ body {
   .pill--gray:after,
   .pill--gray-dark:after,
   .pill--primary-blue:after,
-  .pill--primary-yellow:after {
+  .pill--primary-yellow:after,
+  .pill--red:after,
+  .pill--green:after,
+  .pill--orange:after {
     content: "";
     display: block;
     position: absolute;
@@ -1635,6 +2182,15 @@ body {
 
 .pill--primary-yellow:after {
   background-color: #FEE539; }
+
+.pill--red:after {
+  background-color: #F33; }
+
+.pill--orange:after {
+  background-color: #FFC515; }
+
+.pill--green:after {
+  background-color: #8BAE00; }
 
 /* ==========================================================================
   radio buttons
@@ -1677,7 +2233,7 @@ body {
   transition: all 300ms; }
 
 /* Sidebar content styling
-	 ========================================================================== */
+   ========================================================================== */
 .sidebar__header {
   border-bottom: 1px solid #E8EBEE;
   padding: 0.5em 1em; }
@@ -1699,9 +2255,13 @@ body {
   overflow-y: auto;
   overflow-x: hidden; }
 
+.sidebar__content.side-navigation--blankstate {
+  padding: 1em;
+  display: block; }
+
 .sidebar__footer {
   border-top: 1px solid #E8EBEE;
-  padding: 0.5em 1em; }
+  padding: 1rem 1rem 2rem; }
 
 .sidebar .side-navigation:last-child .side-navigation__content {
   border: none; }
@@ -1764,11 +2324,75 @@ section.drilldown__subcolumn.drilldown__subcolumn--active {
       padding-left: 1rem;
       display: inline-block;
       font-size: 60%; }
-  @media (max-width: 766px) {
-    .sidebar__toggle-wrapper {
-      pointer-events: none; }
-      .sidebar__toggle-wrapper .sidebar__toggle-value:after {
-        content: normal; } }
+
+.sidebar__toggle-menu {
+  cursor: pointer;
+  color: #0F68C9; }
+  .sidebar__toggle-menu .sidebar__toggle-value {
+    font-family: flanders-sans, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem; }
+    .sidebar__toggle-menu .sidebar__toggle-value:before {
+      content: "\E008 ";
+      font-family: vlaanderen_iconfont !important;
+      font-size: 1.2rem;
+      margin-right: 0.6rem; }
+
+/* Side navigation for
+ ========================================================================== */
+.sidebar .side-navigation {
+  max-height: none;
+  overflow: initial;
+  border: none; }
+
+.sidebar__content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1;
+      flex: 1;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  .sidebar__content .side-navigation__content {
+    border-bottom: 0; }
+  .sidebar__content .side-navigation:not(:last-child) .side-navigation__content {
+    padding-bottom: 0.5rem; }
+
+.sidebar .side-navigation__group {
+  padding-top: 1rem;
+  border: none; }
+
+.side-navigation__item {
+  padding: 0; }
+
+.side-navigation__item a {
+  padding: 0.4em 0.4em 0.35em 1em;
+  line-height: 1.2; }
+
+.side-navigation__item a.active {
+  background-color: #F3F5F6;
+  color: #000;
+  font-weight: 500;
+  box-shadow: inset 3px 0 0 #0F68C9; }
+
+.side-navigation__item a.message {
+  position: relative; }
+  .side-navigation__item a.message:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: 100;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 1rem;
+    background-color: #0F68C9;
+    left: 0.8rem; }
+
+.side-navigation--large li.side-navigation__item a {
+  font-size: 1.8rem; }
+  .side-navigation--large li.side-navigation__item a.active {
+    box-shadow: inset 5px 0 0 #0F68C9; }
 
 /* ==========================================================================
   Side navigation
@@ -1811,6 +2435,19 @@ section.drilldown__subcolumn.drilldown__subcolumn--active {
   color: #000;
   font-weight: 500;
   box-shadow: inset 3px 0 0 #0F68C9; }
+
+.side-navigation__item a.message {
+  position: relative; }
+  .side-navigation__item a.message:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: 100;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 1rem;
+    background-color: #0F68C9;
+    left: 0.8rem; }
 
 .side-navigation--large li.side-navigation__item a {
   font-size: 1.8rem; }
@@ -1856,20 +2493,72 @@ section.drilldown__subcolumn.drilldown__subcolumn--active {
   .tab.tab--right:last-child .tab__link:after {
     content: normal; }
 
-/* ==========================================================================
-  Mandatendatabank overview
-  Style the mandatendatabank overview here.
- ========================================================================== */
-/* Overzichtspagina
- ========================================================================== */
-.mandaten-overview > .js-select button {
-  border-left: none;
-  border-right: none; }
+/* fix for tabs on mobile */
+.tabs__wrapper.tabs__wrapper--small-space {
+  left: 0 !important;
+  padding: 0 2rem; }
+  .tabs__wrapper.tabs__wrapper--small-space button.tabs__toggle {
+    width: 100%;
+    left: 0 !important;
+    border: 1px solid #CBD2DA; }
+  @media (min-width: 767px) {
+    .tabs__wrapper.tabs__wrapper--small-space {
+      padding: 0; } }
 
-/* Overzichtspagina
+.toaster {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  z-index: 801;
+  max-width: 42rem;
+  max-height: 10rem;
+  overflow: hidden;
+  opacity: 1;
+  transition: all linear 300ms; }
+  .toaster + .toaster {
+    top: 12rem; }
+    .toaster + .toaster + .toaster {
+      top: 22rem; }
+      .toaster + .toaster + .toaster + .toaster {
+        top: 32rem; }
+  .toaster.u-hidden {
+    position: absolute !important;
+    display: block !important;
+    right: -42rem;
+    opacity: 0;
+    transition: all 300ms; }
+
+/* ==========================================================================
+  Toolbar
+  Style the toolbar here.
  ========================================================================== */
-/* Mandatendatabank table
- ========================================================================== */
+.toolbar {
+  border-bottom: 1px solid #CBD2DA;
+  padding: 0.9rem 1.5rem 0;
+  height: 55px; }
+  .toolbar button.button {
+    margin-bottom: 0; }
+  .toolbar .toolbar__styling-tools button.button.active, .toolbar .toolbar__styling-tools button.button:hover {
+    background-color: #E8EBEE;
+    border-radius: 5px;
+    color: #000; }
+  .toolbar .toolbar__styling-tools button.button:focus {
+    outline: none; }
+  .toolbar .button-group {
+    border-right: 1px solid #CBD2DA;
+    padding: 0 0.5em 0 0.1em; }
+    .toolbar .button-group .button {
+      margin: 0; }
+    .toolbar .button-group:last-child {
+      border: none;
+      padding-right: 0; }
+      .toolbar .button-group:last-child .button {
+        margin: 0 0 0 0.5em; }
+  .toolbar .button i {
+    padding: 0; }
+  .toolbar .col*:first-child .button-group .button {
+    margin-right: 0; }
+
 /* ==========================================================================
   Shame
   Try out new and dirty stuff here.
@@ -1879,18 +2568,51 @@ section.drilldown__subcolumn.drilldown__subcolumn--active {
 .br-sample-content {
   overflow: auto !important; }
 
+.shame-mock-remove-multiple .upload__files--has-files + .upload__files--has-files + .upload__element,
+.shame-mock-remove-multiple .upload__files--has-files + .upload__files--has-files + .upload__overlay + .upload__files + .upload__element,
+.shame-mock-remove-multiple .upload__files--has-files + .upload__overlay + .upload__files + .upload__files--has-files + .upload__element,
+.shame-mock-remove-multiple .upload__overlay + .upload__files + .upload__files--has-files + .upload__files--has-files + .upload__element {
+  display: none; }
+
+.shame-mock-remove-multiple .upload__files--has-files + .upload__files--has-files + .upload__overlay + .upload__files + .upload__element + .alert,
+.shame-mock-remove-multiple .upload__files--has-files + .upload__overlay + .upload__files + .upload__files--has-files + .upload__element + .alert {
+  display: block !important; }
+
 /* ==========================================================================
   Helpers
   Code helper classes here.
  ========================================================================== */
-/* Visibility and position
+/* Visibility
  ========================================================================== */
-.u-hidden {
-  display: none !important; }
-
 @media (max-width: 766px) {
   .u-hidden--s {
     display: none !important; } }
+
+.u-visible--desktop-up {
+  display: none !important; }
+  @media (min-width: 1200px) {
+    .u-visible--desktop-up {
+      display: block !important; } }
+
+.u-visible--tablet-landscape-up {
+  display: none !important; }
+  @media (min-width: 1023px) {
+    .u-visible--tablet-landscape-up {
+      display: block !important; } }
+
+.u-visible--desktop-up {
+  display: none !important; }
+  @media (min-width: 1200px) {
+    .u-visible--desktop-up {
+      display: block !important; } }
+
+th.u-visible--desktop-up,
+td.u-visible--desktop-up {
+  display: none !important; }
+  @media (min-width: 1200px) {
+    th.u-visible--desktop-up,
+    td.u-visible--desktop-up {
+      display: table-cell !important; } }
 
 .u-visible--s,
 .u-visible-mobile {
@@ -1903,14 +2625,36 @@ section.drilldown__subcolumn.drilldown__subcolumn--active {
 .u-display--block {
   display: block; }
 
+.u-display--block-100 {
+  display: block;
+  width: 100%; }
+
 .u-display--inline {
-  display: block; }
+  display: inline; }
 
 .u-display--inline-block {
   display: inline-block; }
 
+th.u-hidden,
+td.u-hidden,
+.u-hidden {
+  display: none !important; }
+
+/* Positioning
+ ========================================================================== */
+.u-position--relative {
+  position: relative; }
+
+.u-position--absolute {
+  position: absolute; }
+
+/* Alignment
+ ========================================================================== */
+.u-align--right {
+  text-align: right !important; }
+
 @media (min-width: 767px) {
-  .u-align-right--medium-up {
+  .u-align-right--tablet-portrait-up {
     text-align: right !important; } }
 
 /* Borders
@@ -2019,6 +2763,16 @@ section.drilldown__subcolumn.drilldown__subcolumn--active {
 
 .u-border--fat--left {
   border-left: 3px solid #CCCCCC; }
+  .u-border--fat--left.u-border--yellow {
+    border-left-color: #FEE539; }
+  .u-border--fat--left.u-border--blue {
+    border-left-color: #0F68C9; }
+  .u-border--fat--left.u-border--black {
+    border-left-color: #000; }
+  .u-border--fat--left.u-border--gray-dark {
+    border-left-color: #333333; }
+  .u-border--fat--left.u-border--gray {
+    border-left-color: #666666; }
 
 .u-border--fat--top {
   border-top: 3px solid #CCCCCC; }
