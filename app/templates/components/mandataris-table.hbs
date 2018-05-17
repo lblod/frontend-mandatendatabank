@@ -2,27 +2,27 @@
      sort=sort page=page size=size class="mandataris-data-table" as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam' currentSorting=sort label='Locatie'}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan'}}
-      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie'}}
+      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam' currentSorting=sort label='Locatie' class="u-hidden--mobile"}}
+      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
-      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht' class="u-visible--desktop-up"}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
-      <th>Bevoegdheden</th>
-      {{th-sortable field='start' currentSorting=sort label='Start mandaat'}}
-      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat'}}
+      <th class="u-visible--tablet-landscape-up">Bevoegdheden</th>
+      {{th-sortable field='start' currentSorting=sort label='Start mandaat' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat' class="u-visible--tablet-portrait-up"}}
     {{/c.header}}
     {{#c.body as |row|}}
-      <td>
+      <td class="u-hidden--mobile">
         {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}
       </td>
-      <td>
+      <td class="u-visible--tablet-portrait-up">
         {{#link-to 'bestuursorgaan.subject.index' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
           {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
         {{/link-to}}
       </td>
-      <td>
+      <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}
       </td>
       <td>
@@ -35,17 +35,19 @@
           {{row.isBestuurlijkeAliasVan.achternaam}}
         {{/link-to}}
       </td>
-      <td>{{row.isBestuurlijkeAliasVan.geslacht.label}}</td>
+      <td class="u-visible--desktop-up">
+        {{row.isBestuurlijkeAliasVan.geslacht.label}}
+      </td>
       <td>
         {{row.bekleedt.bestuursfunctie.label}}
       </td>
-      <td>
+      <td class="u-visible--tablet-landscape-up">
         {{#each row.beleidsdomein as |beleidsdomein|}}
           {{beleidsdomein.label}}<br>
         {{/each}}
       </td>
-      <td>{{moment-format row.start 'DD/MM/YYYY'}}</td>
-      <td>{{moment-format row.einde 'DD/MM/YYYY'}}</td>
+      <td class="u-visible--tablet-portrait-up">{{moment-format row.start 'DD/MM/YYYY'}}</td>
+      <td class="u-visible--tablet-portrait-up">{{moment-format row.einde 'DD/MM/YYYY'}}</td>
     {{/c.body}}
   {{/t.content}}
 {{/data-table}}

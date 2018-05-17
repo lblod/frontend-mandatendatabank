@@ -4,13 +4,13 @@
     {{#c.header}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
 
-      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie'}}
+      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
-      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht'}}
-      <th>Bevoegdheden</th>
-      {{th-sortable field='start' currentSorting=sort label='Start mandaat'}}
-      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat'}}
+      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht' class="u-visible--desktop-up"}}
+      <th class="u-visible--tablet-landscape-up">Bevoegdheden</th>
+      {{th-sortable field='start' currentSorting=sort label='Start mandaat' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat' class="u-visible--tablet-portrait-up"}}
     {{/c.header}}
     {{#c.body as |row|}}
       <td>
@@ -23,7 +23,7 @@
         {{/with-rdfa-resource}}
       </td>
 
-      <td>
+      <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}
       </td>
       <td>
@@ -44,7 +44,7 @@
           {{/ctx.linked-resource}}
         {{/with-rdfa-resource}}
       </td>
-      <td>
+      <td class="u-visible--desktop-up">
         {{#with-rdfa-resource resource=row as |ctx|}}
           {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |value alias|}}
             {{#alias.linked-resource p="geslacht" as |value g|}}
@@ -53,19 +53,19 @@
           {{/ctx.linked-resource}}
         {{/with-rdfa-resource}}
       </td>
-      <td>
+      <td class="u-visible--tablet-landscape-up">
         {{#with-rdfa-resource resource=row as |ctx|}}
           {{#ctx.each-resource p="beleidsdomein" as |value beleidsdomein|}}
             {{beleidsdomein.prop p="label"}}<br>
           {{/ctx.each-resource}}
         {{/with-rdfa-resource}}
       </td>
-      <td>
+      <td class="u-visible--tablet-portrait-up">
         {{#with-rdfa-resource resource=row as |ctx|}}
           {{#ctx.prop p="start"}}{{moment-format row.start 'DD/MM/YYYY'}}{{/ctx.prop}}
         {{/with-rdfa-resource}}
       </td>
-      <td>
+      <td class="u-visible--tablet-portrait-up">
         {{#with-rdfa-resource resource=row as |ctx|}}
           {{#ctx.prop p="einde"}}{{moment-format row.einde 'DD/MM/YYYY'}}{{/ctx.prop}}
         {{/with-rdfa-resource}}
