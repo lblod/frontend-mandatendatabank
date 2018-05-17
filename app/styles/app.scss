@@ -90,6 +90,10 @@ table.data-table thead {
   outline: none;
 }
 
+.ember-power-select-search-input {
+ font-family: flanders-sans,sans-serif;
+}
+
 .ember-power-select-search-input:focus {
   outline: none;
   border-color: #ffc515;
@@ -98,7 +102,8 @@ table.data-table thead {
 
 /* Select options
  ========================================================================== */
-
+.ember-power-select-option.ember-power-select-option--loading-message,
+.ember-power-select-option.ember-power-select-option--no-matches-message,
 .ember-power-select-option.ember-power-select-option--search-message {
   padding-left: 0.5rem;
   color: #999999;
