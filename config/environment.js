@@ -19,6 +19,10 @@ module.exports = function(environment) {
     moment: {
       allowEmpty: true
     },
+    'vo-webuniversum': {
+      header: '//widgets.vlaanderen.be/widget/live/536f9f3a7a7d4842aecd269a28a636d1',
+      footer: '//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f'
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -47,6 +51,11 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+  }
+
+  if (process.env.DEPLOY_ENV === 'production') {
+    ENV['vo-webuniversum']['header'] = '//widgets.vlaanderen.be/widget/live/08f44cf079f54a0ba954b91dbf3e69ab';
+    ENV['vo-webuniversum']['footer'] = '//widgets.vlaanderen.be/widget/live/a7367e63e7b3444382ef264b25776f38';
   }
 
   return ENV;
