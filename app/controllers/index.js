@@ -1,16 +1,10 @@
 import Controller from '@ember/controller';
 import { task, timeout } from 'ember-concurrency';
-import ENV from 'frontend-mandatendatabank/config/environment';
 
 export default Controller.extend({
   werkingsgebiedId: '',
   bestuurseenheidId: '',
   bestuursorgaanId: '',
-
-  init() {
-    this._super(...arguments);
-    this.set('footer', ENV['vo-webuniversum']['footer']);
-  },
 
   searchWerkingsgebied: task(function* (term) {
     yield timeout(250);
