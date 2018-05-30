@@ -1,5 +1,5 @@
-{{#with-rdfa-resource class="container-flex--contain" resource=model as |ctx|}}
-  <div class="container-flex--scroll" data-tabs-responsive-label="Navigatie">
+{{#with-rdfa-resource resource=model as |ctx|}}
+  <div data-tabs-responsive-label="Navigatie">
     <div class="u-padding--rl--small u-background--gray-lighter">
       <div class="u-padding--top--tiny">
         <div class="grid">
@@ -29,6 +29,5 @@
     <div class="u-padding--rl--small u-spacer--tb">
       {{outlet}}
     </div>
-    {{wu-widget src="//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f"}}
   </div>
 {{/with-rdfa-resource}}
