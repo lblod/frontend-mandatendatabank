@@ -3,15 +3,15 @@
   {{#t.content as |c|}}
     {{#c.header}}
       {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam' currentSorting=sort label='Locatie' class="u-hidden--mobile"}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan' class="u-visible--tablet-portrait-up" style="max-width: 5rem;"}}
       {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht' class="u-visible--desktop-up"}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
       <th class="u-visible--tablet-landscape-up">Bevoegdheden</th>
-      {{th-sortable field='start' currentSorting=sort label='Start mandaat' class="u-visible--tablet-portrait-up"}}
-      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='start' currentSorting=sort label='Start' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='einde' currentSorting=sort label='Einde' class="u-visible--tablet-portrait-up"}}
     {{/c.header}}
     {{#c.body as |row|}}
       <td class="u-hidden--mobile">

@@ -1,5 +1,5 @@
 {{#data-table content=content isLoading=isLoading noDataMessage="Geen mandatarissen gevonden"
-   sort=sort page=page size=size class="mandataris-data-table container-flex--contain" as |t|}}
+   sort=sort page=page size=size class="mandataris-data-table" as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
@@ -9,8 +9,8 @@
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht' class="u-visible--desktop-up"}}
       <th class="u-visible--tablet-landscape-up">Bevoegdheden</th>
-      {{th-sortable field='start' currentSorting=sort label='Start mandaat' class="u-visible--tablet-portrait-up"}}
-      {{th-sortable field='einde' currentSorting=sort label='Eind mandaat' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='start' currentSorting=sort label='Start' class="u-visible--tablet-portrait-up"}}
+      {{th-sortable field='einde' currentSorting=sort label='Einde' class="u-visible--tablet-portrait-up"}}
     {{/c.header}}
     {{#c.body as |row|}}
       <td>

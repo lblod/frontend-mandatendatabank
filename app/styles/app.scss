@@ -162,3 +162,13 @@ table.data-table thead {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* small hack for data tables in mandatendatabank */
+
+thead {
+  border-top: none;
+}
+
+.tab .tab__link.active {
+  border-bottom: none;
+}

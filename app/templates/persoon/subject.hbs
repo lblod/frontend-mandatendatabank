@@ -1,33 +1,34 @@
-{{#with-rdfa-resource resource=model as |ctx|}}
-  <div class="container-flex--contain" data-tabs-responsive-label="Navigatie">
-  <div class="u-padding--rl--small u-background--gray-lighter">
-    <div class="u-padding--top--tiny">
-      <div class="grid">
-        <div class="col--6-12">
-          {{#link-to 'index' class="link--icon"}}
-            <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar zoeken</small>
-          {{/link-to}}
+{{#with-rdfa-resource class="container-flex--contain" resource=model as |ctx|}}
+  <div class="container-flex--scroll" data-tabs-responsive-label="Navigatie">
+    <div class="u-padding--rl--small u-background--gray-lighter">
+      <div class="u-padding--top--tiny">
+        <div class="grid">
+          <div class="col--6-12">
+            {{#link-to 'index' class="link--icon"}}
+              <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar zoeken</small>
+            {{/link-to}}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="u-padding--tb">
+      <div class="u-padding--tb">
 
-        <h1 class="h1 h1 u-spacer--bottom--tiny">
-          Mandataris: {{ctx.prop p="gebruikteVoornaam"}} {{ctx.prop p="achternaam"}}
-        </h1>
-        <ul class="inline-list inline-list--bordered">
-          {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.prop p="alternatieveNaam"}}</li>{{/if}}
-          {{#ctx.linked-resource p="geslacht" as |geslacht gctx|}}
-            <li>Geslacht:
-              {{gctx.prop p="label"}}
-            </li>
-          {{/ctx.linked-resource}}
-        </ul>
+          <h1 class="h1 h1 u-spacer--bottom--tiny">
+            Mandataris: {{ctx.prop p="gebruikteVoornaam"}} {{ctx.prop p="achternaam"}}
+          </h1>
+          <ul class="inline-list inline-list--bordered">
+            {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.prop p="alternatieveNaam"}}</li>{{/if}}
+            {{#ctx.linked-resource p="geslacht" as |geslacht gctx|}}
+              <li>Geslacht:
+                {{gctx.prop p="label"}}
+              </li>
+            {{/ctx.linked-resource}}
+          </ul>
+      </div>
     </div>
-  </div>
 
-  <div>
-    {{outlet}}
-  </div>
+    <div class="u-padding--rl--small u-spacer--tb">
+      {{outlet}}
+    </div>
+    {{wu-widget src="//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f"}}
   </div>
 {{/with-rdfa-resource}}
