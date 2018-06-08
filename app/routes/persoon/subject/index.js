@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import DataTableRouteMixin from 'ember-data-table/mixins/route';
+import DataTableRouteMixin from '../../../mixins/route';
 
 export default Route.extend(DataTableRouteMixin, {
   modelName: 'mandataris',
@@ -22,6 +22,8 @@ export default Route.extend(DataTableRouteMixin, {
         'is-bestuurlijke-alias-van.is-kandidaat-voor',
         'bekleedt',
         'bekleedt.bestuursfunctie',
+        'bekleedt.bevat-in',
+        'bekleedt.bevat-in.is-tijdsspecialisatie-van',
         'bekleedt.bevat-in.is-tijdsspecialisatie-van.classificatie',
         'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid',
         'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid.classificatie',
