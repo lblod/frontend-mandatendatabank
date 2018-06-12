@@ -15,13 +15,16 @@
     {{/c.header}}
     {{#c.body as |row|}}
       <td class="u-hidden--mobile">
-        {{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}
-  
+        {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
+          {{bestuursorgaan.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}<br>
+        {{/each}}
       </td>
       <td class="u-visible--tablet-portrait-up">
-        {{#link-to 'bestuursorgaan.subject.index' row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.id}}
-          {{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.classificatie.label}}
-        {{/link-to}}
+        {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
+          {{#link-to 'bestuursorgaan.subject.index' bestuursorgaan.isTijdsspecialisatieVan.id}}
+            {{bestuursorgaan.isTijdsspecialisatieVan.classificatie.label}}
+          {{/link-to}}<br>
+        {{/each}}
       </td>
       <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}
