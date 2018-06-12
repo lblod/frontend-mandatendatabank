@@ -1,5 +1,4 @@
 import Model from 'ember-data/model';
-import { collect } from '@ember/object/computed';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
