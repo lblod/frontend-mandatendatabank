@@ -6,7 +6,7 @@ export default Model.extend({
   uri: attr(),
   aantalHouders: attr(),
   bestuursfunctie: belongsTo('bestuursfunctie-code', { inverse: null }),
-  bevatIn: hasMany('bestuursorgaan', { inverse: null }),
+  bevatIn: hasMany('bestuursorgaan', { inverse: 'bevat' }),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     class: "http://data.vlaanderen.be/ns/mandaat#Mandaat",
