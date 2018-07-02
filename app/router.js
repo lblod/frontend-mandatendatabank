@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('persoon', function() {
     this.route('subject', { path: '/:persoon_id' }, function() {});
   });
+  this.route('contact');
 });
 
 export default Router;
