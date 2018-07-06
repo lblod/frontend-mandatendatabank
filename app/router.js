@@ -16,6 +16,10 @@ Router.map(function() {
     this.route('subject', { path: '/:persoon_id' }, function() {});
   });
   this.route('contact');
+
+  this.route('route-not-found', {
+    path: '/*wildcard'
+  });
 });
 
 export default Router;
