@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@lblod/ember-rdfa-helpers": "git+https://github.com/lblod/ember-rdfa-helpers.git#v0.1.0",
-    "@lblod/ember-vo-webuniversum": "^0.13.8",
+    "@lblod/ember-vo-webuniversum": "^0.14.0",
     "@lblod/ember-vo-webuniversum-data-table": "^0.2.7",
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.0.0",
