@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@lblod/ember-rdfa-helpers": "git+https://github.com/lblod/ember-rdfa-helpers.git#v0.1.0",
-    "@lblod/ember-vo-webuniversum": "^0.14.0",
+    "@lblod/ember-vo-webuniversum": "^0.15.0",
     "@lblod/ember-vo-webuniversum-data-table": "^0.2.7",
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.0.0",
@@ -62,7 +62,6 @@
     "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
-    "postscribe": "^2.0.8",
     "qunit-dom": "^0.6.2"
   },
   "engines": {
