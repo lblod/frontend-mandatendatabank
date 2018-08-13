@@ -34,19 +34,7 @@ export default Route.extend(DataTableRouteMixin, {
       },
       include: [
         'is-bestuurlijke-alias-van',
-        'is-bestuurlijke-alias-van.geslacht',
-        'is-bestuurlijke-alias-van.is-kandidaat-voor',
-        'bekleedt',
-        'bekleedt.bestuursfunctie',
-        'bekleedt.bevat-in',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van.classificatie',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid.classificatie',
-        'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid.werkingsgebied',
-        'heeft-lidmaatschap',
-        'heeft-lidmaatschap.binnen-fractie',
-        'beleidsdomein'
+        'bekleedt.bestuursfunctie'
       ].join(',')
     };
   }
