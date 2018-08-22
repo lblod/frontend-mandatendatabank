@@ -172,3 +172,31 @@ thead {
 .tab .tab__link.active {
   border-bottom: none;
 }
+
+// /* hr with labels
+//  ========================================================================== */
+
+.u-hr {
+  display: block;
+  position: relative;
+}
+
+.u-hr--label {
+  span {
+    position: absolute;
+    top: -1.3rem;
+    font-size: 1.6rem;
+    background-color: $white;
+    padding-right: 1rem;
+    font-weight: 500;
+    color: $gray;
+  }
+
+  &.u-hr--label--centered label {
+    left: calc(50% - 7.5rem);
+    display: block;
+    padding: 0 1rem;
+    width: 15rem;
+    text-align: center;
+  }
+}
