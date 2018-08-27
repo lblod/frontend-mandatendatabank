@@ -20,6 +20,11 @@ Router.map(function() {
   this.route('route-not-found', {
     path: '/*wildcard'
   });
+
+  this.route('legaal', function() {
+    this.route('disclaimer');
+    this.route('cookieverklaring');
+  });
 });
 
 export default Router;
