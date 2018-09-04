@@ -9,7 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('bestuursorgaan', function() {
     this.route('subject', { path: '/:bestuursorgaan_id' }, function() {
-      this.route('administratieve-gegevens');
+//      this.route('administratieve-gegevens');
     });
   });
   this.route('persoon', function() {
