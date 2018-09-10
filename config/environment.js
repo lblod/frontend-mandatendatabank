@@ -19,6 +19,12 @@ module.exports = function(environment) {
     moment: {
       allowEmpty: true
     },
+    browserUpdate: {
+      vs: {i:11,e:-3,f:-3,o:-3,s:-3,c:-3},
+      style:"top",
+      test: true,
+      l: 'nl'
+    },
     'vo-webuniversum': {
       version: '2.8.3',
       header: '//widgets.vlaanderen.be/widget/live/536f9f3a7a7d4842aecd269a28a636d1',
