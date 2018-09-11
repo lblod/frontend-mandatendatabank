@@ -2,8 +2,8 @@
      sort=sort page=page size=size class="mandataris-data-table" as |t|}}
   {{#t.content as |c|}}
     {{#c.header}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam' currentSorting=sort label='Locatie' class="u-hidden--mobile"}}
-      {{th-sortable field='bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label' currentSorting=sort label='Orgaan' class="u-visible--tablet-portrait-up" style="max-width: 5rem;"}}
+      <th class="u-hidden--mobile">Locatie</th>
+      <th class="u-visible--tablet-portrait-up" style="max-width: 5rem;">Orgaan</th>
       {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
@@ -15,12 +15,16 @@
     {{/c.header}}
     {{#c.body as |row|}}
       <td class="u-hidden--mobile">
-        {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}
+        {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
+          {{bestuursorgaan.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}<br>
+        {{/each}}
       </td>
       <td class="u-visible--tablet-portrait-up">
-        {{#link-to 'bestuursorgaan.subject.index' row.bekleedt.bevatIn.isTijdsspecialisatieVan.id}}
-          {{row.bekleedt.bevatIn.isTijdsspecialisatieVan.classificatie.label}}
-        {{/link-to}}
+        {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
+          {{#link-to 'bestuursorgaan.subject.index' bestuursorgaan.isTijdsspecialisatieVan.id}}
+            {{bestuursorgaan.isTijdsspecialisatieVan.classificatie.label}}
+          {{/link-to}}<br>
+        {{/each}}
       </td>
       <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}

@@ -1,6 +1,10 @@
 @import 'ember-vo-webuniversum-data-table';
 @import 'ember-power-select';
 
+.vo-header-widget {
+  min-height: 45px;
+}
+
 /* Active tab */
 .tab .tab__link.active {
   color: #333;
