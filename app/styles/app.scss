@@ -190,10 +190,10 @@ thead {
     position: absolute;
     top: -1.3rem;
     font-size: 1.6rem;
-    background-color: $white;
+    background-color: white;
     padding-right: 1rem;
     font-weight: 500;
-    color: $gray;
+    color: RGBA(102, 102, 102, 1.00);
   }
 
   &.u-hr--label--centered label {
@@ -203,4 +203,30 @@ thead {
     width: 15rem;
     text-align: center;
   }
+}
+
+
+// /* CSS for browser warning
+//  ========================================================================== */
+
+div.buorg {
+  border-color: #CBD2DA;
+  box-shadow: none;
+}
+
+a#buorgul,
+a#buorgig {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+a#buorgul {
+  background-color: #06c;
+  border: 1px solid #06c;
+}
+
+a#buorgig {
+  background-color: white;
+  color: RGBA(54, 54, 54, 1.00);
+  border: 1px solid #CBD2DA;
 }
