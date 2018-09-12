@@ -21,7 +21,7 @@ module.exports = function(environment) {
     },
     browserUpdate: {
       vs: {i:11,e:-3,f:-3,o:-3,s:-3,c:-3},
-      style:"top",
+      style:"corner",
       test: true,
       l: 'nl'
     },

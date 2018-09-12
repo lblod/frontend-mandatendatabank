@@ -212,13 +212,38 @@ thead {
 div.buorg {
   border-color: #CBD2DA;
   box-shadow: none;
-  position: relative;
+  top: 80px;
+  width: 500px;
+}
+
+div.buorg-pad {
+  padding: 2rem;
+}
+
+span.buorg-icon {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+span.buorg-mainmsg,
+span.buorg-moremsg {
+  font-family: "flanders-sans";
+}
+
+span.buorg-moremsg {
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+}
+
+span.buorg-buttons {
+  text-align: left;
 }
 
 a#buorgul,
 a#buorgig {
   border-radius: 0;
   box-shadow: none;
+  margin-left: 0;
 }
 
 a#buorgul {
