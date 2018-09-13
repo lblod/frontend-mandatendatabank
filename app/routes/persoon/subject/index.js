@@ -32,5 +32,21 @@ export default Route.extend(DataTableRouteMixin, {
         'beleidsdomein'
       ].join(',')
     };
+  },
+
+  // DataTableRouteMixin
+  model(params) {
+    const options = {
+      sort: params.sort,
+      page: {
+        number: params.page,
+        size: params.size
+      }
+    };
+    // TODO: sending an empty filter param to backend returns []
+    if (params.filter) { options['filter'] = params.filter; }
+    // const full_options = { ...options, ...this.mergeQueryOptions(params) };
+    Object.assign( options, this.mergeQueryOptions(params) );
+    return this.get('store').query(this.get('modelName'), options);
   }
 });

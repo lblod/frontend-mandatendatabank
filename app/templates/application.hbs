@@ -1,11 +1,11 @@
-{{head-layout}}
+{{#if isFastBoot}}Probably no head{{else}}{{head-layout}}{{/if}}
 {{title "Mandatendatabank Vlaanderen"}}
 <div class="container">
 	<div class="container-flex--contain">
 		<div class="container-flex--scroll">
-			{{wu-widget src=header class="vo-header-widget"}}
+      {{#if isFastBoot}}Header loading...{{else}}{{wu-widget src=header class="vo-header-widget"}}{{/if}}
 			{{outlet}}
-			{{wu-widget src=footer}}
+      {{#if isFastBoot}}Footer loading...{{else}}{{wu-widget src=footer}}{{/if}}
 		</div>
 	</div>
 </div>

@@ -19,6 +19,9 @@ module.exports = function(environment) {
     moment: {
       allowEmpty: true
     },
+    fastboot: {
+      hostWhitelist: [/^localhost:\d+$/, /^.*$/] // 'example.com', 'subdomain.example.com' // TODO: these regexpses with actual allowed domains, this is a major flaw.
+    },
     browserUpdate: {
       vs: {i:11,e:-3,f:-3,o:-3,s:-3,c:-3},
       style: 'corner',
