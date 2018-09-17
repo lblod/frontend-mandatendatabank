@@ -21,6 +21,9 @@
 .mandataris-data-table .data-table__actions--top {
   display: none;
 }
+.mandataris-data-table > .container-flex--scroll {
+  display: block;
+}
 
 table.data-table thead {
   color: #212121;
