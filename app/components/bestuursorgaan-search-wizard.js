@@ -11,13 +11,13 @@ export default Component.extend({
 
   actions: {
     listBestuurseenheden(gebied){
-      return this.get('onListBestuurseenheden')(gebied);
+      return this.onListBestuurseenheden(gebied);
     },
     listBestuursorganen(bestuurseenheidId){
-      return this.get('onListBestuursorganen')(bestuurseenheidId);
+      return this.onListBestuursorganen(bestuurseenheidId);
     },
     viewBestuursorgaan(bestuursorgaanId){
-      return this.get('onViewBestuursorgaan')(bestuursorgaanId);
+      return this.onViewBestuursorgaan(bestuursorgaanId);
     }
   }
 });

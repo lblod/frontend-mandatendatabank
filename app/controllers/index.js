@@ -9,7 +9,7 @@ export default Controller.extend({
   searchWerkingsgebied: task(function* (term) {
     yield timeout(250);
     let queryParams = {'filter[naam]': term};
-    return this.get('store').query('werkingsgebied', queryParams);
+    return this.store.query('werkingsgebied', queryParams);
   }),
 
   flushQueryParams(step){

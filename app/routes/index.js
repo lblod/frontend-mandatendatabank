@@ -12,20 +12,20 @@ export default Route.extend({
     let queryParams = {'include': 'classificatie',
                        'filter[werkingsgebied][id]': gebiedId,
                        'sort': 'naam'};
-    return this.get('store').query('bestuurseenheid', queryParams);
+    return this.store.query('bestuurseenheid', queryParams);
     },
 
   getBestuursorganen: function(bestuurseenheidId){
     let queryParams = {'include': 'classificatie',
                        'filter[bestuurseenheid][id]': bestuurseenheidId,
                        'sort': 'naam'};
-    return this.get('store').query('bestuursorgaan', queryParams);
+    return this.store.query('bestuursorgaan', queryParams);
   },
 
   model(params){
     let modelHash = {werkingsgebied: null, bestuurseenheden: null, bestuursorganen: null};
     if(params.werkingsgebiedId){
-      modelHash.werkingsgebied = this.get('store').findRecord('werkingsgebied', params.werkingsgebiedId);
+      modelHash.werkingsgebied = this.store.findRecord('werkingsgebied', params.werkingsgebiedId);
       modelHash.bestuurseenheden = this.getBestuurseenheden(params.werkingsgebiedId);
     }
     if(params.bestuurseenheidId){

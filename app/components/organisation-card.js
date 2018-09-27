@@ -6,7 +6,7 @@ export default Component.extend({
   isSelected: false,
   actions: {
     select(organisationId){
-      this.get("onSelect")(organisationId);
+      this.onSelect(organisationId);
     }
   }
 });

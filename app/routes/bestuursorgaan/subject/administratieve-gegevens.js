@@ -9,7 +9,7 @@ export default Route.extend({
     return this.getBestuurseenheid(eenheid.get('id'));
   },
   getBestuurseenheid(id) {
-    return this.get('store').findRecord(
+    return this.store.findRecord(
       'bestuurseenheid',
       id,
       {

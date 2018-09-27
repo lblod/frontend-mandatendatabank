@@ -7,12 +7,12 @@ export default Component.extend({
   store: service(),
   init() {
     this._super(...arguments);
-    this.get('store').query('export', {
+    this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/turtle' },
       page: { size: 1 }
     }).then((files) => this.set('ttlFile', files.get('firstObject')));
-    this.get('store').query('export', {
+    this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/csv' },
       page: { size: 1 }
