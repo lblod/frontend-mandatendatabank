@@ -18,6 +18,7 @@ export default Route.extend({
   getBestuursorganen: function(bestuurseenheidId){
     let queryParams = {'include': 'classificatie',
                        'filter[bestuurseenheid][id]': bestuurseenheidId,
+                       'filter[:has:heeft-tijdsspecialisaties]': true,
                        'sort': 'naam'};
     return this.store.query('bestuursorgaan', queryParams);
   },
