@@ -1,0 +1,17 @@
+<h1>- Mandatenlijst -</h1>
+
+{{#each model.heeftTijdsspecialisaties as |bestuursorgaan|}}
+
+  <div {{action "transitionToSubject" bestuursorgaan.id}}>
+    {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
+    -
+    {{#if bestuursorgaan.bindingEinde}}
+      {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
+    {{else}}
+      heden
+    {{/if}}
+  </div>
+
+{{/each}}
+
+{{yield}}
