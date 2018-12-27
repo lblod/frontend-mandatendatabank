@@ -1,17 +1,18 @@
-<h1>- Mandatenlijst -</h1>
+<div class="power-select">
+  {{#power-select
+     options=descSortedBestuursorganen
+     selected=selectedBestuursorgaan
+     onchange=(action "select")
+     as |bestuursorgaan|}}
 
-{{#each model.heeftTijdsspecialisaties as |bestuursorgaan|}}
-
-  <div {{action "transitionToSubject" bestuursorgaan.id}}>
-    {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
-    -
-    {{#if bestuursorgaan.bindingEinde}}
-      {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
-    {{else}}
-      heden
-    {{/if}}
-  </div>
-
-{{/each}}
+     {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
+     -
+     {{#if bestuursorgaan.bindingEinde}}
+       {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
+     {{else}}
+       heden
+     {{/if}}
+  {{/power-select}}
+</div>
 
 {{yield}}

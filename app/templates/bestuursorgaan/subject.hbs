@@ -22,32 +22,8 @@
             {{/if}}
           {{/ctx.prop}}
         </h1>
-        <ul class="inline-list inline-list--bordered">
-          {{#if model.bindingStart}}
-            <li>
-              {{#ctx.prop p="bindingStart"}}
-                {{moment-format model.bindingStart 'DD-MM-YYYY'}}
-              {{/ctx.prop}}
-              -
-              {{#if model.bindingEinde}}
-                {{#ctx.prop p="bindingEinde"}}
-                  {{moment-format model.bindingEinde 'DD-MM-YYYY'}}
-                {{/ctx.prop}}
-              {{else}}
-                heden
-              {{/if}}
-            </li>
-          {{/if}}
-          <!-- <li>
-               <label class="checkbox checkbox--block">
-               <input class="checkbox__toggle" type="checkbox" name="checkbox" value="0"/>
-               <span></span>
-               <span>Toon enkel actieve mandaten</span>
-               </label>
-               </li> -->
-        </ul>
         {{ctx.each-as-link p="bevat" class="u-hidden"}}
-        {{bestuursorgaan-in-tijd-select model=model.isTijdsspecialisatieVan}}
+        {{bestuursorgaan-in-tijd-select model=model.isTijdsspecialisatieVan lastMandaat=model}}
       {{/with-rdfa-resource}}
     </div>
   </div>
