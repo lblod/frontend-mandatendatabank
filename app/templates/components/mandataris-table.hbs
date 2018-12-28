@@ -21,7 +21,7 @@
       </td>
       <td class="u-visible--tablet-portrait-up">
         {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
-          {{#link-to 'bestuursorgaan.subject.index' bestuursorgaan.isTijdsspecialisatieVan.id}}
+          {{#link-to 'bestuursorgaan.subject.index' bestuursorgaan.id}}
             {{bestuursorgaan.isTijdsspecialisatieVan.classificatie.label}}
           {{/link-to}}<br>
         {{/each}}
