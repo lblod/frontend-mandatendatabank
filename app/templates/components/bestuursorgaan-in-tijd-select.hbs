@@ -1,12 +1,13 @@
-<div class="power-select">
+<div class="power-select ember-power-select-trigger--small">
   {{#power-select
      options=descSortedBestuursorganen
      selected=selectedBestuursorgaan
      onchange=(action "select")
      as |bestuursorgaan|}}
 
+     Bestuursperiode:
      {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
-     -
+     &mdash;
      {{#if bestuursorgaan.bindingEinde}}
        {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
      {{else}}

@@ -59,6 +59,15 @@ table.data-table thead {
   Style overwrite ember-power-select
  ========================================================================== */
 
+.ember-power-select-trigger--small .ember-power-select-trigger {
+	font-size: 1.6rem;
+	height: 3.5rem;
+	line-height: 2;
+	padding-left: 0.75rem;
+	padding-right: 10rem;
+	display: inline-block;
+}
+
 /* basic colors and sizing of dropdown */
 
 .ember-power-select-dropdown.ember-basic-dropdown-content--below,
