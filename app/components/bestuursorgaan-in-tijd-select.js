@@ -6,10 +6,18 @@ import { computed } from '@ember/object';
 export default Component.extend({
   router: service(),
   bestuursorganen: computed('bestuursorgaan', function() {
-    return this.get('bestuursorgaan').get('heeftTijdsspecialisaties');
+    if(this.get('bestuursorgaan')) {
+      return this.get('bestuursorgaan').get('heeftTijdsspecialisaties');
+    }
   }),
   bestuursorganenSortingDesc: Object.freeze(['bindingStart:desc']),
   descSortedBestuursorganen: sort('bestuursorganen', 'bestuursorganenSortingDesc'),
+
+  async didReceiveAttrs() {
+    this._super(...arguments);
+    const isTijdsspecialisatieVan = await this.selectedBestuursorgaan.isTijdsspecialisatieVan;
+    this.set('bestuursorgaan', isTijdsspecialisatieVan);
+  },
 
   actions: {
     select(selectedBestuursorgaan) {
