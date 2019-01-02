@@ -5,13 +5,8 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   router: service(),
-  bestuursorganen: computed('bestuursorgaan', function() {
-    if(this.get('bestuursorgaan')) {
-      return this.get('bestuursorgaan').get('heeftTijdsspecialisaties');
-    }
-  }),
   bestuursorganenSortingDesc: Object.freeze(['bindingStart:desc']),
-  descSortedBestuursorganen: sort('bestuursorganen', 'bestuursorganenSortingDesc'),
+  descSortedBestuursorganen: sort('bestuursorgaan.heeftTijdsspecialisaties', 'bestuursorganenSortingDesc'),
 
   async didReceiveAttrs() {
     this._super(...arguments);
