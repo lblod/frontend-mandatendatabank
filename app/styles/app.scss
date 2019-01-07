@@ -1,26 +1,24 @@
 @import 'ember-vo-webuniversum-data-table';
 @import 'ember-power-select';
 
+@import 'hr-label';
+
 .vo-header-widget {
   min-height: 45px;
-}
-
-/* Active tab */
-.tab .tab__link.active {
-  color: #333;
-  border-bottom: 3px solid #333;
-  background-color: transparent;
-}
+}  // remove when webuniversum is updated
 
 /* Preloader */
 .loader-wrapper {
   margin: 25px;
-}
+}  // remove when webuniversum is updated
 
-/* Data table */
+
+/* Data table */ // need to reformat
+
 .mandataris-data-table .data-table__actions--top {
   display: none;
 }
+
 .mandataris-data-table > .container-flex--scroll {
   display: block;
 }
@@ -29,9 +27,31 @@ table.data-table thead {
   color: #212121;
 }
 
-.data-table tbody tr[data-table-selectable], .scheduler-option__info table tbody tr[data-table-selectable], .scheduler-slot__text__info table tbody tr[data-table-selectable], .typography table tbody tr[data-table-selectable] {
+.data-table tbody tr[data-table-selectable],
+.scheduler-option__info table tbody tr[data-table-selectable],
+.scheduler-slot__text__info table tbody tr[data-table-selectable],
+.typography table tbody tr[data-table-selectable] {
     cursor: auto;
 }
+
+/* small hack for data tables in mandatendatabank */
+
+thead {
+  border-top: none;
+}
+
+/* Active tab */
+.tab .tab__link.active {
+  color: #333;
+  border-bottom: none;
+  background-color: transparent;
+}
+
+/* ==========================================================================
+  links in data-table
+ ========================================================================== */
+
+ // remove when webuniversum is updated
 
 .data-table tbody a {
   color: #3184d6;
@@ -44,20 +64,10 @@ table.data-table thead {
   text-decoration: none;
 }
 
-/* Temporary, will remove with new css file: */
-
-.container-flex--contain.tab__pane {
-  display: flex; }
-
-
-.container-flex--contain.tab__pane[data-show=false] {
-  display: none; }
-
-
 
 /* ==========================================================================
   Style overwrite ember-power-select
- ========================================================================== */
+ ========================================================================== */ // remove when webuniversum is updated
 
 .ember-power-select-trigger--small .ember-power-select-trigger {
 	font-size: 1.6rem;
@@ -68,7 +78,7 @@ table.data-table thead {
 	display: inline-block;
 }
 
-/* basic colors and sizing of dropdown */
+/* basic colors and sizing of dropdown */ // remove when webuniversum is updated
 
 .ember-power-select-dropdown.ember-basic-dropdown-content--below,
 .ember-power-select-dropdown.ember-basic-dropdown-content--above,
@@ -115,7 +125,7 @@ table.data-table thead {
 }
 
 /* Select options
- ========================================================================== */
+ ========================================================================== */ // remove when webuniversum is updated
 .ember-power-select-option.ember-power-select-option--loading-message,
 .ember-power-select-option.ember-power-select-option--no-matches-message,
 .ember-power-select-option.ember-power-select-option--search-message {
@@ -155,9 +165,8 @@ table.data-table thead {
   margin-left: 0;
 }
 
-
 /* Icon restyle for steps (need to reformat)
- ========================================================================== */
+ ========================================================================== */ // remove when webuniversum is updated
 
 .step .ember-power-select-status-icon {
   display: block;
@@ -179,47 +188,8 @@ table.data-table thead {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* small hack for data tables in mandatendatabank */
-
-thead {
-  border-top: none;
-}
-
-.tab .tab__link.active {
-  border-bottom: none;
-}
-
-// /* hr with labels
-//  ========================================================================== */
-
-.u-hr {
-  display: block;
-  position: relative;
-}
-
-.u-hr--label {
-  span {
-    position: absolute;
-    top: -1.3rem;
-    font-size: 1.6rem;
-    background-color: white;
-    padding-right: 1rem;
-    font-weight: 500;
-    color: RGBA(102, 102, 102, 1.00);
-  }
-
-  &.u-hr--label--centered label {
-    left: calc(50% - 7.5rem);
-    display: block;
-    padding: 0 1rem;
-    width: 15rem;
-    text-align: center;
-  }
-}
-
-
 // /* CSS for browser warning
-//  ========================================================================== */
+//  ========================================================================== */ // remove when webuniversum is updated
 
 div.buorg {
   border-color: #CBD2DA;
