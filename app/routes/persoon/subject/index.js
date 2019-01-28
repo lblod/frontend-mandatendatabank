@@ -18,7 +18,6 @@ export default Route.extend(DataTableRouteMixin, {
       },
       include: [
         'is-bestuurlijke-alias-van',
-        'is-bestuurlijke-alias-van.geslacht',
         'is-bestuurlijke-alias-van.is-kandidaat-voor',
         'bekleedt',
         'bekleedt.bestuursfunctie',

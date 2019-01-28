@@ -7,7 +7,6 @@
       {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
-      {{th-sortable field='isBestuurlijkeAliasVan.geslacht.label' currentSorting=sort label='Geslacht' class="u-visible--desktop-up"}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
       <th class="u-visible--tablet-landscape-up">Bevoegdheden</th>
       {{th-sortable field='start' currentSorting=sort label='Start' class="u-visible--tablet-portrait-up"}}
@@ -38,9 +37,6 @@
         {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
           {{row.isBestuurlijkeAliasVan.achternaam}}
         {{/link-to}}
-      </td>
-      <td class="u-visible--desktop-up">
-        {{row.isBestuurlijkeAliasVan.geslacht.label}}
       </td>
       <td>
         {{row.bekleedt.bestuursfunctie.label}}

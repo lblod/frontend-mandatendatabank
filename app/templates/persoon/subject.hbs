@@ -18,11 +18,6 @@
         </h1>
         <ul class="inline-list inline-list--bordered">
           {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.prop p="alternatieveNaam"}}</li>{{/if}}
-          {{#ctx.linked-resource p="geslacht" as |geslacht gctx|}}
-            <li>Geslacht:
-              {{gctx.prop p="label"}}
-            </li>
-          {{/ctx.linked-resource}}
         </ul>
       </div>
     </div>
