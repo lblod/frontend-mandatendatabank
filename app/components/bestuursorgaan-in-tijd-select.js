@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { sort } from '@ember/object/computed';
-import { computed } from '@ember/object';
 
 export default Component.extend({
   router: service(),
