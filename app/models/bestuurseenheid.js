@@ -6,10 +6,7 @@ export default Model.extend({
   naam: attr(),
   werkingsgebied: belongsTo('werkingsgebied', { inverse: 'bestuurseenheid' }),
   classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null }),
-  primaireSite: belongsTo('vestiging', { inverse: null }),
-  politiezone: belongsTo('organisatie', { inverse: null }),
   contactinfo: hasMany('contact-punt', { inverse: null }),
-  posities: hasMany('positie', { inverse: null }),
   bestuursorganen: hasMany('bestuursorgaan', { inverse: 'bestuurseenheid' }),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
