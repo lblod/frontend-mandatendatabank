@@ -13,7 +13,7 @@ export default Model.extend({
   uri: attr(),
   naam: attr(),
   niveau: attr(),
-  bestuurseenheid: hasMany('bestuurseenheid', { inverse: 'werkingsgebied' }),
+  bestuurseenheid: hasMany('bestuurseenheid', { inverse: null }),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     class: "prov:Location",

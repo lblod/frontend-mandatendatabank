@@ -10,7 +10,7 @@ export default Model.extend({
   geboorte: belongsTo('geboorte', { inverse: null }),
   identificator: belongsTo('identificator', { inverse: null }),
   geslacht: belongsTo('geslacht-code', { inverse: null }),
-  isAangesteldAls: hasMany('mandataris', { inverse: 'isBestuurlijkeAliasVan' }),
+  isAangesteldAls: hasMany('mandataris', { inverse: null }),
   isKandidaatVoor: hasMany('kandidatenlijst', { inverse: 'kandidaten'}),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects

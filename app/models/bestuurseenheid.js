@@ -4,7 +4,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   naam: attr(),
-  werkingsgebied: belongsTo('werkingsgebied', { inverse: 'bestuurseenheid' }),
+  werkingsgebied: belongsTo('werkingsgebied', { inverse: null }),
   classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null }),
   contactinfo: hasMany('contact-punt', { inverse: null }),
   bestuursorganen: hasMany('bestuursorgaan', { inverse: 'bestuurseenheid' }),
