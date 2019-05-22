@@ -10,7 +10,7 @@ export default Model.extend({
   bekleedt: belongsTo('mandaat', { inverse: null }),
   heeftLidmaatschap: belongsTo('lidmaatschap', { inverse: null }),
   isBestuurlijkeAliasVan: belongsTo('persoon', { inverse: null }),
-  rechtsgrondenAanstelling: hasMany('rechtsgrond-aanstelling', { inverse: 'bekrachtigtAanstellingenVan' }),
+  rechtsgrondenAanstelling: hasMany('rechtsgrond-aanstelling', { inverse: null }),
   rechtsgrondenBeeindiging: hasMany('rechtsgrond-beeindiging', { inverse: null }),
   tijdelijkeVervangingen: hasMany('mandataris', { inverse: null }),
   beleidsdomein: hasMany('beleidsdomein-code', { inverse: null }),
