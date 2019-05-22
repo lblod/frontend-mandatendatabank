@@ -7,7 +7,7 @@ export default Model.extend({
   werkingsgebied: belongsTo('werkingsgebied', { inverse: null }),
   classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null }),
   contactinfo: hasMany('contact-punt', { inverse: null }),
-  bestuursorganen: hasMany('bestuursorgaan', { inverse: 'bestuurseenheid' }),
+  bestuursorganen: hasMany('bestuursorgaan', { inverse: null }),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     naam: "http://www.w3.org/2004/02/skos/core#prefLabel",
