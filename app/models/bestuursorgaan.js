@@ -9,9 +9,9 @@ export default Model.extend({
   bindingEinde: attr('date'),
   bestuurseenheid: belongsTo('bestuurseenheid', { inverse: null }),
   classificatie: belongsTo('bestuursorgaan-classificatie-code', { inverse: null }),
-  isTijdsspecialisatieVan: belongsTo('bestuursorgaan', { inverse: 'heeftTijdsspecialisaties' }),
+  isTijdsspecialisatieVan: belongsTo('bestuursorgaan', { inverse: null }),
   wordtSamengesteldDoor: belongsTo('rechtstreekse-verkiezing', { inverse: null }),
-  heeftTijdsspecialisaties: hasMany('bestuursorgaan', { inverse: 'isTijdsspecialisatieVan' }),
+  heeftTijdsspecialisaties: hasMany('bestuursorgaan', { inverse: null }),
   bevat: hasMany('mandaat', { inverse: null }),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
