@@ -7,5 +7,5 @@ export default Model.extend({
   lijstnummer: attr(),
   lijsttype: belongsTo('lijsttype', { inverse: null }),
   rechtstreekseVerkiezing: belongsTo('rechtstreekse-verkiezing', { inverse: null }),
-  kandidaten: hasMany('persoon', { inverse: 'isKandidaatVoor' })
+  kandidaten: hasMany('persoon', { inverse: null })
 });
