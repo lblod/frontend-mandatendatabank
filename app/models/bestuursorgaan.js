@@ -10,7 +10,7 @@ export default Model.extend({
   bestuurseenheid: belongsTo('bestuurseenheid', { inverse: null }),
   classificatie: belongsTo('bestuursorgaan-classificatie-code', { inverse: null }),
   isTijdsspecialisatieVan: belongsTo('bestuursorgaan', { inverse: 'heeftTijdsspecialisaties' }),
-  wordtSamengesteldDoor: belongsTo('rechtstreekse-verkiezing', { inverse: 'steltSamen' }),
+  wordtSamengesteldDoor: belongsTo('rechtstreekse-verkiezing', { inverse: null }),
   heeftTijdsspecialisaties: hasMany('bestuursorgaan', { inverse: 'isTijdsspecialisatieVan' }),
   bevat: hasMany('mandaat', { inverse: null }),
 
