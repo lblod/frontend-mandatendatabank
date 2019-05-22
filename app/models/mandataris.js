@@ -11,7 +11,7 @@ export default Model.extend({
   heeftLidmaatschap: belongsTo('lidmaatschap', { inverse: null }),
   isBestuurlijkeAliasVan: belongsTo('persoon', { inverse: null }),
   rechtsgrondenAanstelling: hasMany('rechtsgrond-aanstelling', { inverse: 'bekrachtigtAanstellingenVan' }),
-  rechtsgrondenBeeindiging: hasMany('rechtsgrond-beeindiging', { inverse: 'bekrachtigtOntslagenVan' }),
+  rechtsgrondenBeeindiging: hasMany('rechtsgrond-beeindiging', { inverse: null }),
   tijdelijkeVervangingen: hasMany('mandataris', { inverse: null }),
   beleidsdomein: hasMany('beleidsdomein-code', { inverse: null }),
   status: hasMany('mandataris-status-code', { inverse: null }),
