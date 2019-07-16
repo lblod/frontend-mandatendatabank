@@ -1,5 +1,5 @@
-{{head-layout}}
+{{#unless isFastBoot}} {{head-layout}} {{/unless}}
 {{title "Mandatendatabank Vlaanderen"}}
-{{wu-widget src=header class="vo-header-widget"}}
+{{#unless isFastBoot}} {{wu-widget src=header class="vo-header-widget"}} {{/unless}}
 {{outlet}}
-{{wu-widget src=footer}}
+{{#unless isFastBoot}} {{wu-widget src=footer}} {{/unless}}

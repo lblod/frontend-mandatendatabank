@@ -7,16 +7,21 @@ export default Component.extend({
   store: service(),
   init() {
     this._super(...arguments);
-    this.store.query('export', {
-      sort: '-created',
-      filter: { format: 'text/turtle' },
-      page: { size: 1 }
-    }).then((files) => this.set('ttlFile', files.get('firstObject')));
-    this.store.query('export', {
-      sort: '-created',
-      filter: { format: 'text/csv' },
-      page: { size: 1 }
-    }).then((files) => this.set('csvFile', files.get('firstObject')));
+    this.fetchMetadata('text/turtle', 'ttlFile');
+    this.fetchMetadata('text/csv', 'csvFile');
+  },
+  async fetchMetadata(mimeType, field) {
+    try {
+      const ttlFiles = await this.store.query('export', {
+        sort: '-created',
+        filter: { format: mimeType },
+        page: { size: 1 }
+      });
+      this.set(field, ttlFiles.firstObject);
+    }
+    catch(e) {
+      // not handling it at the moment
+    }
   },
   ttlMetadata: computed('ttlFile', function() {
     return `Turtle - ${this.get('ttlFile.filesizeMb')}MB - ${this.get('ttlFile.createdFormatted')}`;
