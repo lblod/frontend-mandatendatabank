@@ -64,6 +64,7 @@ module.exports = function(environment) {
   if (process.env.DEPLOY_ENV === 'production') {
     ENV['vo-webuniversum']['header'] = '//widgets.vlaanderen.be/widget/live/08f44cf079f54a0ba954b91dbf3e69ab';
     ENV['vo-webuniversum']['footer'] = '//widgets.vlaanderen.be/widget/live/a7367e63e7b3444382ef264b25776f38';
+    ENV['fastboot']['hostWhitelist'] = 'mandaten.lokaalbestuur.vlaanderen.be';
   }
 
   return ENV;
