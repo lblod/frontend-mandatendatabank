@@ -4,11 +4,23 @@
         label="CSV: voor spreadsheet editors zoals Excel of Numbers."
         metadata=csvMetadata onClick=(action "download" csvFile)}}
   </div>
+{{else}}
+  <div class="col--4-12 col--12-12--s">
+    {{wu-document-miniature class="u-spacer--bottom" type="CSV"
+        label="CSV: voor spreadsheet editors zoals Excel of Numbers."
+        metadata="Niet beschikbaar"}}
+  </div>
 {{/if}}
 {{#if ttlFile}}
   <div class="col--4-12 col--12-12--s">
     {{wu-document-miniature class="u-spacer--bottom" type="Turtle"
         label="Turtle: gestructureerde data voor dataverwerking en analyse."
         metadata=ttlMetadata onClick=(action "download" ttlFile)}}
+  </div>
+{{else}}
+  <div class="col--4-12 col--12-12--s">
+    {{wu-document-miniature class="u-spacer--bottom" type="Turtle"
+        label="Turtle: gestructureerde data voor dataverwerking en analyse."
+        metadata="Niet beschikbaar"}}
   </div>
 {{/if}}
