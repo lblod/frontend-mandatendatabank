@@ -9,7 +9,7 @@ COPY . .
 RUN ember build -prod
 
 
-FROM cecemel/ember-fastboot-proxy-service:0.3.0
+FROM cecemel/ember-fastboot-proxy-service:0.6.0
 
 ENV ASSETS "^/(assets/|font/|files/|sitemap.xml)"
 
