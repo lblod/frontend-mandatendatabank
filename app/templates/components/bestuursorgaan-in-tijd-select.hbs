@@ -6,14 +6,22 @@
      onchange=(action "select")
      as |bestuursorgaan|}}
 
-     Bestuursperiode:
-     {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
-     &mdash;
-     {{#if bestuursorgaan.bindingEinde}}
-       {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
-     {{else}}
-       heden
-     {{/if}}
+    Bestuursperiode:
+    {{#if isFastboot}}
+      {{bestuursorgaan.bindingStart}}
+    {{else}}
+      {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
+    {{/if}}
+    &mdash;
+    {{#if bestuursorgaan.bindingEinde}}
+      {{#if isFastboot}}
+        {{bestuursorgaan.bindingEinde}}
+      {{else}}
+        {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
+      {{/if}}
+    {{else}}
+      heden
+    {{/if}}
   {{/power-select}}
 </div>
 

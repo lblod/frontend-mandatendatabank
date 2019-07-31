@@ -52,12 +52,24 @@
       </td>
       <td class="u-visible--tablet-portrait-up">
         {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.prop p="start"}}{{moment-format row.start 'DD/MM/YYYY'}}{{/ctx.prop}}
+          {{#ctx.prop p="start"}}
+            {{#if isFastBoot}}
+              {{row.start}}
+            {{else}}
+              {{moment-format row.start 'DD/MM/YYYY'}}
+            {{/if}}
+          {{/ctx.prop}}
         {{/with-rdfa-resource}}
       </td>
       <td class="u-visible--tablet-portrait-up">
         {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.prop p="einde"}}{{moment-format row.einde 'DD/MM/YYYY'}}{{/ctx.prop}}
+          {{#ctx.prop p="einde"}}
+            {{#if isFastBoot}}
+              {{row.einde}}
+            {{else}}
+              {{moment-format row.einde 'DD/MM/YYYY'}}
+            {{/if}}
+          {{/ctx.prop}}
         {{/with-rdfa-resource}}
       </td>
     {{/c.body}}
