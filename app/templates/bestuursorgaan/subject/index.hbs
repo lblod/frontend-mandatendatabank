@@ -13,52 +13,70 @@
     {{/c.header}}
     {{#c.body as |row|}}
       <td>
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="bekleedt" as |value mandaat|}}
-            {{#mandaat.linked-resource p="bestuursfunctie" as |value rol|}}
-              {{rol.prop resource=value p="label"}}
-            {{/mandaat.linked-resource}}
-          {{/ctx.linked-resource}}
-        {{/with-rdfa-resource}}
+        {{#with-rdfa-context model=row as |ctx|}}
+          {{#ctx.get prop="bekleedt" as |attrs value mandaat|}}
+            <div {{rdfa attrs}}>
+              {{#mandaat.get prop="bestuursfunctie" as |attrs value rol|}}
+                <div {{rdfa attrs}}>
+                  {{rol.get prop="label"}}
+                </div>
+              {{/mandaat.get}}
+            </div>
+          {{/ctx.get}}
+        {{/with-rdfa-context}}
       </td>
 
       <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}
       </td>
       <td>
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |value alias|}}
-            {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
-              {{alias.prop p="gebruikteVoornaam"}}
-            {{/link-to}}
-          {{/ctx.linked-resource}}
-        {{/with-rdfa-resource}}
+        {{#with-rdfa-context model=row as |ctx|}}
+          {{#ctx.get prop="isBestuurlijkeAliasVan" as |attrs value alias|}}
+            <div {{rdfa attrs}}>
+              {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
+                {{alias.get prop="gebruikteVoornaam"}}
+              {{/link-to}}
+            </div>
+          {{/ctx.get}}
+        {{/with-rdfa-context}}
       </td>
       <td>
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.linked-resource p="isBestuurlijkeAliasVan" as |value alias|}}
-            {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
-              {{alias.prop resource=value p="achternaam"}}
-            {{/link-to}}
-          {{/ctx.linked-resource}}
-        {{/with-rdfa-resource}}
+        {{#with-rdfa-context model=row as |ctx|}}
+          {{#ctx.get prop="isBestuurlijkeAliasVan" as |attrs value alias|}}
+            <div {{rdfa attrs}}>
+              {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
+                {{alias.get prop="achternaam"}}
+              {{/link-to}}
+            </div>
+          {{/ctx.get}}
+        {{/with-rdfa-context}}
       </td>
       <td class="u-visible--tablet-landscape-up">
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.each-resource p="beleidsdomein" as |value beleidsdomein|}}
-            {{beleidsdomein.prop p="label"}}<br>
-          {{/ctx.each-resource}}
-        {{/with-rdfa-resource}}
+        {{#with-rdfa-context model=row as |ctx|}}
+          {{#ctx.each prop="beleidsdomein" as |attrs value beleidsdomein|}}
+            <div {{rdfa attrs}}>
+              {{beleidsdomein.get prop="label"}}<br>
+            </div>
+          {{/ctx.each}}
+        {{/with-rdfa-context}}
       </td>
       <td class="u-visible--tablet-portrait-up">
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.prop p="start"}}{{moment-format row.start 'DD/MM/YYYY'}}{{/ctx.prop}}
-        {{/with-rdfa-resource}}
+        {{#with-rdfa-context model=row as |ctx|}}
+          {{#ctx.get prop="start" as |attrs value|}}
+            <div {{rdfa attrs}}>
+              {{moment-format row.start 'DD/MM/YYYY'}}
+            </div>
+          {{/ctx.get}}
+        {{/with-rdfa-context}}
       </td>
       <td class="u-visible--tablet-portrait-up">
-        {{#with-rdfa-resource resource=row as |ctx|}}
-          {{#ctx.prop p="einde"}}{{moment-format row.einde 'DD/MM/YYYY'}}{{/ctx.prop}}
-        {{/with-rdfa-resource}}
+        {{#with-rdfa-context model=row as |ctx|}}
+          {{#ctx.get prop="einde"}}
+            <div {{rdfa attrs}}>
+              {{moment-format row.einde 'DD/MM/YYYY'}}
+            </div>
+          {{/ctx.get}}
+        {{/with-rdfa-context}}
       </td>
     {{/c.body}}
   {{/t.content}}

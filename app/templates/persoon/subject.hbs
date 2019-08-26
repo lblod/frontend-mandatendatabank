@@ -1,5 +1,5 @@
 {{title "" model.gebruikteVoornaam "" " " "" model.achternaam "" prepend=true}}
-{{#with-rdfa-resource resource=model as |ctx|}}
+{{#with-rdfa-context model=model as |ctx|}}
   <div data-tabs-responsive-label="Navigatie">
     <div class="u-padding--rl--small u-background--gray-lighter">
       <div class="u-padding--top--tiny">
@@ -14,10 +14,10 @@
 
       <div class="u-padding--tb" id="main">
         <h1 class="h1 u-spacer--bottom--tiny">
-          Mandataris: {{ctx.prop p="gebruikteVoornaam"}} {{ctx.prop p="achternaam"}}
+          Mandataris: {{ctx.get prop="gebruikteVoornaam"}} {{ctx.get prop="achternaam"}}
         </h1>
         <ul class="inline-list inline-list--bordered">
-          {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.prop p="alternatieveNaam"}}</li>{{/if}}
+          {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.get prop="alternatieveNaam"}}</li>{{/if}}
         </ul>
       </div>
     </div>
@@ -26,4 +26,4 @@
       {{outlet}}
     </div>
   </div>
-{{/with-rdfa-resource}}
+{{/with-rdfa-context}}
