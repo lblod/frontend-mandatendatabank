@@ -3,7 +3,6 @@
   {{#t.content as |c|}}
     {{#c.header}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
-
       {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
@@ -71,7 +70,7 @@
       </td>
       <td class="u-visible--tablet-portrait-up">
         {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.get prop="einde"}}
+          {{#ctx.get prop="einde" as |attrs value|}}
             <div {{rdfa attrs}}>
               {{moment-format row.einde 'DD/MM/YYYY'}}
             </div>
