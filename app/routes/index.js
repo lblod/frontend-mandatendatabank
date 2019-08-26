@@ -26,7 +26,7 @@ export default Route.extend({
   model(params){
     let modelHash = {werkingsgebied: null, bestuurseenheden: null, bestuursorganen: null};
     if(params.werkingsgebiedId){
-      modelHash.werkingsgebied = this.store.findRecord('werkingsgebied', params.werkingsgebiedId);
+      modelHash.werkingsgebied = this.store.loadRecord('werkingsgebied', params.werkingsgebiedId);
       modelHash.bestuurseenheden = this.getBestuurseenheden(params.werkingsgebiedId);
     }
     if(params.bestuurseenheidId){
