@@ -1,0 +1,47 @@
+/* Component override for steps
+   remove when webuniversum is updated
+   ========================================================================== */
+
+ .step .ember-power-select-status-icon {
+  display: block;
+  border: none;
+  width: auto;
+  height: auto;
+}
+
+.step .ember-power-select-status-icon:after {
+  right: 1.5rem;
+  position: absolute;
+  top: 1.2rem;
+  content: "\E022";
+  color: #666;
+  font-family: vlaanderen_iconfont!important;
+  font-size: 2rem;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Fix contrast of disabled step
+.steps .step.step--disabled .step__icon {
+  background-color: $blue-gray-dark-contrast;
+}
+
+.step.step--no-box.step--disabled .step__header {
+  opacity: 1;
+}
+
+.step--disabled .step__title {
+  color: $blue-gray-dark-contrast;
+}
+
+// Balance line color with disabled steps background color
+.steps.steps--has-line .step::before,
+.steps.steps--timeline .step::before {
+  background-color: $blue-gray-light;
+}
+
+// Fix contrast of disabled timeline step
+.steps.steps--timeline .step.step--disabled .step__icon {
+  color: $white;
+}
