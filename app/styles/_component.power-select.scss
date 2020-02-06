@@ -43,8 +43,12 @@
   box-shadow: none;
 }
 
-.ember-power-select-trigger.ember-basic-dropdown-trigger.ember-view.ember-power-select-trigger--active:focus {
-  outline: none;
+.ember-power-select-trigger--active {
+  outline: 2px solid $orange;
+}
+
+.ember-basic-dropdown-trigger--below.ember-power-select-trigger--active {
+  outline: 0;
 }
 
 .ember-power-select-search-input {
