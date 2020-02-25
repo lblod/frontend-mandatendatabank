@@ -14,7 +14,7 @@ export default Model.extend({
   rechtsgrondenBeeindiging: hasMany('rechtsgrond-beeindiging', { inverse: null }),
   tijdelijkeVervangingen: hasMany('mandataris', { inverse: null }),
   beleidsdomein: hasMany('beleidsdomein-code', { inverse: null }),
-  status: hasMany('mandataris-status-code', { inverse: null }),
+  status: belongsTo('mandataris-status-code', { inverse: null }),
 
   rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     class: "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -24,6 +24,7 @@ export default Model.extend({
     bekleedt: "http://www.w3.org/ns/org#holds",
     isBestuurlijkeAliasVan: "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
     heeftLidmaatschap: "http://www.w3.org/ns/org#hasMembership",
-    beleidsdomein: "http://data.vlaanderen.be/ns/mandaat#beleidsdomein"
+    beleidsdomein: "http://data.vlaanderen.be/ns/mandaat#beleidsdomein",
+    status: "http://data.vlaanderen.be/ns/mandaat#status"
   }
 });
