@@ -8,7 +8,8 @@
       {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
       {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
       {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
-      <th class="u-visible--tablet-landscape-up">Bevoegdheden</th>
+      <th class="u-visible--desktop-up">Bevoegdheden</th>
+      {{th-sortable field='status' currentSorting=sort label='Status' class="u-visible--tablet-landscape-up"}}
       {{th-sortable field='start' currentSorting=sort label='Start' class="u-visible--tablet-portrait-up"}}
       {{th-sortable field='einde' currentSorting=sort label='Einde' class="u-visible--tablet-portrait-up"}}
     {{/c.header}}
@@ -41,10 +42,13 @@
       <td>
         {{row.bekleedt.bestuursfunctie.label}}
       </td>
-      <td class="u-visible--tablet-landscape-up">
+      <td class="u-visible--desktop-up">
         {{#each row.beleidsdomein as |beleidsdomein|}}
           {{beleidsdomein.label}}<br>
         {{/each}}
+      </td>
+      <td class="u-visible--tablet-landscape-up">
+        {{row.status.label}}
       </td>
       <td class="u-visible--tablet-portrait-up">{{moment-format row.start 'DD/MM/YYYY'}}</td>
       <td class="u-visible--tablet-portrait-up">{{moment-format row.einde 'DD/MM/YYYY'}}</td>
