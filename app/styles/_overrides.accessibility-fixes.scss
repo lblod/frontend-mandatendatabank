@@ -23,3 +23,10 @@
     outline-offset: -.2rem;
   }
 }
+
+// Fix contrast of faded text
+// ---
+.text-fade {
+  color: $gray-light-contrast;
+  font-weight: 300;
+}
