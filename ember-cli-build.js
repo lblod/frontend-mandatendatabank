@@ -6,9 +6,17 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     'ember-cli-babel': {
       includePolyfill: true
+    },
+    sassOptions: {
+      includePaths: [
+        'node_modules/@appuniversum/appuniversum',
+        'node_modules/@appuniversum/ember-appuniversum/app/styles',
+      ]
     }
     // Add options here
   });
+
+  app.import('node_modules/svgxuse/svgxuse.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
