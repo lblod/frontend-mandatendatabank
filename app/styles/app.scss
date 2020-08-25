@@ -47,6 +47,18 @@
 @import 'ember-vo-webuniversum-data-table';
 @import 'ember-vo-webuniversum';
 
+// DEPRECATED
+@import 'deprecated/_settings.colors';
+@import 'deprecated/_utility.hr-label';
+
+// PROJECT (DEPRECATED)
+@import 'project/_component.browser-warning';
+@import 'project/_component.data-table';
+@import 'project/_component.power-select';
+@import 'project/_component.steps';
+@import 'project/_overrides.accessibility-fixes';
+
+
 // COMPONENTS
 @import "ember-appuniversum/c-alert";
 @import "ember-appuniversum/c-badge";
