@@ -21,6 +21,8 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@appuniversum/appuniversum": "^0.0.13",
+    "@appuniversum/ember-appuniversum": "0.0.29",
     "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^0.7.0",
     "@lblod/ember-vo-webuniversum": "^0.22.7",
