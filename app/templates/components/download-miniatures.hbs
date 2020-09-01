@@ -1,14 +1,30 @@
-{{#if csvFile}}
-  <div class="col--4-12 col--12-12--s">
-    {{wu-document-miniature class="u-spacer--bottom" type="CSV"
-        label="CSV: voor spreadsheet editors zoals Excel of Numbers."
-        metadata=csvMetadata onClick=(action "download" csvFile)}}
-  </div>
-{{/if}}
-{{#if ttlFile}}
-  <div class="col--4-12 col--12-12--s">
-    {{wu-document-miniature class="u-spacer--bottom" type="Turtle"
-        label="Turtle: gestructureerde data voor dataverwerking en analyse."
-        metadata=ttlMetadata onClick=(action "download" ttlFile)}}
-  </div>
-{{/if}}
+<div class="au-o-grid au-u-margin-bottom">
+  {{#if csvFile}}
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @collapsableTitle="Download in CSV formaat"
+              @collapsableSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} type="CSV">Download in CSV formaat</AuButton>
+          <AuHelpText>{{csvMetadata}}</AuHelpText>
+        </AuContent>
+      </AuCard>
+    </div>
+  {{/if}}
+  {{#if ttlFile}}
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @collapsableTitle="Download in Turtle formaat"
+              @collapsableSubTitle="Gestructureerde data voor dataverwerking en analyse."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuButton onclick={{action "download" ttlFile}} metadata={{ttlMetadata}} type="Turtle">Download in Turtle formaat</AuButton>
+          <AuHelpText>{{ttlMetadata}}</AuHelpText>
+        </AuContent>
+      </AuCard>
+    </div>
+  {{/if}}
+</div>

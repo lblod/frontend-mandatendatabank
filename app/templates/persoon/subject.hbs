@@ -1,29 +1,27 @@
-{{title "" model.gebruikteVoornaam "" " " "" model.achternaam "" prepend=true}}
+{{page-title "" model.gebruikteVoornaam "" " " "" model.achternaam "" prepend=true}}
 {{#with-rdfa-context model=model as |ctx|}}
-  <div data-tabs-responsive-label="Navigatie">
-    <div class="u-padding--rl--small u-background--gray-lighter">
-      <div class="u-padding--top--tiny">
-        <div class="grid">
-          <div class="col--6-12">
-            {{#link-to 'index' class="link--icon"}}
-              <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar zoeken</small>
-            {{/link-to}}
-          </div>
-        </div>
-      </div>
+<div data-tabs-responsive-label="Navigatie">
+  <div class="au-o-region-small au-o-region--alt">
+    <div class="au-o-box">
+      <AuLink @linkRoute="index" class="au-u-margin-bottom">
+        <AuIcon @icon="nav-left" @alignment="left" />
+        Terug naar zoeken
+      </AuLink>
+      <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
+        Mandataris: {{ctx.get prop="gebruikteVoornaam"}} {{ctx.get prop="achternaam"}}
+      </AuHeading>
 
-      <div class="u-padding--tb" id="main">
-        <h1 class="h1 u-spacer--bottom--tiny">
-          Mandataris: {{ctx.get prop="gebruikteVoornaam"}} {{ctx.get prop="achternaam"}}
-        </h1>
-        <ul class="inline-list inline-list--bordered">
-          {{#if model.alternatieveNaam}}<li>Roepnaam: {{ctx.get prop="alternatieveNaam"}}</li>{{/if}}
-        </ul>
-      </div>
+      <ul class="au-c-list-horizontal au-u-margin-bottom-small">
+        {{#if model.alternatieveNaam}}
+          <li class="au-c-list-horizontal__item">Roepnaam: {{ctx.get prop="alternatieveNaam"}}</li>
+        {{/if}}
+      </ul>
     </div>
-
-    <div class="u-padding--rl--small u-spacer--tb">
+  </div>
+  <div class="au-o-body-container au-o-box">
+    <div class="au-u-margin-top">
       {{outlet}}
     </div>
   </div>
+</div>
 {{/with-rdfa-context}}

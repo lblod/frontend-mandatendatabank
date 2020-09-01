@@ -1,9 +1,10 @@
-<div class="mandaten-overview">
-  {{#wu-content-header title="Mandatendatabank"}}
-    <img sizes="100vw" src="/assets/images/banner-bruges.jpg" srcset="/assets/images/banner-bruges-320.jpg 320w, /assets/images/banner-bruges-1024.jpg 1024w, /assets/images/banner-bruges-1600.jpg 1600w" alt="" title="">
-  {{/wu-content-header}}
+<AuContentHeader @titlePartOne="Vlaanderen" @titlePartTwo="mandatendatabank" @pictureSize="large">
+  <img sizes="50vw" src="/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg" srcset="/assets/images/banner-bruges-320.jpg 320w, /assets/images/banner-bruges-1024.jpg 1024w, /assets/images/banner-bruges-1600.jpg 1600w" alt="Foto van een stad met een kanaal en huizen.">
+</AuContentHeader>
 
-  <div class="region">
+<div class="au-o-layout">
+  <div class="au-o-region-large">
+    <AuHeading @level="1" @skin="2" class="au-u-margin-bottom">Bekijk de mandaten in een bestuur</AuHeading>
     {{bestuursorgaan-search-wizard model=model
       searchTask=searchWerkingsgebied
       selectedBestuurseenheidId=bestuurseenheidId
@@ -12,25 +13,13 @@
       onListBestuursorganen=(action "listBestuursorganen")
       onViewBestuursorgaan=(action "viewBestuursorgaan")
     }}
+  </div>
 
-    <div class="layout layout--wide u-spacer--tb--large">
-      <div class="u-hr u-hr--label">
-        <span>of</span>
-      </div>
-    </div>
-    <div class="layout layout--wide">
-      <div class="grid u-spacer--tb--large">
-        <div class="col--8-12 col--12-12--s">
-          <h2 class="h3 u-spacer--tiny">Download mandatendatabank</h2>
-          <p>Overzicht van alle besturen in de huidige bestuursperiode.</p>
-        </div>
-        <div class="col--4-12 col--12-12--s u-align-right--medium-up">
-          <!-- bestuursperiode select here -->
-        </div>
-      </div>
-      {{download-miniatures}}
-      <p>Mail naar
-        <a href="mailto:LoketLokaalBestuur@vlaanderen.be">LoketLokaalBestuur@vlaanderen.be</a> voor meer informatie.</p>
-    </div>
+  <div class="au-o-region-large">
+    <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-tiny">Download mandatendatabank</AuHeading>
+    <p class="au-u-margin-bottom-large">Overzicht van alle besturen in de huidige bestuursperiode.</p>
+    {{download-miniatures}}
+    <p>Mail naar
+      <a class="au-c-link" href="mailto:LoketLokaalBestuur@vlaanderen.be">LoketLokaalBestuur@vlaanderen.be</a> voor meer informatie.</p>
   </div>
 </div>

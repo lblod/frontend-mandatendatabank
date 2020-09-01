@@ -1,17 +1,9 @@
-<header class="info-tile__header">
-  <div class="info-tile__header__icon badge badge--accent badge--l badge--icon">
-    <i class="badge__icon fa fa-list-ul" aria-hidden="true"></i>
+<div class="au-c-card au-o-box au-u-text-center">
+  <AuBadge @skin="brand" @icon="users" />
+  <div>
+    <AuHeading @level="2" @skin="4" class="au-u-margin-top-small au-u-margin-bottom-small">
+      {{name}}
+    </AuHeading>
+    <AuButton @width="block" @size="large" @icon="nav-right" @iconAlignment="left" {{action "select" organisationId}}>Kies {{classification}}</AuButton>
   </div>
-  <div class="info-tile__header__wrapper">
-    <h3 class="info-tile__header__title">{{name}}</h3>
-  </div>
-</header>
-<div class="info-tile__content">
-  <p>{{description}}</p>
 </div>
-<footer class="info-tile__footer">
-  <p>
-    <a class="button button--large button--block" {{action "select" organisationId}}>
-      <i class="vi vi-arrow"></i> Kies {{classification}}</a>
-  </p>
-</footer>

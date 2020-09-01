@@ -1,5 +1,32 @@
 {{head-layout}}
-{{title "Mandatendatabank Vlaanderen"}}
-{{wu-widget src=header class="vo-header-widget"}}
-{{outlet}}
-{{wu-widget src=footer}}
+{{page-title "Mandatendatabank Vlaanderen"}}
+
+<AuMainHeader @brandLink="https://mandaten.lokaalbestuur.vlaanderen.be/" @homeRoute="index" @appTitle="Mandatendatabank" @contactRoute="contact">
+</AuMainHeader>
+
+<div class="au-c-main-container" itemprop="mainContentOfPage" id="main">
+  <div class="au-c-main-container__content au-c-main-container__content--scroll">
+    <main id="content">
+      {{outlet}}
+    </main>
+    <AuMainFooter>
+      <AuHeading @level="3" @skin="4">
+        mandaten.lokaalbestuur.vlaanderen.be is een officiële website van de Vlaamse overheid
+      </AuHeading>
+      <AuContent @skin="small">
+        <p>Uitgegeven door <a class="au-c-link" href="https://www.vlaanderen.be/organisaties/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur">Agentschap Binnenlands Bestuur</a></p>
+        <ul class="au-c-list-horizontal">
+          <li class="au-c-list-horizontal__item">
+            <AuLink @linkRoute="legaal.disclaimer" @skin="secondary">Disclaimer</AuLink>
+          </li>
+          <li class="au-c-list-horizontal__item">
+            <AuLink @linkRoute="legaal.cookieverklaring" @skin="secondary">Cookieverklaring</AuLink>
+          </li>
+          <li class="au-c-list-horizontal__item">
+            <AuLink @linkRoute="legaal.toegankelijkheidsverklaring" @skin="secondary">Toegankelijkheid</AuLink>
+          </li>
+        </ul>
+      </AuContent>
+    </AuMainFooter>
+  </div>
+</div>

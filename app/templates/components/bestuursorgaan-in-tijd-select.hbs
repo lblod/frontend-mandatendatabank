@@ -1,20 +1,21 @@
-<div class="power-select ember-power-select-trigger--small">
-  {{#power-select
-     options=descSortedBestuursorganen
-     searchEnabled=false
-     selected=selectedBestuursorgaan
-     onchange=(action "select")
-     as |bestuursorgaan|}}
-
-     Bestuursperiode:
-     {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
-     &mdash;
-     {{#if bestuursorgaan.bindingEinde}}
-       {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
-     {{else}}
-       heden
-     {{/if}}
-  {{/power-select}}
-</div>
+<PowerSelect
+  @disabled={{disabled}}
+  @search={{perform searchTask}}
+  @selected={{selectedBestuursorgaan}}
+  @loadingMessage="Aan het laden..."
+  @searchMessage="Typ om te zoeken"
+  @noMatchesMessage="Geen resultaten"
+  @options={{descSortedBestuursorganen}}
+  @searchEnabled="false"
+  @onchange={{action "select"}} as |bestuursorgaan|>
+  Bestuursperiode:
+  {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
+  &mdash;
+  {{#if bestuursorgaan.bindingEinde}}
+    {{moment-format bestuursorgaan.bindingEinde 'DD-MM-YYYY'}}
+  {{else}}
+    heden
+  {{/if}}
+</PowerSelect>
 
 {{yield}}

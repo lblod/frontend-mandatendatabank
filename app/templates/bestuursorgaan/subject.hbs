@@ -1,37 +1,40 @@
-{{title "" model.isTijdsspecialisatieVan.naam "" prepend=true}}
+{{page-title "" model.isTijdsspecialisatieVan.naam "" prepend=true}}
 <div data-tabs-responsive-label="Navigatie">
-  <div class="u-padding--rl--small u-background--gray-lighter">
-    <div class="u-padding--top--tiny">
-      <div class="grid">
-        <div class="col--6-12">
-          {{#link-to 'index' class="link--icon"}}
-            <small>{{wu-icon "vi-arrow vi-u-180deg"}} Terug naar zoeken</small>
-          {{/link-to}}
-        </div>
-      </div>
-    </div>
-    <div class="u-padding--tb" id="main">
+  <div class="au-o-region-small au-o-region--alt">
+    <div class="au-o-box">
+      <AuLink @linkRoute="index" class="au-u-margin-bottom">
+        <AuIcon @icon="nav-left" @alignment="left" />
+        Terug naar zoeken
+      </AuLink>
       {{#with-rdfa-context model=model as |ctx|}}
-        <h1 class="h1 u-spacer--bottom--tiny">
-          Orgaan:
-          {{#ctx.get prop="naam" as |attrs value|}}
-            <span {{rdfa attrs}}>
-              {{#if naam}}
-                {{naam}}
-              {{else}}
-                {{model.isTijdsspecialisatieVan.naam}}
-              {{/if}}
-            </span>
-          {{/ctx.get}}
-        </h1>
-        <div class="u-hidden">
-          {{ctx.each prop="bevat"}}
+        <div class="au-o-grid">
+          <div class="au-o-grid__item au-u-1-1 au-u-1-2@small au-u-2-3@medium">
+            <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
+              Orgaan:
+              {{#ctx.get prop="naam" as |attrs value|}}
+                <span {{rdfa attrs}}>
+                  {{#if naam}}
+                    {{naam}}
+                  {{else}}
+                    {{model.isTijdsspecialisatieVan.naam}}
+                  {{/if}}
+                </span>
+              {{/ctx.get}}
+            </AuHeading>
+            <div class="au-u-hidden-visually">
+              {{ctx.each prop="bevat"}}
+            </div>
+          </div>
+          <div class="au-o-grid__item au-u-1-1 au-u-1-2@small au-u-1-3@medium">
+            {{bestuursorgaan-in-tijd-select selectedBestuursorgaan=model}}
+          </div>
         </div>
-        {{bestuursorgaan-in-tijd-select selectedBestuursorgaan=model}}
       {{/with-rdfa-context}}
     </div>
   </div>
-  <div class="tab__pane u-display--block u-padding--rl--small u-spacer--tb">
-    {{outlet}}
+  <div class="au-o-body-container au-o-box">
+    <div class="au-u-margin-top">
+      {{outlet}}
+    </div>
   </div>
 </div>

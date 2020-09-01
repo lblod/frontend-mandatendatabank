@@ -1,19 +1,18 @@
-{{#data-table content=content isLoading=isLoading noDataMessage="Geen mandatarissen gevonden"
-     sort=sort page=page size=size class="mandataris-data-table" as |t|}}
-  {{#t.content as |c|}}
-    {{#c.header}}
-      <th class="u-hidden--mobile">Locatie</th>
-      <th class="u-visible--tablet-portrait-up" style="max-width: 5rem;">Orgaan</th>
-      {{th-sortable field='heeftLidmaatschap.binnenFractie.naam' currentSorting=sort label='Fractie' class="u-hidden--mobile"}}
-      {{th-sortable field='isBestuurlijkeAliasVan.gebruikteVoornaam' currentSorting=sort label='Naam'}}
-      {{th-sortable field='isBestuurlijkeAliasVan.achternaam' currentSorting=sort label='Familienaam'}}
-      {{th-sortable field='bekleedt.bestuursfunctie.label' currentSorting=sort label='Mandaat'}}
+<AuDataTable @content={{content}} @fields="Mandaten" @noDataMessage="Geen mandaten gevonden" @sort={{sort}} @size={{size}} @page={{page}} @isLoading={{isLoading}} as |t|>
+  <t.content as |c|>
+    <c.header>
+      <th class="data-table__header-title u-hidden--mobile">Locatie</th>
+      <th class="data-table__header-title u-visible--tablet-portrait-up" style="max-width: 5rem;">Orgaan</th>
+      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{sort}} @label="Fractie" @class="u-hidden--mobile data-table__header-title" />
+      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{sort}} @label="Naam" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{sort}} @label="Familienaam" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{sort}} @label="Mandaat" @class="data-table__header-title" />
       <th class="u-visible--desktop-up">Bevoegdheden</th>
-      {{th-sortable field='status' currentSorting=sort label='Status' class="u-visible--tablet-landscape-up"}}
-      {{th-sortable field='start' currentSorting=sort label='Start' class="u-visible--tablet-portrait-up"}}
-      {{th-sortable field='einde' currentSorting=sort label='Einde' class="u-visible--tablet-portrait-up"}}
-    {{/c.header}}
-    {{#c.body as |row|}}
+      <AuDataTableThSortable @field="status" @currentSorting={{sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="start" @currentSorting={{sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="einde" @currentSorting={{sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
+    </c.header>
+    <c.body as |row|>
       <td class="u-hidden--mobile">
         {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
           {{bestuursorgaan.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}<br>
@@ -47,11 +46,11 @@
           {{beleidsdomein.label}}<br>
         {{/each}}
       </td>
-      <td class="u-visible--tablet-landscape-up">
+      <td class="au-u-visible-from@medium">
         {{row.status.label}}
       </td>
-      <td class="u-visible--tablet-portrait-up">{{moment-format row.start 'DD/MM/YYYY'}}</td>
-      <td class="u-visible--tablet-portrait-up">{{moment-format row.einde 'DD/MM/YYYY'}}</td>
-    {{/c.body}}
-  {{/t.content}}
-{{/data-table}}
+      <td class="au-u-visible-from@medium">{{moment-format row.start 'DD/MM/YYYY'}}</td>
+      <td class="au-u-visible-from@medium">{{moment-format row.einde 'DD/MM/YYYY'}}</td>
+    </c.body>
+  </t.content>
+</AuDataTable>
