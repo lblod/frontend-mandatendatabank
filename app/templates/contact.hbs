@@ -1,20 +1,26 @@
-{{wu-content-header tagline="Mandatendatabank"}}
-<div class="layout layout--wide">
-  <h1 class="h1">Contact</h1>
-  <form class="u-spacer--large js-formvalidation-bound">
-    <div class="form__row">
-      <label class="form__label form__label--large form__label--block" for="select">Waar gaat uw bericht over?</label>
-      {{wu-radio-button label="Een functionaliteit, bug of probleem" value="LoketLokaalBestuur@vlaanderen.be" onChange=(action (mut mailto)) isBlock=true}}
-      {{wu-radio-button label="Een inhoudelijke vraag over mandaten en mandatarissen" value="mandaten@vlaanderen.be" onChange=(action (mut mailto)) isBlock=true}}
-      <div class="form__error" aria-describedby="radio-buttons"></div>
-    </div>
+<AuContentHeader @titlePartOne="Vlaanderen" @titlePartTwo="mandatendatabank" @pictureSize="large">
+  <img sizes="50vw" src="/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg" srcset="/assets/images/banner-bruges-320.jpg 320w, /assets/images/banner-bruges-1024.jpg 1024w, /assets/images/banner-bruges-1600.jpg 1600w" alt="Foto van een stad met een kanaal en huizen.">
+</AuContentHeader>
 
-    {{#if mailto}}
-      <a href={{concat "mailto:" mailto}} class="button button--large">Bericht versturen</a>
-    {{else}}
-      {{wu-button label="Bericht versturen" onClick=null size="large" disabled=true}}
-    {{/if}}
-  </form>
+<div class="au-o-layout">
+  <div class="au-o-region-large">
+    <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
+     Contact
+    </AuHeading>
+    <form class="au-u-margin-bottom-large js-formvalidation-bound">
+      <div class="au-u-margin-bottom">
+        <AuLabel for="select">Waar gaat uw bericht over?</AuLabel>
+        {{wu-radio-button label="Een functionaliteit, bug of probleem" value="LoketLokaalBestuur@vlaanderen.be" onChange=(action (mut mailto)) isBlock=true}}
+        {{wu-radio-button label="Een inhoudelijke vraag over mandaten en mandatarissen" value="mandaten@vlaanderen.be" onChange=(action (mut mailto)) isBlock=true}}
+      </div>
+
+      {{#if mailto}}
+        <a href={{concat "mailto:" mailto}} class="au-c-button">Bericht versturen</a>
+      {{else}}
+        <AuButton @disabled="true">Bericht versturen</AuButton>
+      {{/if}}
+    </form>
+  </div>
 </div>
 
 {{outlet}}
