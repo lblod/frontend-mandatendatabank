@@ -4,7 +4,7 @@
     @badgeIcon="{{if werkingsgebied "check"}}"
     @badgeNumber="{{unless werkingsgebied "1"}}"
     @badgeSkin="{{if werkingsgebied "success" "action"}}"
-    @collapsableTitle="Stap 1: Zoek een gemeente, provincie of district.">
+    @cardTitle="Stap 1: Zoek een gemeente, provincie of district.">
 
     <div class="au-u-margin-left-large au-u-padding-left">
       <PowerSelect
@@ -27,13 +27,14 @@
     @badgeIcon="{{if bestuursorganen "check"}}"
     @badgeNumber="{{unless bestuursorganen "2"}}"
     @badgeSkin="{{if bestuursorganen "success" "action"}}"
-    @collapsableTitle="Stap 2: Kies een bestuurseenheid"
+    @cardTitle="Stap 2: Kies een bestuurseenheid"
+    @cardSubTitle="{{unless werkingsgebied "Kies eerst een gemeente, provincie of district."}}"
     class="focus-bestuursorganen">
     {{#if werkingsgebied}}
       {{#auto-focus '.focus-bestuursorganen' tagName="" }}
         <div class="au-o-grid au-o-grid--fixed">
           {{#each bestuurseenheden as |eenheid|}}
-            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large">
+            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large focus-bestuursorganen">
               {{organisation-card organisationId=eenheid.id isSelected=(eq selectedBestuurseenheidId eenheid.id)
                 classification=eenheid.classificatie.label description=eenheid.classificatie.scopeNote
                 name=(concat eenheid.classificatie.label " " eenheid.naam) onSelect=(action "listBestuursorganen")}}
@@ -41,8 +42,6 @@
           {{/each}}
         </div>
       {{/auto-focus}}
-    {{else}}
-      <p class="au-c-info-text">Kies eerst een gemeente, provincie of district.</p>
     {{/if}}
   </AuCard>
 
@@ -50,19 +49,20 @@
     @flex="true"
     @badgeNumber="3"
     @badgeSkin="action"
-    @collapsableTitle="Stap 3: Kies een bestuursorgaan">
+    @cardTitle="Stap 3: Kies een bestuursorgaan"
+    @cardSubTitle="{{unless bestuursorganen "Kies eerst een bestuurseenheid."}}">
     {{#if bestuursorganen}}
-      <div class="au-o-grid au-o-grid--fixed">
-        {{#each bestuursorganen as |orgaan|}}
-          <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-            {{organisation-card organisationId=orgaan.id isSelected=(eq selectedBestuursorgaanId orgaan.id)
-              classification=orgaan.classificatie.label description=orgaan.classificatie.scopeNote
-              name=orgaan.naam onSelect=(action "viewBestuursorgaan")}}
-          </div>
-        {{/each}}
-      </div>
-    {{else}}
-      <p class="au-c-info-text">Kies eerst een bestuurseenheid.</p>
+      {{#auto-focus '.focus-bestuurseenheid' tagName="" }}
+        <div class="au-o-grid au-o-grid--fixed">
+          {{#each bestuursorganen as |orgaan|}}
+            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium focus-bestuurseenheid">
+              {{organisation-card organisationId=orgaan.id isSelected=(eq selectedBestuursorgaanId orgaan.id)
+                classification=orgaan.classificatie.label description=orgaan.classificatie.scopeNote
+                name=orgaan.naam onSelect=(action "viewBestuursorgaan")}}
+            </div>
+          {{/each}}
+        </div>
+      {{/auto-focus}}
     {{/if}}
   </AuCard>
 </div>

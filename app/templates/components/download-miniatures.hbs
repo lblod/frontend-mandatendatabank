@@ -2,10 +2,11 @@
   {{#if csvFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
       <AuCard @flex="true"
-              @collapsableTitle="Download in CSV formaat"
-              @collapsableSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
+              @divided="true"
+              @cardTitle="Download in CSV formaat"
+              @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
               @badgeSkin="brand"
-              @badgeIcon="download">
+              @badgeNumber="2">
         <AuContent>
           <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} type="CSV">Download in CSV formaat</AuButton>
           <AuHelpText>{{csvMetadata}}</AuHelpText>
@@ -16,8 +17,9 @@
   {{#if ttlFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
       <AuCard @flex="true"
-              @collapsableTitle="Download in Turtle formaat"
-              @collapsableSubTitle="Gestructureerde data voor dataverwerking en analyse."
+              @divided="true"
+              @cardTitle="Download in Turtle formaat"
+              @cardSubTitle="Gestructureerde data voor dataverwerking en analyse."
               @badgeSkin="brand"
               @badgeIcon="download">
         <AuContent>
