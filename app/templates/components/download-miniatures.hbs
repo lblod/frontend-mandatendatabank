@@ -6,10 +6,23 @@
               @cardTitle="Download in CSV formaat"
               @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
               @badgeSkin="brand"
-              @badgeNumber="2">
+              @badgeIcon="download">
         <AuContent>
           <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} type="CSV">Download in CSV formaat</AuButton>
           <AuHelpText>{{csvMetadata}}</AuHelpText>
+        </AuContent>
+      </AuCard>
+    </div>
+  {{else}}
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @divided="true"
+              @cardTitle="Download in CSV formaat"
+              @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuHelpText>Momenteel niet beschikbaar</AuHelpText>
         </AuContent>
       </AuCard>
     </div>
@@ -25,6 +38,19 @@
         <AuContent>
           <AuButton onclick={{action "download" ttlFile}} metadata={{ttlMetadata}} type="Turtle">Download in Turtle formaat</AuButton>
           <AuHelpText>{{ttlMetadata}}</AuHelpText>
+        </AuContent>
+      </AuCard>
+    </div>
+  {{else}}
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @divided="true"
+              @cardTitle="Download in Turtle formaat"
+              @cardSubTitle="Gestructureerde data voor dataverwerking en analyse."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuHelpText>Momenteel niet beschikbaar</AuHelpText>
         </AuContent>
       </AuCard>
     </div>
