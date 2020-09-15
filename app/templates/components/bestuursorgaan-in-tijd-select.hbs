@@ -6,7 +6,7 @@
   @searchMessage="Typ om te zoeken"
   @noMatchesMessage="Geen resultaten"
   @options={{descSortedBestuursorganen}}
-  @searchEnabled="false"
+  @searchEnabled={{false}}
   @onchange={{action "select"}} as |bestuursorgaan|>
   Bestuursperiode:
   {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
