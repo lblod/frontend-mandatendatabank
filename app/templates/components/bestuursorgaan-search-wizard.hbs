@@ -1,36 +1,41 @@
 <div class="au-o-flow">
-  <AuCard
-    @flex="true"
-    @badgeIcon="{{if werkingsgebied "check"}}"
-    @badgeNumber="{{unless werkingsgebied "1"}}"
-    @badgeSkin="{{if werkingsgebied "success" "action"}}"
-    @cardTitle="Stap 1: Zoek een gemeente, provincie of district.">
-
-    <div class="au-u-margin-left-large au-u-padding-left">
-      <PowerSelect
-        @allowClear={{true}}
-        @disabled={{disabled}}
-        @search={{perform searchTask}}
-        @selected={{werkingsgebied}}
-        @loadingMessage="Aan het laden..."
-        @searchMessage="Typ om te zoeken"
-        @noMatchesMessage="Geen resultaten"
-        @onchange={{action "listBestuurseenheden"}} as |gebied|>
-        {{gebied.longName}}
-      </PowerSelect>
+  <AuCard @flex="true" as |c|>
+    <c.header @badgeSkin="{{if werkingsgebied "success" "action"}}" @badgeIcon="{{if werkingsgebied "check"}}" @badgeNumber="{{unless werkingsgebied "1"}}">
+      <AuHeading @level="2" @skin="4">
+        Stap 1: Zoek een gemeente, provincie of district.
+      </AuHeading>
+    </c.header>
+    <c.content>
+      <div style="position: relative; overflow: none;">
+        <PowerSelect
+          @allowClear={{true}}
+          @disabled={{disabled}}
+          @search={{perform searchTask}}
+          @selected={{werkingsgebied}}
+          @loadingMessage="Aan het laden..."
+          @searchMessage="Typ om te zoeken"
+          @noMatchesMessage="Geen resultaten"
+          @onchange={{action "listBestuurseenheden"}} as |gebied|>
+          {{gebied.longName}}
+        </PowerSelect>
+      </div>
       <AuHelpText>Oost-Vlaanderen, Berchem, Hasselt, ...</AuHelpText>
-    </div>
+    </c.content>
   </AuCard>
 
-  <AuCard
-    @flex="true"
-    @badgeIcon="{{if bestuursorganen "check"}}"
+  <AuCard @flex="true" as |c|>
+    <c.header @badgeIcon="{{if bestuursorganen "check"}}"
     @badgeNumber="{{unless bestuursorganen "2"}}"
-    @badgeSkin="{{if bestuursorganen "success" "action"}}"
-    @cardTitle="Stap 2: Kies een bestuurseenheid"
-    @cardSubTitle="{{unless werkingsgebied "Kies eerst een gemeente, provincie of district."}}"
-    class="focus-bestuursorganen">
+    @badgeSkin="{{if bestuursorganen "success" "action"}}">
+      <AuHeading @level="2" @skin="4">
+        Stap 2: Kies een bestuurseenheid
+      </AuHeading>
+      {{#unless werkingsgebied}}
+      <p>Kies eerst een gemeente, provincie of district.</p>
+      {{/unless}}
+    </c.header>
     {{#if werkingsgebied}}
+    <c.content>
       {{#auto-focus '.focus-bestuursorganen' tagName="" }}
         <div class="au-o-grid au-o-grid--fixed">
           {{#each bestuurseenheden as |eenheid|}}
@@ -42,16 +47,22 @@
           {{/each}}
         </div>
       {{/auto-focus}}
+    </c.content>
     {{/if}}
   </AuCard>
 
-  <AuCard
-    @flex="true"
-    @badgeNumber="3"
-    @badgeSkin="action"
-    @cardTitle="Stap 3: Kies een bestuursorgaan"
-    @cardSubTitle="{{unless bestuursorganen "Kies eerst een bestuurseenheid."}}">
+  <AuCard @flex="true" as |c|>
+    <c.header @badgeNumber="3"
+    @badgeSkin="action">
+      <AuHeading @level="2" @skin="4">
+        Stap 3: Kies een bestuursorgaan
+      </AuHeading>
+      {{#unless bestuursorganen}}
+      <p>Kies eerst een bestuurseenheid.</p>
+      {{/unless}}
+    </c.header>
     {{#if bestuursorganen}}
+    <c.content>
       {{#auto-focus '.focus-bestuurseenheid' tagName="" }}
         <div class="au-o-grid au-o-grid--fixed">
           {{#each bestuursorganen as |orgaan|}}
@@ -63,6 +74,7 @@
           {{/each}}
         </div>
       {{/auto-focus}}
+    </c.content>
     {{/if}}
   </AuCard>
 </div>

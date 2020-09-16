@@ -1,9 +1,13 @@
-<div class="au-c-card au-o-box au-u-text-center">
-  <AuBadge @skin="brand" @icon="users" />
-  <div>
-    <AuHeading @level="2" @skin="4" class="au-u-margin-top-small au-u-margin-bottom-small">
-      {{name}}
-    </AuHeading>
+<div class="au-c-card au-c-card--divided au-o-box au-u-text-center">
+  <div class="au-c-card__header">
+    <AuBadge @skin="brand" @icon="users" />
+    <div>
+      <AuHeading @level="2" @skin="4">
+        {{name}}
+      </AuHeading>
+    </div>
+  </div>
+  <div class="au-c-content au-c-card__content">
     <AuButton @width="block" @size="large" @icon="nav-right" @iconAlignment="left" {{action "select" organisationId}}>Kies {{classification}}</AuButton>
   </div>
 </div>

@@ -1,57 +1,61 @@
 <div class="au-o-grid au-u-margin-bottom">
   {{#if csvFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true"
-              @divided="true"
-              @cardTitle="Download in CSV formaat"
-              @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
-              @badgeSkin="brand"
-              @badgeIcon="download">
-        <AuContent>
+      <AuCard @flex="true" @divided="true" as |c|>
+        <c.header @badgeSkin="brand" @badgeIcon="download">
+          <AuHeading @level="2" @skin="4">
+            Download in CSV formaat
+          </AuHeading>
+          <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
+        </c.header>
+        <c.content>
           <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} type="CSV">Download in CSV formaat</AuButton>
           <AuHelpText>{{csvMetadata}}</AuHelpText>
-        </AuContent>
+        </c.content>
       </AuCard>
     </div>
   {{else}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true"
-              @divided="true"
-              @cardTitle="Download in CSV formaat"
-              @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
-              @badgeSkin="brand"
-              @badgeIcon="download">
-        <AuContent>
+      <AuCard @flex="true" @divided="true" as |c|>
+        <c.header @badgeSkin="brand" @badgeIcon="download">
+          <AuHeading @level="2" @skin="4">
+            Download in CSV formaat
+          </AuHeading>
+          <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
+        </c.header>
+        <c.content>
           <AuHelpText>Momenteel niet beschikbaar</AuHelpText>
-        </AuContent>
+        </c.content>
       </AuCard>
     </div>
   {{/if}}
   {{#if ttlFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true"
-              @divided="true"
-              @cardTitle="Download in Turtle formaat"
-              @cardSubTitle="Gestructureerde data voor dataverwerking en analyse."
-              @badgeSkin="brand"
-              @badgeIcon="download">
-        <AuContent>
+      <AuCard @flex="true" @divided="true" as |c|>
+        <c.header @badgeSkin="brand" @badgeIcon="download">
+          <AuHeading @level="2" @skin="4">
+            Download in Turtle formaat
+          </AuHeading>
+          <p>Gestructureerde data voor dataverwerking en analyse</p>
+        </c.header>
+        <c.content>
           <AuButton onclick={{action "download" ttlFile}} metadata={{ttlMetadata}} type="Turtle">Download in Turtle formaat</AuButton>
           <AuHelpText>{{ttlMetadata}}</AuHelpText>
-        </AuContent>
+        </c.content>
       </AuCard>
     </div>
   {{else}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true"
-              @divided="true"
-              @cardTitle="Download in Turtle formaat"
-              @cardSubTitle="Gestructureerde data voor dataverwerking en analyse."
-              @badgeSkin="brand"
-              @badgeIcon="download">
-        <AuContent>
+      <AuCard @flex="true" @divided="true" as |c|>
+        <c.header @badgeSkin="brand" @badgeIcon="download">
+          <AuHeading @level="2" @skin="4">
+            Download in Turtle formaat
+          </AuHeading>
+          <p>Gestructureerde data voor dataverwerking en analyse</p>
+        </c.header>
+        <c.content>
           <AuHelpText>Momenteel niet beschikbaar</AuHelpText>
-        </AuContent>
+        </c.content>
       </AuCard>
     </div>
   {{/if}}
