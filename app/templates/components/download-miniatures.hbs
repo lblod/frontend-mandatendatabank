@@ -9,7 +9,7 @@
           <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
         </c.header>
         <c.content>
-          <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} type="CSV">Download in CSV formaat</AuButton>
+          <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} >Download in CSV formaat</AuButton>
           <AuHelpText>{{csvMetadata}}</AuHelpText>
         </c.content>
       </AuCard>
@@ -39,7 +39,7 @@
           <p>Gestructureerde data voor dataverwerking en analyse</p>
         </c.header>
         <c.content>
-          <AuButton onclick={{action "download" ttlFile}} metadata={{ttlMetadata}} type="Turtle">Download in Turtle formaat</AuButton>
+          <AuButton onclick={{action "download" ttlFile}} metadata={{ttlMetadata}} >Download in Turtle formaat</AuButton>
           <AuHelpText>{{ttlMetadata}}</AuHelpText>
         </c.content>
       </AuCard>
