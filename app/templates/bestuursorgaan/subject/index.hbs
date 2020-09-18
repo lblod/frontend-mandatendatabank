@@ -31,9 +31,9 @@
         {{#with-rdfa-context model=row as |ctx|}}
           {{#ctx.get prop="isBestuurlijkeAliasVan" as |attrs value alias|}}
             <div {{rdfa attrs}}>
-              {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
-                {{alias.get prop="gebruikteVoornaam"}}
-              {{/link-to}}
+              <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
+                {{alias.get prop="gebruikteVoornaam"}} 
+              </LinkTo>
             </div>
           {{/ctx.get}}
         {{/with-rdfa-context}}
@@ -42,12 +42,12 @@
         {{#with-rdfa-context model=row as |ctx|}}
           {{#ctx.get prop="isBestuurlijkeAliasVan" as |attrs value alias|}}
             <div {{rdfa attrs}}>
-              {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
+              <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
                 {{alias.get prop="achternaam"}}
-              {{/link-to}}
+              </LinkTo>
             </div>
           {{/ctx.get}}
-        {{/with-rdfa-context}}
+        {{/with-rdfa-context}}  
       </td>
       <td class="u-visible--desktop-up">
         {{#with-rdfa-context model=row as |ctx|}}
