@@ -20,23 +20,23 @@
       </td>
       <td class="u-visible--tablet-portrait-up">
         {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
-          {{#link-to 'bestuursorgaan.subject.index' bestuursorgaan.id}}
+          <LinkTo @route='bestuursorgaan.subject.index' @model={{bestuursorgaan.id}} class="au-c-link">
             {{bestuursorgaan.isTijdsspecialisatieVan.classificatie.label}}
-          {{/link-to}}<br>
+          </LinkTo><br>
         {{/each}}
       </td>
       <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}
       </td>
       <td>
-        {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
+        <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
           {{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}
-        {{/link-to}}
+        </LinkTo>
       </td>
       <td>
-        {{#link-to 'persoon.subject.index' row.isBestuurlijkeAliasVan.id}}
+        <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
           {{row.isBestuurlijkeAliasVan.achternaam}}
-        {{/link-to}}
+        </LinkTo>
       </td>
       <td>
         {{row.bekleedt.bestuursfunctie.label}}
