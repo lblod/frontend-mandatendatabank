@@ -7,7 +7,9 @@
     </c.header>
     <c.content>
       <div style="position: relative; overflow: hidden;">
-        <PowerSelect aria-desc
+        <PowerSelect 
+          @ariaLabel="Zoekbalk"
+          @ariaDescribedBy="Vindt een gemeente, provincie of district in een lijst."
           @allowClear={{true}}
           @disabled={{disabled}}
           @search={{perform searchTask}}
