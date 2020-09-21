@@ -2,10 +2,11 @@
   @ariaLabel="Uitklapbaar keuzemenu"
   @ariaDescribedBy="Lijst met bestuursperioden"
   @selected={{selectedBestuursorgaan}}
+  @destination="ember-appuniversum-wormhole"
   @noMatchesMessage="Geen resultaten"
   @options={{descSortedBestuursorganen}}
   @searchEnabled={{false}}
-  @onchange={{action "select"}} as |bestuursorgaan|>
+  @onChange={{action "select"}} as |bestuursorgaan|>
   Bestuursperiode:
   {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
   &mdash;

@@ -11,13 +11,15 @@
           @ariaLabel="Zoekbalk"
           @ariaDescribedBy="Vindt een gemeente, provincie of district in een lijst."
           @allowClear={{true}}
+          @searchEnabled={{true}}
           @disabled={{disabled}}
+          @destination="ember-appuniversum-wormhole"
           @search={{perform searchTask}}
           @selected={{werkingsgebied}}
           @loadingMessage="Aan het laden..."
           @searchMessage="Typ om te zoeken"
           @noMatchesMessage="Geen resultaten"
-          @onchange={{action "listBestuurseenheden"}} as |gebied|>
+          @onChange={{action "listBestuurseenheden"}} as |gebied|>
           {{gebied.longName}}
         </PowerSelect>
       </div>
