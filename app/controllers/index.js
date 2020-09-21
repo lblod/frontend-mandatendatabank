@@ -25,7 +25,7 @@ export default Controller.extend({
       this.flushQueryParams(1);
       this.set('model.bestuursorganen', null);
       this.set('werkingsgebied', gebied);
-      this.set('werkingsgebiedId', gebied.get('id'));
+      this.set('werkingsgebiedId', gebied ? gebied.get('id') : null);
     },
     listBestuursorganen(bestuurseenheidId){
       this.flushQueryParams(2);
