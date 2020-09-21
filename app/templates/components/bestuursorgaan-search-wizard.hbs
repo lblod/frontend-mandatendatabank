@@ -1,7 +1,7 @@
 <div class="au-o-flow">
   <AuCard @flex="true" as |c|>
     <c.header @badgeSkin="{{if werkingsgebied "success" "action"}}" @badgeIcon="{{if werkingsgebied "check"}}" @badgeNumber="{{unless werkingsgebied "1"}}">
-      <AuHeading @level="2" @skin="4">
+      <AuHeading @level="2" @skin="4" id="describe-search">
         Stap 1: Zoek een gemeente, provincie of district.
       </AuHeading>
     </c.header>
@@ -9,7 +9,7 @@
       <div style="position: relative; overflow: hidden;">
         <PowerSelect 
           @ariaLabel="Zoekbalk"
-          @ariaDescribedBy="Vindt een gemeente, provincie of district in een lijst."
+          @ariaDescribedBy="describe-search"
           @allowClear={{true}}
           @searchEnabled={{true}}
           @disabled={{disabled}}
