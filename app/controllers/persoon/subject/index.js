@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  sort: 'bekleedt.bestuursfunctie.label',
-  page: 0,
-  size: 20
-});
+export default class PersoonSubjectIndexController extends Controller {
+  sort = 'bekleedt.bestuursfunctie.label';
+  page = 0;
+  size = 20;
+}
