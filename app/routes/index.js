@@ -1,37 +1,46 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
 
-export default Route.extend({
-  queryParams: {
+export default class IndexRoute extends Route {
+  queryParams = {
     werkingsgebiedId: { refreshModel: true },
     bestuurseenheidId: { refreshModel: true },
     bestuursorgaanId: {}
-  },
+  }
 
-  getBestuurseenheden: function(gebiedId){
-    let queryParams = {'include': 'classificatie',
-                       'filter[werkingsgebied][id]': gebiedId,
-                       'sort': 'naam'};
+  getBestuurseenheden(gebiedId) {
+    let queryParams = {
+      'include': 'classificatie',
+      'filter[werkingsgebied][id]': gebiedId,
+      'sort': 'naam'
+    };
+    
     return this.store.query('bestuurseenheid', queryParams);
-    },
+  }
 
-  getBestuursorganen: function(bestuurseenheidId){
-    let queryParams = {'include': 'classificatie',
-                       'filter[bestuurseenheid][id]': bestuurseenheidId,
-                       'filter[:has:heeft-tijdsspecialisaties]': true,
-                       'sort': 'naam'};
+  getBestuursorganen(bestuurseenheidId) {
+    let queryParams = {
+      'include': 'classificatie',
+      'filter[bestuurseenheid][id]': bestuurseenheidId,
+      'filter[:has:heeft-tijdsspecialisaties]': true,
+      'sort': 'naam'
+    };
+
     return this.store.query('bestuursorgaan', queryParams);
-  },
+  }
 
   model(params){
     let modelHash = {werkingsgebied: null, bestuurseenheden: null, bestuursorganen: null};
-    if(params.werkingsgebiedId){
+
+    if (params.werkingsgebiedId) {
       modelHash.werkingsgebied = this.store.findRecord('werkingsgebied', params.werkingsgebiedId);
       modelHash.bestuurseenheden = this.getBestuurseenheden(params.werkingsgebiedId);
     }
-    if(params.bestuurseenheidId){
+
+    if (params.bestuurseenheidId) {
       modelHash.bestuursorganen = this.getBestuursorganen(params.bestuurseenheidId);
     }
+
     return RSVP.hash(modelHash);
   }
-});
+}

@@ -1,10 +1,11 @@
 import Route from '@ember/routing/route';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
-export default Route.extend(DataTableRouteMixin, {
-  modelName: 'mandataris',
+export default class PersoonSubjectIndexRoute extends Route.extend(DataTableRouteMixin) {
+  modelName = 'mandataris';
   mergeQueryOptions(params) {
     const { persoon_id } = this.paramsFor('persoon.subject');
+    
     return {
       sort: params.sort,
       page: {
@@ -32,4 +33,4 @@ export default Route.extend(DataTableRouteMixin, {
       ].join(',')
     };
   }
-});
+}
