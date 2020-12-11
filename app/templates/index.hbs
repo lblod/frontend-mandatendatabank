@@ -5,20 +5,21 @@
 <div class="au-o-layout">
   <div class="au-o-region-large">
     <AuHeading @level="1" @skin="2" class="au-u-margin-bottom">Bekijk de mandaten in een bestuur</AuHeading>
-    {{bestuursorgaan-search-wizard model=model
-      searchTask=searchWerkingsgebied
-      selectedBestuurseenheidId=bestuurseenheidId
-      selectedBestuursorgaanId=bestuursorgaanId
-      onListBestuurseenheden=(action "listBestuurseenheden")
-      onListBestuursorganen=(action "listBestuursorganen")
-      onViewBestuursorgaan=(action "viewBestuursorgaan")
-    }}
+    <BestuursorgaanSearchWizard 
+      @model={{this.model}}
+      @searchTask={{this.searchWerkingsgebied}}
+      @selectedBestuurseenheidId={{this.bestuurseenheidId}}
+      @selectedBestuursorgaanId={{this.bestuursorgaanId}}
+      @onListBestuurseenheden={{this.listBestuurseenheden}}
+      @onListBestuursorganen={{this.listBestuursorganen}}
+      @onViewBestuursorgaan={{this.viewBestuursorgaan }}
+    />
   </div>
 
   <div class="au-o-region-large">
     <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-tiny">Download mandatendatabank</AuHeading>
     <p class="au-u-margin-bottom-large">Overzicht van alle besturen in de huidige bestuursperiode.</p>
-    {{download-miniatures}}
+    <DownloadMiniatures/>
     <p>Mail naar
       <a class="au-c-link" href="mailto:LoketLokaalBestuur@vlaanderen.be">LoketLokaalBestuur@vlaanderen.be</a> voor meer informatie.</p>
   </div>
