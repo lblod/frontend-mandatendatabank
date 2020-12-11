@@ -1,13 +1,13 @@
-<div class="au-c-card au-c-card--divided au-o-box au-u-text-center">
+<div class="au-c-card au-c-card--divided au-o-box au-u-text-center {{if @isSelected "selected-organisation-card"}}">
   <div class="au-c-card__header">
     <AuBadge @skin="brand" @icon="users" />
     <div>
       <AuHeading @level="2" @skin="4">
-        {{name}}
+        {{@name}}
       </AuHeading>
     </div>
   </div>
   <div class="au-c-content au-c-card__content">
-    <AuButton @width="block" @size="large" @icon="nav-right" @iconAlignment="left" {{action "select" organisationId}}>Kies {{classification}}</AuButton>
+    <AuButton @width="block" @size="large" @icon="nav-right" @iconAlignment="left" {{on 'click' (fn this.select @organisationId)}}>Kies {{@classification}}</AuButton>
   </div>
 </div>
