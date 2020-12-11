@@ -16,7 +16,6 @@ export default class DownloadMiniaturesComponent extends Component {
   }
 
   queryCsv(){
-    console.log("running")
     this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/turtle' },
