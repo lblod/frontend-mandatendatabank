@@ -10,12 +10,12 @@
     <form class="au-u-margin-bottom-large">
       <div class="au-u-margin-bottom">
         <AuLabel for="select">Waar gaat uw bericht over?</AuLabel>
-        {{wu-radio-button label="Een functionaliteit, bug of probleem" value="LoketLokaalBestuur@vlaanderen.be" onChange=(action (mut mailto)) isBlock=true}}
-        {{wu-radio-button label="Een inhoudelijke vraag over mandaten en mandatarissen" value="mandaten@vlaanderen.be" onChange=(action (mut mailto)) isBlock=true}}
+        <WuRadioButton @label="Een functionaliteit, bug of probleem" @value="LoketLokaalBestuur@vlaanderen.be" @onChange={{action (mut this.mailto)}} @isBlock={{true}}/>
+        <WuRadioButton @label="Een inhoudelijke vraag over mandaten en mandatarissen" @value="mandaten@vlaanderen.be" @onChange={{action (mut this.mailto)}} @isBlock={{true}}/>
       </div>
 
-      {{#if mailto}}
-        <a href={{concat "mailto:" mailto}} class="au-c-button">Bericht versturen</a>
+      {{#if this.mailto}}
+        <a href={{concat "mailto:" this.mailto}} class="au-c-button">Bericht versturen</a>
       {{else}}
         <AuButton @disabled="true">Bericht versturen</AuButton>
       {{/if}}
