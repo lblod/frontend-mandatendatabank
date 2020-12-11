@@ -1,23 +1,29 @@
 import Component from '@ember/component';
 import { alias, sort } from '@ember/object/computed';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  selectedBestuurseenheidId: null,
-  selectedBestuursorgaanId: null,
-  werkingsgebied: alias('model.werkingsgebied'),
-  bestuurseenheden: sort('model.bestuurseenheden', 'generalSort'),
-  bestuursorganen: sort('model.bestuursorganen', 'generalSort'),
-  generalSort: Object.freeze(['classificatie.label']),
+export default class BestuursorgaanSearchWizardComponent extends Component {
+  @tracked selectedBestuurseenheidId = null;
+  @tracked selectedBestuursorgaanId = null;
+  @alias('model.werkingsgebied') werkingsgebied;
+  @sort('model.bestuurseenheden', 'generalSort') bestuurseenheden; 
+  @sort('model.bestuursorganen', 'generalSort') bestuursorganen;
+  @tracked generalSort = Object.freeze(['classificatie.label']);
 
-  actions: {
-    listBestuurseenheden(gebied){
-      return this.onListBestuurseenheden(gebied);
-    },
-    listBestuursorganen(bestuurseenheidId){
-      return this.onListBestuursorganen(bestuurseenheidId);
-    },
-    viewBestuursorgaan(bestuursorgaanId){
-      return this.onViewBestuursorgaan(bestuursorgaanId);
-    }
+  @action
+  listBestuurseenheden(gebied){
+    return this.onListBestuurseenheden(gebied);
   }
-});
+    
+  @action
+  listBestuursorganen(bestuurseenheidId){
+    return this.onListBestuursorganen(bestuurseenheidId);
+  }
+
+  @action
+  viewBestuursorgaan(bestuursorgaanId){
+    return this.onViewBestuursorgaan(bestuursorgaanId);
+  }
+}
+

@@ -1,6 +1,6 @@
 <div class="au-o-flow">
   <AuCard @flex="true" as |c|>
-    <c.header @badgeSkin="{{if werkingsgebied "success" "action"}}" @badgeIcon="{{if werkingsgebied "check"}}" @badgeNumber="{{unless werkingsgebied "1"}}">
+    <c.header @badgeSkin={{if this.werkingsgebied "success" "action"}} @badgeIcon={{if this.werkingsgebied "check"}} @badgeNumber={{unless this.werkingsgebied "1"}}>
       <AuHeading @level="2" @skin="4" id="describe-search">
         Stap 1: Zoek een gemeente, provincie of district.
       </AuHeading>
@@ -12,14 +12,14 @@
           @ariaDescribedBy="describe-search"
           @allowClear={{true}}
           @searchEnabled={{true}}
-          @disabled={{disabled}}
+          @disabled={{this.disabled}}
           @destination="ember-appuniversum-wormhole"
-          @search={{perform searchTask}}
-          @selected={{werkingsgebied}}
+          @search={{perform @searchTask}}
+          @selected={{this.werkingsgebied}}
           @loadingMessage="Aan het laden..."
           @searchMessage="Typ om te zoeken"
           @noMatchesMessage="Geen resultaten"
-          @onChange={{action "listBestuurseenheden"}} as |gebied|>
+          @onChange={{this.listBestuurseenheden}} as |gebied|>
           {{gebied.longName}}
         </PowerSelect>
       </div>
@@ -28,25 +28,30 @@
   </AuCard>
 
   <AuCard @flex="true" as |c|>
-    <c.header @badgeIcon="{{if bestuursorganen "check"}}"
-    @badgeNumber="{{unless bestuursorganen "2"}}"
-    @badgeSkin="{{if bestuursorganen "success" "action"}}">
+    <c.header @badgeIcon={{if this.bestuursorganen "check"}}
+    @badgeNumber={{unless this.bestuursorganen "2"}}
+    @badgeSkin={{if this.bestuursorganen "success" "action"}}>
       <AuHeading @level="2" @skin="4">
         Stap 2: Kies een bestuurseenheid
       </AuHeading>
-      {{#unless werkingsgebied}}
+      {{#unless this.werkingsgebied}}
       <p>Kies eerst een gemeente, provincie of district.</p>
       {{/unless}}
     </c.header>
-    {{#if werkingsgebied}}
+    {{#if this.werkingsgebied}}
     <c.content>
 
         <div class="au-o-grid au-o-grid--fixed"  {{auto-focus '.au-c-button' }}>
-          {{#each bestuurseenheden as |eenheid|}}
+          {{#each this.bestuurseenheden as |eenheid|}}
             <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large focus-bestuursorganen">
-              {{organisation-card organisationId=eenheid.id isSelected=(eq selectedBestuurseenheidId eenheid.id)
-                classification=eenheid.classificatie.label description=eenheid.classificatie.scopeNote
-                name=(concat eenheid.classificatie.label " " eenheid.naam) onSelect=(action "listBestuursorganen")}}
+              <OrganisationCard
+                @organisationId={{eenheid.id }}
+                @isSelected={{eq this.selectedBestuurseenheidId eenheid.id}}
+                @classification={{eenheid.classificatie.label}} 
+                @description={{eenheid.classificatie.scopeNote}}
+                @name={{concat eenheid.classificatie.label " " eenheid.naam}}
+                @onSelect={{this.listBestuursorganen}}
+              />
             </div>
           {{/each}}
         </div>
@@ -60,19 +65,23 @@
       <AuHeading @level="2" @skin="4">
         Stap 3: Kies een bestuursorgaan
       </AuHeading>
-      {{#unless bestuursorganen}}
+      {{#unless this.bestuursorganen}}
       <p>Kies eerst een bestuurseenheid.</p>
       {{/unless}}
     </c.header>
-    {{#if bestuursorganen}}
+    {{#if this.bestuursorganen}}
     <c.content>
 
         <div class="au-o-grid au-o-grid--fixed" {{auto-focus '.au-c-button' }}>
-          {{#each bestuursorganen as |orgaan|}}
+          {{#each this.bestuursorganen as |orgaan|}}
             <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium focus-bestuurseenheid">
-              {{organisation-card organisationId=orgaan.id isSelected=(eq selectedBestuursorgaanId orgaan.id)
-                classification=orgaan.classificatie.label description=orgaan.classificatie.scopeNote
-                name=orgaan.naam onSelect=(action "viewBestuursorgaan")}}
+              <OrganisationCard 
+                @organisationId={{orgaan.id}} 
+                @isSelected={{eq this.selectedBestuursorgaanId orgaan.id}}
+                @classification={{orgaan.classificatie.label }}
+                @description={{orgaan.classificatie.scopeNote}}
+                @name={{orgaan.naam }}
+                @onSelect={{this.viewBestuursorgaan}}/>
             </div>
           {{/each}}
         </div>
