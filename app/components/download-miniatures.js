@@ -1,7 +1,13 @@
 import Component from '@glimmer/component';
 import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 export default class DownloadMiniaturesComponent extends Component {
+  @service store;
+  
+  @tracked ttlFile;
+  @tracked csvFile;
 
   constructor() {
     super(...arguments);
@@ -10,11 +16,14 @@ export default class DownloadMiniaturesComponent extends Component {
   }
 
   queryCsv(){
+    console.log("running")
     this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/turtle' },
       page: { size: 1 }
-    }).then((files) => this.set('ttlFile', files.get('firstObject')));
+    }).then((files) => 
+      this.ttlFile = files.get('firstObject')
+    )
   }
 
   queryTtl(){
@@ -22,7 +31,9 @@ export default class DownloadMiniaturesComponent extends Component {
       sort: '-created',
       filter: { format: 'text/csv' },
       page: { size: 1 }
-    }).then((files) => this.set('csvFile', files.get('firstObject')));
+    }).then((files) =>
+      this.csvFile = files.get('firstObject')
+    )
   }
 
   @computed('ttlFile.{filesizeMb,createdFormatted}', 'csvFile.{filesizeMb,createdFormatted}')
