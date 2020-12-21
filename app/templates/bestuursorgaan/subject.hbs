@@ -6,15 +6,15 @@
         <AuIcon @icon="nav-left" @alignment="left" />
         Terug naar zoeken
       </AuLink>
-      <WithRdfaContext @tagName="div" @model={{this.row}} as |ctx|>
+      <WithRdfaContext @tagName="div" @model={{model}} as |ctx|>
         <div class="au-o-grid">
           <div class="au-o-grid__item au-u-1-1 au-u-1-2@small au-u-2-3@medium">
             <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
               Orgaan:
-              <ctx.get @prop="naam" as |attrs naam|>
-                <span {{rdfa attrs}}>
-                  {{#if this.naam}}
-                    {{this.naam}}
+              <ctx.get @prop="naam" as |attributes value|>
+                <span {{rdfa attributes}}>
+                  {{#if naam}}
+                    {{naam}}
                   {{else}}
                     {{this.model.isTijdsspecialisatieVan.naam}}
                   {{/if}}
