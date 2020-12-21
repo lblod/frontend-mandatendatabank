@@ -1,4 +1,4 @@
-{{page-title "" model.isTijdsspecialisatieVan.naam "" prepend=true}}
+{{page-title "" this.model.isTijdsspecialisatieVan.naam "" prepend=true}}
 <div data-tabs-responsive-label="Navigatie">
   <div class="au-o-region-small au-o-region--alt">
     <div class="au-o-box">
@@ -6,30 +6,30 @@
         <AuIcon @icon="nav-left" @alignment="left" />
         Terug naar zoeken
       </AuLink>
-      {{#with-rdfa-context model=model as |ctx|}}
+      <WithRdfaContext @tagName="div" @model={{this.row}} as |ctx|>
         <div class="au-o-grid">
           <div class="au-o-grid__item au-u-1-1 au-u-1-2@small au-u-2-3@medium">
             <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
               Orgaan:
-              {{#ctx.get prop="naam" as |attrs value|}}
+              <ctx.get @prop="naam" as |attrs naam|>
                 <span {{rdfa attrs}}>
-                  {{#if naam}}
-                    {{naam}}
+                  {{#if this.naam}}
+                    {{this.naam}}
                   {{else}}
-                    {{model.isTijdsspecialisatieVan.naam}}
+                    {{this.model.isTijdsspecialisatieVan.naam}}
                   {{/if}}
                 </span>
-              {{/ctx.get}}
+              </ctx.get>
             </AuHeading>
             <div class="au-u-hidden-visually">
-              {{ctx.each prop="bevat"}}
+              <ctx.each @prop="bevat"/>
             </div>
           </div>
           <div class="au-o-grid__item au-u-1-1 au-u-1-2@small au-u-1-3@medium">
             <BestuursorgaanInTijdSelect @selectedBestuursorgaan={{this.model}} />
           </div>
         </div>
-      {{/with-rdfa-context}}
+      </WithRdfaContext>
     </div>
   </div>
   <div class="au-o-body-container au-o-box">
