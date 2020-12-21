@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
@@ -35,7 +35,6 @@ export default class DownloadMiniaturesComponent extends Component {
     )
   }
 
-  @computed('ttlFile.{filesizeMb,createdFormatted}', 'csvFile.{filesizeMb,createdFormatted}')
   get ttlMetadata(){
     return `Turtle - ${this.ttlFile.filesizeMb}MB - ${this.ttlFile.createdFormatted}`;
   }
