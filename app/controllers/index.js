@@ -15,30 +15,31 @@ export default class IndexController extends Controller {
   })) searchWerkingsgebied;
 
   flushQueryParams(step){
-    this.set('bestuursorgaanId', '');
+    this.bestuursorgaanId = '';
     if(step <= 1){
-      this.set('werkingsgebiedId', '');
-      this.set('bestuurseenheidId', '');
+      this.werkingsgebiedId = '';
+      this.bestuurseenheidId = '';
     }
   }
 
   @action
     listBestuurseenheden(gebied){
       this.flushQueryParams(1);
-      this.set('model.bestuursorganen', null);
-      this.set('werkingsgebied', gebied);
-      this.set('werkingsgebiedId', gebied ? gebied.get('id') : null);
+      console.dir(this)
+      this.model.bestuursorganen = null;
+      this.werkingsgebiedId = gebied;
+      this.werkingsgebiedId =  gebied ? gebied.get('id') : null;
     }
 
   @action
     listBestuursorganen(bestuurseenheidId){
       this.flushQueryParams(2);
-      this.set('bestuurseenheidId', bestuurseenheidId);
+      this.bestuurseenheidId = bestuurseenheidId;
     }
 
   @action
-    async viewBestuursorgaan(bestuursorgaanId){
-      await this.set('bestuursorgaanId', bestuursorgaanId);
+    viewBestuursorgaan(bestuursorgaanId){
+      this.bestuursorgaanId = bestuursorgaanId;
       this.transitionToRoute('bestuursorgaan.subject', bestuursorgaanId);
     } 
 }
