@@ -1,22 +1,22 @@
-import Component from '@ember/component';
-import { inject as service } from '@ember/service';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { sort } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 
-export default Component.extend({
-  router: service(),
-  bestuursorganenSortingDesc: Object.freeze(['bindingStart:desc']),
-  descSortedBestuursorganen: sort('bestuursorgaan.heeftTijdsspecialisaties', 'bestuursorganenSortingDesc'),
+export default class BestuursorgaanInTijdSelectComponent extends Component {
+  @service router;
 
-  async didReceiveAttrs() {
-    this._super(...arguments);
-    const isTijdsspecialisatieVan = await this.selectedBestuursorgaan.isTijdsspecialisatieVan;
-    this.set('bestuursorgaan', isTijdsspecialisatieVan);
-  },
+  @tracked bestuursorganenSortingDesc = Object.freeze(['bindingStart:desc']);
+  @sort('bestuursorgaan.heeftTijdsspecialisaties', 'bestuursorganenSortingDesc') descSortedBestuursorganen;
 
-  actions: {
+  get bestuursorgaan(){
+    return this.args.selectedBestuursorgaan.isTijdsspecialisatieVan
+  } 
+
+  @action
     select(selectedBestuursorgaan) {
-      this.set('selectedBestuursorgaan', selectedBestuursorgaan);
-      this.router.transitionTo('bestuursorgaan.subject.index', selectedBestuursorgaan.id);
+    this.router.transitionTo('bestuursorgaan.subject.index', selectedBestuursorgaan.id);
     }
   }
-});
+

@@ -1,11 +1,9 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  classNameBindings: ['isSelected:selected-organisation-card'],
-  isSelected: false,
-  actions: {
-    select(organisationId){
-      this.onSelect(organisationId);
-    }
+export default class OrganisationCardComponent extends Component {
+  @action
+  select(organisationId){
+    this.args.onSelect(organisationId);
   }
-});
+}

@@ -1,12 +1,12 @@
 <PowerSelect
   @ariaLabel="Uitklapbaar keuzemenu"
   @ariaDescribedBy="Lijst met bestuursperioden"
-  @selected={{selectedBestuursorgaan}}
+  @selected={{@selectedBestuursorgaan}}
   @destination="ember-appuniversum-wormhole"
   @noMatchesMessage="Geen resultaten"
-  @options={{descSortedBestuursorganen}}
+  @options={{this.descSortedBestuursorganen}}
   @searchEnabled={{false}}
-  @onChange={{action "select"}} as |bestuursorgaan|>
+  @onChange={{this.select}} as |bestuursorgaan|>
   Bestuursperiode:
   {{moment-format bestuursorgaan.bindingStart 'DD-MM-YYYY'}}
   &mdash;

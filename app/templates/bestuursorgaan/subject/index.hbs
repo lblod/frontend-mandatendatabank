@@ -1,83 +1,83 @@
-<AuDataTable @content={{model}} @fields="Mandatarissen" @noDataMessage="Geen mandatarissen gevonden" @sort={{sort}} @size={{size}} @page={{page}} @isLoading={{isLoading}} as |t|>
+<AuDataTable @content={{this.model}} @fields="Mandatarissen" @noDataMessage="Geen mandatarissen gevonden" @sort={{this.sort}} @size={{this.size}} @page={{this.page}} @isLoading={{this.isLoading}} as |t|>
   <t.content as |c|>
     <c.header>
-      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{sort}} @label="Mandaat" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{sort}} @label="Fractie" @class="data-table__header-title u-hidden--mobile" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{sort}} @label="Naam" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{sort}} @label="Familienaam" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{this.sort}} @label="Mandaat" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{this.sort}} @label="Fractie" @class="data-table__header-title u-hidden--mobile" />
+      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{this.sort}} @label="Naam" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{this.sort}} @label="Familienaam" @class="data-table__header-title" />
       <th class="u-visible--desktop-up">Bevoegdheden</th>
-      <AuDataTableThSortable @field="status" @currentSorting={{sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="start" @currentSorting={{sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="einde" @currentSorting={{sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="status" @currentSorting={{this.sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="start" @currentSorting={{this.sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="einde" @currentSorting={{this.sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
     </c.header>
     <c.body as |row|>
       <td>
-        {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.get prop="bekleedt" as |attrs value mandaat|}}
-            <div {{rdfa attrs}}>
-              {{#mandaat.get prop="bestuursfunctie" as |attrs value rol|}}
-                <div {{rdfa attrs}}>
-                  {{rol.get prop="label"}}
+        <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
+          <ctx.get @prop="bekleedt" as |attributes value mandaat|>
+            <div {{rdfa attributes}}>
+              <mandaat.get @prop="bestuursfunctie" as |attributes value rol|>
+                <div {{rdfa attributes}}>
+                  <rol.get @prop="label"/>
                 </div>
-              {{/mandaat.get}}
+              </mandaat.get>
             </div>
-          {{/ctx.get}}
-        {{/with-rdfa-context}}
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td class="u-hidden--mobile">
         {{row.heeftLidmaatschap.binnenFractie.naam}}
       </td>
       <td>
-        {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.get prop="isBestuurlijkeAliasVan" as |attrs value alias|}}
-            <div {{rdfa attrs}}>
+        <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
+          <ctx.get @prop="isBestuurlijkeAliasVan" as |attributes value alias|>
+            <div {{rdfa attributes}}>
               <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
-                {{alias.get prop="gebruikteVoornaam"}} 
+                <alias.get @prop="gebruikteVoornaam"/>
               </LinkTo>
             </div>
-          {{/ctx.get}}
-        {{/with-rdfa-context}}
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td>
-        {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.get prop="isBestuurlijkeAliasVan" as |attrs value alias|}}
-            <div {{rdfa attrs}}>
+        <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
+          <ctx.get @prop="isBestuurlijkeAliasVan" as |attributes value alias|>
+            <div {{rdfa attributes}}>
               <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
-                {{alias.get prop="achternaam"}}
+                <alias.get @prop="achternaam"/>
               </LinkTo>
             </div>
-          {{/ctx.get}}
-        {{/with-rdfa-context}}  
+          </ctx.get>
+        </WithRdfaContext> 
       </td>
       <td class="u-visible--desktop-up">
-        {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.each prop="beleidsdomein" as |attrs value beleidsdomein|}}
-            <div {{rdfa attrs}}>
-              {{beleidsdomein.get prop="label"}}<br>
+        <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
+          <ctx.each @prop="beleidsdomein" as |attributes value beleidsdomein|>
+            <div {{rdfa attributes}}>
+              <beleidsdomein.get @prop="label"/><br>
             </div>
-          {{/ctx.each}}
-        {{/with-rdfa-context}}
+          </ctx.each>
+        </WithRdfaContext>
       </td>
       <td class="au-u-visible-from@medium">
         {{row.status.label}}
       </td>
       <td class=" au-u-visible-from@medium">
-        {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.get prop="start" as |attrs value|}}
-            <div {{rdfa attrs}}>
+        <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
+          <ctx.get @prop="start" as |attributes|>
+            <div {{rdfa attributes}}>
               {{moment-format row.start 'DD/MM/YYYY'}}
             </div>
-          {{/ctx.get}}
-        {{/with-rdfa-context}}
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td class=" au-u-visible-from@medium">
-        {{#with-rdfa-context model=row as |ctx|}}
-          {{#ctx.get prop="einde" as |attrs value|}}
-            <div {{rdfa attrs}}>
+        <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
+          <ctx.get @prop="einde" as |attributes|>
+            <div {{rdfa attributes}}>
               {{moment-format row.einde 'DD/MM/YYYY'}}
             </div>
-          {{/ctx.get}}
-        {{/with-rdfa-context}}
+          </ctx.get>
+        </WithRdfaContext>
       </td>
     </c.body>
   </t.content>

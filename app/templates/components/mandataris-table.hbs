@@ -1,16 +1,16 @@
-<AuDataTable @content={{content}} @fields="Mandaten" @noDataMessage="Geen mandaten gevonden" @sort={{sort}} @size={{size}} @page={{page}} @isLoading={{isLoading}} as |t|>
+<AuDataTable @content={{@content}} @fields="Mandaten" @noDataMessage="Geen mandaten gevonden" @sort={{@sort}} @size={{@size}} @page={{@page}} @isLoading={{@isLoading}} as |t|>
   <t.content as |c|>
     <c.header>
       <th class="data-table__header-title u-hidden--mobile">Locatie</th>
       <th class="data-table__header-title u-visible--tablet-portrait-up" style="max-width: 5rem;">Orgaan</th>
-      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{sort}} @label="Fractie" @class="u-hidden--mobile data-table__header-title" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{sort}} @label="Naam" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{sort}} @label="Familienaam" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{sort}} @label="Mandaat" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{@sort}} @label="Fractie" @class="u-hidden--mobile data-table__header-title" />
+      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{@sort}} @label="Naam" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{@sort}} @label="Familienaam" @class="data-table__header-title" />
+      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{@sort}} @label="Mandaat" @class="data-table__header-title" />
       <th class="u-visible--desktop-up">Bevoegdheden</th>
-      <AuDataTableThSortable @field="status" @currentSorting={{sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="start" @currentSorting={{sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="einde" @currentSorting={{sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="status" @currentSorting={{@sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="start" @currentSorting={{@sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable @field="einde" @currentSorting={{@sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
     </c.header>
     <c.body as |row|>
       <td class="u-hidden--mobile">

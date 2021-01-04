@@ -1,13 +1,12 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import Model, { attr } from '@ember-data/model';
 
-export default Model.extend({
-  land: attr(),
-  gemeente: attr(),
-  adres: attr(),
-  postcode: attr(),
-  email: attr('email'),
-  telephone: attr('phone'),
-  fax: attr('phone'),
-  website: attr()
-});
+export default class ContactPunt extends Model {
+  @attr('string') land;
+  @attr('string') gemeente;
+  @attr('string') adres;
+  @attr('string') postcode;
+  @attr('email') email;
+  @attr('phone') telephone;
+  @attr('phone') fax;
+  @attr('string') website;
+}

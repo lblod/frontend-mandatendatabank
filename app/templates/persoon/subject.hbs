@@ -1,27 +1,27 @@
-{{page-title "" model.gebruikteVoornaam "" " " "" model.achternaam "" prepend=true}}
-{{#with-rdfa-context model=model as |ctx|}}
-<div data-tabs-responsive-label="Navigatie">
-  <div class="au-o-region-small au-o-region--alt">
-    <div class="au-o-box">
-      <AuLink @linkRoute="index" class="au-u-margin-bottom">
-        <AuIcon @icon="nav-left" @alignment="left" />
-        Terug naar zoeken
-      </AuLink>
-      <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
-        Mandataris: {{ctx.get prop="gebruikteVoornaam"}} {{ctx.get prop="achternaam"}}
-      </AuHeading>
+{{page-title "" this.model.gebruikteVoornaam "" " " "" this.model.achternaam "" prepend=true}}
+<WithRdfaContext @tagName="div" @model={{this.model}} as |ctx|>
+  <div data-tabs-responsive-label="Navigatie">
+    <div class="au-o-region-small au-o-region--alt">
+      <div class="au-o-box">
+        <AuLink @linkRoute="index" class="au-u-margin-bottom">
+          <AuIcon @icon="nav-left" @alignment="left" />
+          Terug naar zoeken
+        </AuLink>
+        <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
+          Mandataris: <ctx.get @prop="gebruikteVoornaam"/> <ctx.get @prop="achternaam"/>
+        </AuHeading>
 
-      <ul class="au-c-list-horizontal au-u-margin-bottom-small">
-        {{#if model.alternatieveNaam}}
-          <li class="au-c-list-horizontal__item">Roepnaam: {{ctx.get prop="alternatieveNaam"}}</li>
-        {{/if}}
-      </ul>
+        <ul class="au-c-list-horizontal au-u-margin-bottom-small">
+          {{#if this.model.alternatieveNaam}}
+            <li class="au-c-list-horizontal__item">Roepnaam: <ctx.get @prop="alternatieveNaam"/></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+    <div class="au-o-body-container au-o-box">
+      <div class="au-u-margin-top">
+        {{outlet}}
+      </div>
     </div>
   </div>
-  <div class="au-o-body-container au-o-box">
-    <div class="au-u-margin-top">
-      {{outlet}}
-    </div>
-  </div>
-</div>
-{{/with-rdfa-context}}
+</WithRdfaContext>

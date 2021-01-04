@@ -1,5 +1,5 @@
 <div class="au-o-grid au-u-margin-bottom">
-  {{#if csvFile}}
+  {{#if this.csvFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
       <AuCard @flex="true" @divided="true" as |c|>
         <c.header @badgeSkin="brand" @badgeIcon="download">
@@ -9,8 +9,8 @@
           <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
         </c.header>
         <c.content>
-          <AuButton onclick={{action "download" csvFile}} >Download in CSV formaat</AuButton>
-          <AuHelpText>{{csvMetadata}}</AuHelpText>
+          <AuButton {{on 'click' (fn this.download this.csvFile)}} >Download in CSV formaat</AuButton>
+          <AuHelpText>{{this.csvMetadata}}</AuHelpText>
         </c.content>
       </AuCard>
     </div>
@@ -29,7 +29,7 @@
       </AuCard>
     </div>
   {{/if}}
-  {{#if ttlFile}}
+  {{#if this.ttlFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
       <AuCard @flex="true" @divided="true" as |c|>
         <c.header @badgeSkin="brand" @badgeIcon="download">
@@ -39,8 +39,8 @@
           <p>Gestructureerde data voor dataverwerking en analyse</p>
         </c.header>
         <c.content>
-          <AuButton onclick={{action "download" ttlFile}} >Download in Turtle formaat</AuButton>
-          <AuHelpText>{{ttlMetadata}}</AuHelpText>
+          <AuButton {{on 'click' (fn this.download this.ttlFile)}} >Download in Turtle formaat</AuButton>
+          <AuHelpText>{{this.ttlMetadata}}</AuHelpText>
         </c.content>
       </AuCard>
     </div>

@@ -1,10 +1,12 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import Model, { attr } from '@ember-data/model';
 
-export default Model.extend({
-  uri: attr(),
-  label: attr(),
-  rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
-    label: "http://www.w3.org/2004/02/skos/core#prefLabel"
+export default class Rol extends Model {
+  @attr('string') uri;
+  @attr('string') label;
+  
+  get rdfaBindings() {
+    return { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
+      label: "http://www.w3.org/2004/02/skos/core#prefLabel"
+    }
   }
-});
+}

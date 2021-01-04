@@ -1,32 +1,51 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  store: service(),
-  init() {
-    this._super(...arguments);
+export default class DownloadMiniaturesComponent extends Component {
+  @service store;
+  
+  @tracked ttlFile;
+  @tracked csvFile;
+
+  constructor() {
+    super(...arguments);
+    this.queryCsv()
+    this.queryTtl()
+  }
+
+  queryCsv(){
     this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/turtle' },
       page: { size: 1 }
-    }).then((files) => this.set('ttlFile', files.get('firstObject')));
+    }).then((files) => 
+      this.ttlFile = files.get('firstObject')
+    )
+  }
+
+  queryTtl(){
     this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/csv' },
       page: { size: 1 }
-    }).then((files) => this.set('csvFile', files.get('firstObject')));
-  },
-  ttlMetadata: computed('ttlFile', function() {
-    return `Turtle - ${this.get('ttlFile.filesizeMb')}MB - ${this.get('ttlFile.createdFormatted')}`;
-  }),
-  csvMetadata: computed('csvFile', function() {
-    return `CSV - ${this.get('csvFile.filesizeMb')}MB - ${this.get('csvFile.createdFormatted')}`;
-  }),
-  actions: {
-    download(file) {
-      if (file)
-        window.location = `/files/${file.get('filename')}`;
+    }).then((files) =>
+      this.csvFile = files.get('firstObject')
+    )
+  }
+
+  get ttlMetadata(){
+    return `Turtle - ${this.ttlFile.filesizeMb}MB - ${this.ttlFile.createdFormatted}`;
+  }
+
+  get csvMetadata(){
+    return `CSV - ${this.csvFile.filesizeMb}MB - ${this.csvFile.createdFormatted}`;
+  }
+
+  @action
+  download(file) {
+    if (file)
+      window.location = `/files/${file.get('filename')}`;
     }
   }
-});

@@ -1,6 +1,5 @@
-import Model from 'ember-data/model';
-import { hasMany } from 'ember-data/relationships';
+import Model, { hasMany } from '@ember-data/model';
 
-export default Model.extend({
-  bekrachtigtOntslagenVan: hasMany('mandataris', { inverse: null })
-});
+export default class RechtsgrondBeeindiging extends Model {
+  @hasMany('mandataris', { inverse: null }) bekrachtigtOntslagenVan;
+}
