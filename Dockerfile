@@ -1,4 +1,4 @@
-FROM madnificent/ember:3.16.0 as builder
+FROM madnificent/ember:3.18.0 as builder
 
 LABEL maintainer="info@redpencil.io"
 
@@ -9,7 +9,7 @@ COPY . .
 RUN ember build -prod
 
 
-FROM semtech/ember-proxy-service:1.4.0
+FROM cecemel/ember-fastboot-proxy-service:0.6.0
 
 ENV STATIC_FOLDERS_REGEX "^/(assets|font|files|sitemap.xml|@appuniversum)/"
 
