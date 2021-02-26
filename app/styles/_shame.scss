@@ -7,8 +7,3 @@
 .au-o-region--alt {
   background: $au-gray-100;
 }
-
-// Temporary fix for ember-power-select offset searchbox issue (https://github.com/appuniversum/ember-appuniversum/issues/41)
-body {
-  overflow: hidden;
-}
