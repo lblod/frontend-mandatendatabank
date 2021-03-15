@@ -1,6 +1,6 @@
 import { task, timeout } from 'ember-concurrency';
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking'; 
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class IndexController extends Controller {
@@ -25,7 +25,6 @@ export default class IndexController extends Controller {
   @action
     listBestuurseenheden(gebied){
       this.flushQueryParams(1);
-      console.dir(this)
       this.model.bestuursorganen = null;
       this.werkingsgebiedId = gebied;
       this.werkingsgebiedId =  gebied ? gebied.get('id') : null;
@@ -41,5 +40,5 @@ export default class IndexController extends Controller {
     viewBestuursorgaan(bestuursorgaanId){
       this.bestuursorgaanId = bestuursorgaanId;
       this.transitionToRoute('bestuursorgaan.subject', bestuursorgaanId);
-    } 
+    }
 }
