@@ -30,7 +30,6 @@
     "@glimmer/tracking": "^1.0.3",
     "@lblod/ember-vo-webuniversum": "^0.22.7",
     "@lblod/ember-vo-webuniversum-data-table": "^0.2.12",
-    "@lblod/ember-vo-webuniversum-widget": "^0.1.5",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-focus": "^2.0.4",
