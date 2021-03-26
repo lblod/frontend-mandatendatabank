@@ -12,45 +12,193 @@
       <AuDataTableThSortable @field="start" @currentSorting={{@sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
       <AuDataTableThSortable @field="einde" @currentSorting={{@sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
     </c.header>
-    <c.body as |row|>
+    <c.body as |mandataris|>
       <td class="u-hidden--mobile">
-        {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
-          {{bestuursorgaan.isTijdsspecialisatieVan.bestuurseenheid.werkingsgebied.naam}}<br>
-        {{/each}}
+        <WithRdfaContext @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="bekleedt" as |attributes value mandaat|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <mandaat.each @prop="bevatIn" as |attributes value bestuursorgaan|>
+                <div
+                  typeof={{attributes.typeof}}
+                  property={{attributes.property}}
+                  resource={{attributes.resource}}
+                >
+                  <bestuursorgaan.get @prop="isTijdsspecialisatieVan" as |attributes value isTijdsspecialisatieVan|>
+                    <div
+                      typeof={{attributes.typeof}}
+                      property={{attributes.property}}
+                      resource={{attributes.resource}}
+                    >
+                      <isTijdsspecialisatieVan.get @prop="bestuurseenheid" as |attributes value bestuurseenheid|>
+                        <div
+                          typeof={{attributes.typeof}}
+                          property={{attributes.property}}
+                          resource={{attributes.resource}}
+                        >
+                          <bestuurseenheid.get @prop="werkingsgebied" as |attributes value werkingsgebied|>
+                            <werkingsgebied.get @prop="naam" />
+                          </bestuurseenheid.get>
+                        </div>
+                      </isTijdsspecialisatieVan.get>
+                    </div>
+                  </bestuursorgaan.get>
+                </div>
+              </mandaat.each>
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td class="u-visible--tablet-portrait-up">
-        {{#each row.bekleedt.bevatIn as |bestuursorgaan|}}
-          <LinkTo @route='bestuursorgaan.subject.index' @model={{bestuursorgaan.id}} class="au-c-link">
-            {{bestuursorgaan.isTijdsspecialisatieVan.classificatie.label}}
-          </LinkTo><br>
-        {{/each}}
+        <WithRdfaContext @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="bekleedt" as |attributes value mandaat|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <mandaat.each @prop="bevatIn" as |attributes value bestuursorgaan|>
+                {{#let value.id as |bestuursorgaanId|}}
+                  <div
+                    typeof={{attributes.typeof}}
+                    property={{attributes.property}}
+                    resource={{attributes.resource}}
+                  >
+                    <bestuursorgaan.get @prop="isTijdsspecialisatieVan" as |attributes value isTijdsspecialisatieVan|>
+                      <div
+                        typeof={{attributes.typeof}}
+                        property={{attributes.property}}
+                        resource={{attributes.resource}}
+                      >
+                        <isTijdsspecialisatieVan.get @prop="classificatie" as |attributes value classificatie|>
+                          <div
+                            typeof={{attributes.typeof}}
+                            property={{attributes.property}}
+                            resource={{attributes.resource}}
+                          >
+                            <LinkTo @route='bestuursorgaan.subject.index' @model={{bestuursorgaanId}} class="au-c-link">
+                              <classificatie.get @prop="label" />
+                            </LinkTo>
+                          </div>
+                        </isTijdsspecialisatieVan.get>
+                      </div>
+                    </bestuursorgaan.get>
+                  </div>
+                {{/let}}
+              </mandaat.each>
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td class="u-hidden--mobile">
-        {{row.heeftLidmaatschap.binnenFractie.naam}}
+        <WithRdfaContext @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="heeftLidmaatschap" as |attributes value lidmaatschap|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <lidmaatschap.get @prop="binnenFractie" as |attributes value fractie|>
+                <div
+                  typeof={{attributes.typeof}}
+                  property={{attributes.property}}
+                  resource={{attributes.resource}}
+                >
+                  <fractie.get @prop="naam" />
+                </div>
+              </lidmaatschap.get>
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td>
-        <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
-          {{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}
-        </LinkTo>
+        <WithRdfaContext @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="isBestuurlijkeAliasVan" as |attributes value persoon|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <LinkTo @route='persoon.subject.index' @model={{value.id}} class="au-c-link">
+                <persoon.get @prop="gebruikteVoornaam" />
+              </LinkTo>
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td>
-        <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
-          {{row.isBestuurlijkeAliasVan.achternaam}}
-        </LinkTo>
+        <WithRdfaContext @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="isBestuurlijkeAliasVan" as |attributes value persoon|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <LinkTo @route='persoon.subject.index' @model={{value.id}} class="au-c-link">
+                <persoon.get @prop="achternaam" />
+              </LinkTo>
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td>
-        {{row.bekleedt.bestuursfunctie.label}}
+        <WithRdfaContext @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="bekleedt" as |attributes value mandaat|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <mandaat.get @prop="bestuursfunctie" as |attributes value bestuursfunctie|>
+                <div
+                  typeof={{attributes.typeof}}
+                  property={{attributes.property}}
+                  resource={{attributes.resource}}
+                >
+                  <bestuursfunctie.get @prop="label" />
+                </div>
+              </mandaat.get>
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
       </td>
       <td class="u-visible--desktop-up">
-        {{#each row.beleidsdomein as |beleidsdomein|}}
-          {{beleidsdomein.label}}<br>
-        {{/each}}
+        <WithRdfaContext @tagName="div" @model={{mandataris}} as |ctx|>
+          <ctx.each @prop="beleidsdomein" as |attributes value beleidsdomein|>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
+              <beleidsdomein.get @prop="label" />
+            </div>
+          </ctx.each>
+        </WithRdfaContext>
       </td>
       <td class="au-u-visible-from@medium">
-        {{row.status.label}}
+        {{mandataris.status.label}}
       </td>
-      <td class="au-u-visible-from@medium">{{moment-format row.start 'DD/MM/YYYY'}}</td>
-      <td class="au-u-visible-from@medium">{{moment-format row.einde 'DD/MM/YYYY'}}</td>
+      <td class="au-u-visible-from@medium">
+        <WithRdfaContext @tagName="div" @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="start" as |attributes start|>
+            <div property={{attributes.property}}>
+              {{moment-format start 'DD/MM/YYYY'}}
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
+      </td>
+      <td class="au-u-visible-from@medium">
+        <WithRdfaContext @tagName="div" @model={{mandataris}} as |ctx|>
+          <ctx.get @prop="einde" as |attributes einde|>
+            <div property={{attributes.property}}>
+              {{moment-format einde 'DD/MM/YYYY'}}
+            </div>
+          </ctx.get>
+        </WithRdfaContext>
+      </td>
     </c.body>
   </t.content>
 </AuDataTable>

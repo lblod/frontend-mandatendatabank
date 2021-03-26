@@ -1,19 +1,20 @@
+/* eslint-disable ember/no-mixins */
 import { debug } from '@ember/debug';
 import Route from '@ember/routing/route';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
-export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTableRouteMixin) { 
+export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTableRouteMixin) {
   modelName = 'mandataris';
 
   async getLastBestuursorgaan(bestuursorgaan){
     let organenInTijd = await bestuursorgaan.get('heeftTijdsspecialisaties');
-    
+
     return organenInTijd.sortBy('bindingStart').get('lastObject');
   }
 
   async beforeModel() {
     const bestuursorgaan = await this.modelFor('bestuursorgaan.subject');
-    
+
     if (! await bestuursorgaan.get('isTijdsspecialisatieVan')) { // niet-tijdsgebonden bestuursorgaan
       debug('Redirect to most recent time period.');
       let lastOrgaan = await this.getLastBestuursorgaan(bestuursorgaan);
@@ -39,7 +40,10 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTa
       },
       include: [
         'is-bestuurlijke-alias-van',
-        'bekleedt.bestuursfunctie'
+        'bekleedt.bestuursfunctie',
+        'heeft-lidmaatschap',
+        'beleidsdomein',
+        'status',
       ].join(',')
     };
   }

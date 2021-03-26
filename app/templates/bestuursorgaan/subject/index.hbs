@@ -14,9 +14,17 @@
       <td>
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
           <ctx.get @prop="bekleedt" as |attributes value mandaat|>
-            <div {{rdfa attributes}}>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
               <mandaat.get @prop="bestuursfunctie" as |attributes value rol|>
-                <div {{rdfa attributes}}>
+                <div
+                  typeof={{attributes.typeof}}
+                  property={{attributes.property}}
+                  resource={{attributes.resource}}
+                >
                   <rol.get @prop="label"/>
                 </div>
               </mandaat.get>
@@ -30,7 +38,11 @@
       <td>
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
           <ctx.get @prop="isBestuurlijkeAliasVan" as |attributes value alias|>
-            <div {{rdfa attributes}}>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
               <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
                 <alias.get @prop="gebruikteVoornaam"/>
               </LinkTo>
@@ -41,18 +53,26 @@
       <td>
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
           <ctx.get @prop="isBestuurlijkeAliasVan" as |attributes value alias|>
-            <div {{rdfa attributes}}>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
               <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
                 <alias.get @prop="achternaam"/>
               </LinkTo>
             </div>
           </ctx.get>
-        </WithRdfaContext> 
+        </WithRdfaContext>
       </td>
       <td class="u-visible--desktop-up">
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
           <ctx.each @prop="beleidsdomein" as |attributes value beleidsdomein|>
-            <div {{rdfa attributes}}>
+            <div
+              typeof={{attributes.typeof}}
+              property={{attributes.property}}
+              resource={{attributes.resource}}
+            >
               <beleidsdomein.get @prop="label"/><br>
             </div>
           </ctx.each>
@@ -63,18 +83,18 @@
       </td>
       <td class=" au-u-visible-from@medium">
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
-          <ctx.get @prop="start" as |attributes|>
-            <div {{rdfa attributes}}>
-              {{moment-format row.start 'DD/MM/YYYY'}}
+          <ctx.get @prop="start" as |attributes start|>
+            <div property={{attributes.property}}>
+              {{moment-format start 'DD/MM/YYYY'}}
             </div>
           </ctx.get>
         </WithRdfaContext>
       </td>
       <td class=" au-u-visible-from@medium">
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
-          <ctx.get @prop="einde" as |attributes|>
-            <div {{rdfa attributes}}>
-              {{moment-format row.einde 'DD/MM/YYYY'}}
+          <ctx.get @prop="einde" as |attributes einde|>
+            <div property={{attributes.property}}>
+              {{moment-format einde 'DD/MM/YYYY'}}
             </div>
           </ctx.get>
         </WithRdfaContext>
