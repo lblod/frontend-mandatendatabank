@@ -11,8 +11,8 @@
           <div class="au-o-grid__item au-u-1-1 au-u-1-2@small au-u-2-3@medium">
             <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
               Orgaan:
-              <ctx.get @prop="naam" as |attributes|>
-                <span {{rdfa attributes}}>
+              <ctx.get @prop="naam" as |attributes naam|>
+                <span property={{attributes.property}}>
                   {{#if naam}}
                     {{naam}}
                   {{else}}
