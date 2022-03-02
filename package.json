@@ -33,7 +33,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-focus": "^2.0.4",
     "ember-auto-import": "^1.9.0",
-    "ember-browser-update": "Windvis/ember-browser-update#fastboot-support",
+    "ember-browser-update": "0.1.1",
     "ember-cli": "~3.20.0",
     "ember-cli-app-version": "^4.0.0",
     "ember-cli-babel": "^7.21.0",
