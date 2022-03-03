@@ -35,7 +35,7 @@ module.exports = function(environment) {
       hostWhitelist: [ "mandaten.lokaalbestuur.vlaanderen.be",
                         "mandaten.lblod.info",
                         "dev.mandaten.lblod.info",
-                        /^localhost:\d+$/,
+                        `${/^localhost:\d+$/.toString()}`,
                         "localhost"
                       ]
     },
