@@ -1,3 +1,3 @@
 # frontend-mandatendatabank
 
-Frontend of the mandatendatabank application
+Frontend of the mandatendatabank application.
