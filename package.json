@@ -47,7 +47,7 @@
     "ember-cli-deploy-revision-data": "^1.0.0",
     "ember-cli-deploy-rsync": "0.0.5",
     "ember-cli-deploy-ssh-index": "^1.0.0",
-    "ember-cli-fastboot": "^2.2.3",
+    "ember-cli-fastboot": "^4.1.2",
     "ember-cli-htmlbars": "^5.2.0",
     "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-moment-shim": "^3.7.1",
@@ -68,7 +68,7 @@
     "ember-power-select": "^4.0.4",
     "ember-promise-helpers": "^1.0.6",
     "ember-qunit": "^4.6.0",
-    "ember-rdfa-helpers": "Windvis/ember-rdfa-helpers#fastboot-support",
+    "ember-rdfa-helpers": "^0.6.0",
     "ember-resolver": "^8.0.0",
     "ember-source": "~3.20.2",
     "ember-template-lint": "^2.15.0",
@@ -80,7 +80,8 @@
     "postscribe": "^2.0.8",
     "qunit-dom": "^1.2.0",
     "sass": "^1.21.0",
-    "svgxuse": "^1.2.6"
+    "svgxuse": "^1.2.6",
+    "webpack": "^5.91.0"
   },
   "engines": {
     "node": "10.* || >= 12"
