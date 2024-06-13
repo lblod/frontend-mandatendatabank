@@ -9,6 +9,7 @@
           <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
         </c.header>
         <c.content>
+          {{!TODO, convert this to an a tag + download attribute so it works without JS}}
           <AuButton {{on 'click' (fn this.download this.csvFile)}} >Download in CSV formaat</AuButton>
           <AuHelpText>{{this.csvMetadata}}</AuHelpText>
         </c.content>
@@ -39,6 +40,7 @@
           <p>Gestructureerde data voor dataverwerking en analyse</p>
         </c.header>
         <c.content>
+          {{!TODO, convert this to an a tag + download attribute so it works without JS}}
           <AuButton {{on 'click' (fn this.download this.ttlFile)}} >Download in Turtle formaat</AuButton>
           <AuHelpText>{{this.ttlMetadata}}</AuHelpText>
         </c.content>

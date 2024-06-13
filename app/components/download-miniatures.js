@@ -5,7 +5,8 @@ import { tracked } from '@glimmer/tracking';
 
 export default class DownloadMiniaturesComponent extends Component {
   @service store;
-  
+  @service fastboot;
+
   @tracked ttlFile;
   @tracked csvFile;
 
@@ -15,31 +16,39 @@ export default class DownloadMiniaturesComponent extends Component {
     this.queryTtl()
   }
 
-  queryCsv(){
-    this.store.query('export', {
+  queryCsv() {
+    const promise = this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/turtle' },
       page: { size: 1 }
-    }).then((files) => 
+    }).then((files) =>
       this.ttlFile = files.get('firstObject')
     )
+
+    if (this.fastboot.isFastBoot) {
+      this.fastboot.deferRendering(promise)
+    }
   }
 
-  queryTtl(){
-    this.store.query('export', {
+  queryTtl() {
+    const promise = this.store.query('export', {
       sort: '-created',
       filter: { format: 'text/csv' },
       page: { size: 1 }
     }).then((files) =>
       this.csvFile = files.get('firstObject')
-    )
+    );
+
+    if (this.fastboot.isFastBoot) {
+      this.fastboot.deferRendering(promise)
+    }
   }
 
-  get ttlMetadata(){
+  get ttlMetadata() {
     return `Turtle - ${this.ttlFile.filesizeMb}MB - ${this.ttlFile.createdFormatted}`;
   }
 
-  get csvMetadata(){
+  get csvMetadata() {
     return `CSV - ${this.csvFile.filesizeMb}MB - ${this.csvFile.createdFormatted}`;
   }
 
@@ -47,5 +56,5 @@ export default class DownloadMiniaturesComponent extends Component {
   download(file) {
     if (file)
       window.location = `/files/${file.get('filename')}`;
-    }
   }
+}
