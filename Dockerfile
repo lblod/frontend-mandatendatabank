@@ -1,12 +1,12 @@
-FROM madnificent/ember:3.27.0 as builder
+FROM node:20.12 as builder
 
 LABEL maintainer="info@redpencil.io"
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 COPY . .
-RUN ember build -prod
+RUN npm run build
 
 
 FROM cecemel/ember-fastboot-proxy-service:0.6.0
