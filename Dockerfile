@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN ember build -prod
+RUN npm run build
 
 
 FROM cecemel/ember-fastboot-proxy-service:0.6.0
