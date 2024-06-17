@@ -7,12 +7,6 @@ module.exports = function (defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    sassOptions: {
-      includePaths: [
-        'node_modules/@appuniversum/appuniversum',
-        'node_modules/@appuniversum/ember-appuniversum/app/styles',
-      ]
-    }
     // Add options here
   });
 
