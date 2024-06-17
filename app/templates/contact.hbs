@@ -7,17 +7,34 @@
     <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
       Contact
     </AuHeading>
-    <form class="au-u-margin-bottom-large">
-      <div class="au-u-margin-bottom">
-        <AuLabel for="select">Waar gaat uw bericht over?</AuLabel>
-        <WuRadioButton @label="Een functionaliteit, bug of probleem" @value="LoketLokaalBestuur@vlaanderen.be" @onChange={{fn (mut this.mailto)}} @isBlock={{true}}/>
-        <WuRadioButton @label="Een inhoudelijke vraag over mandaten en mandatarissen" @value="binnenland@vlaanderen.be" @onChange={{fn (mut this.mailto)}} @isBlock={{true}}/>
-      </div>
+
+    <form class="au-c-form au-u-margin-bottom-large">
+      <AuFieldset as |f|>
+        <f.legend>
+          Waar gaat uw bericht over?
+        </f.legend>
+        <f.content>
+          <AuRadioGroup
+            @name="contact-subject"
+            @onChange={{fn (mut this.mailto)}}
+            as |Group|
+          >
+            <Group.Radio @value="LoketLokaalBestuur@vlaanderen.be">
+              Een functionaliteit, bug of probleem
+            </Group.Radio>
+            <Group.Radio @value="binnenland@vlaanderen.be">
+              Een inhoudelijke vraag over mandaten en mandatarissen
+            </Group.Radio>
+          </AuRadioGroup>
+        </f.content>
+      </AuFieldset>
 
       {{#if this.mailto}}
-        <a href={{concat "mailto:" this.mailto}} class="au-c-button">Bericht versturen</a>
+        <AuLinkExternal @icon="mail" @skin="button" href="mailto:{{this.mailto}}">
+          Bericht versturen
+        </AuLinkExternal>
       {{else}}
-        <AuButton @disabled="true">Bericht versturen</AuButton>
+        <AuButton @icon="mail" @disabled={{true}}>Bericht versturen</AuButton>
       {{/if}}
     </form>
   </div>
