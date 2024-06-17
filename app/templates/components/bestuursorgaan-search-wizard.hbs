@@ -6,8 +6,8 @@
       </AuHeading>
     </c.header>
     <c.content>
-      <div style="position: relative; overflow: hidden;">
-        <PowerSelect 
+      <div style="position: relative; overflow: hidden;" {{!template-lint-disable no-inline-styles}}>
+        <PowerSelect
           @ariaLabel="Zoekbalk"
           @ariaDescribedBy="describe-search"
           @allowClear={{true}}
@@ -47,7 +47,7 @@
               <OrganisationCard
                 @organisationId={{eenheid.id }}
                 @isSelected={{eq this.selectedBestuurseenheidId eenheid.id}}
-                @classification={{eenheid.classificatie.label}} 
+                @classification={{eenheid.classificatie.label}}
                 @description={{eenheid.classificatie.scopeNote}}
                 @name={{concat eenheid.classificatie.label " " eenheid.naam}}
                 @onSelect={{this.listBestuursorganen}}
@@ -75,8 +75,8 @@
         <div class="au-o-grid au-o-grid--fixed" {{auto-focus '.au-c-button' }}>
           {{#each this.bestuursorganen as |orgaan|}}
             <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium focus-bestuurseenheid">
-              <OrganisationCard 
-                @organisationId={{orgaan.id}} 
+              <OrganisationCard
+                @organisationId={{orgaan.id}}
                 @isSelected={{eq this.selectedBestuursorgaanId orgaan.id}}
                 @classification={{orgaan.classificatie.label }}
                 @description={{orgaan.classificatie.scopeNote}}
