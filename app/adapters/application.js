@@ -1,38 +1,28 @@
-import DS from 'ember-data';
-const maxRetries = 5;
-export default DS.JSONAPIAdapter.extend({
-  init() {
-    this._super(...arguments);
-  },
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
-  ajax(_url, method) {
-    if (method === 'POST') return this._super(...arguments);
+export default class ApplicationAdapter extends JSONAPIAdapter {
+  ajax(url, method) {
+    if (method === 'POST') return super.ajax(...arguments);
 
-    const origAjax = this._super;
-    const args = arguments;
-    const sleep = (time) =>
-      new Promise((resolve /*,reject*/) =>
-        setTimeout(() => resolve(true), time)
-      );
-    const retry = (livesSpent) => {
-      return new Promise(async (resolve, reject) => {
-        await sleep(250 * livesSpent);
-        if (livesSpent < maxRetries)
-          origAjax.apply(this, args).then(
-            (res) => resolve(res),
-            () =>
-              retry(livesSpent + 1).then(
-                (r) => resolve(r),
-                (r) => reject(r)
-              )
-          );
-        else
-          origAjax.apply(this, args).then(
-            (res) => resolve(res),
-            (e) => reject(e)
-          );
-      });
-    };
-    return retry(0);
-  },
-});
+    return retryOnError(super.ajax.bind(this), arguments);
+  }
+}
+
+async function retryOnError(ajax, ajaxArgs, retryCount = 0) {
+  const MAX_RETRIES = 5;
+
+  try {
+    return await ajax(...ajaxArgs);
+  } catch (error) {
+    if (retryCount < MAX_RETRIES) {
+      await sleep(250 * (retryCount + 1));
+      return retryOnError(ajax, ajaxArgs, retryCount + 1);
+    } else {
+      throw error;
+    }
+  }
+}
+
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(() => resolve(true), time));
+}

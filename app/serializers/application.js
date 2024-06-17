@@ -1,3 +1,4 @@
+// eslint-disable-next-line ember/no-mixins
 import DataTableSerializerMixin from 'ember-data-table/mixins/serializer';
 import JSONAPISerializer from '@ember-data/serializer/json-api';
 

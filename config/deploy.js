@@ -29,6 +29,7 @@ module.exports = function (deployTarget) {
   };
 
   if (deployTarget === 'production') {
+    // Production specific config
   }
 
   // Note: if you need to build some configuration asynchronously, you can return
