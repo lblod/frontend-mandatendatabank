@@ -1,11 +1,15 @@
 /* eslint-disable ember/no-mixins */
 import { debug } from '@ember/debug';
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
 export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
   DataTableRouteMixin
 ) {
+  @service router;
+  @service store;
+
   modelName = 'mandataris';
 
   async getLastBestuursorgaan(bestuursorgaan) {
@@ -21,7 +25,7 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
       // niet-tijdsgebonden bestuursorgaan
       debug('Redirect to most recent time period.');
       let lastOrgaan = await this.getLastBestuursorgaan(bestuursorgaan);
-      this.transitionTo('bestuursorgaan.subject.index', lastOrgaan.get('id'));
+      this.router.transitionTo('bestuursorgaan.subject.index', lastOrgaan.id);
     }
   }
 

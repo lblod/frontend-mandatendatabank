@@ -1,10 +1,13 @@
-/* eslint-disable ember/no-mixins */
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+/* eslint-disable ember/no-mixins */
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
 export default class PersoonSubjectIndexRoute extends Route.extend(
   DataTableRouteMixin
 ) {
+  @service store;
+
   modelName = 'mandataris';
   mergeQueryOptions(params) {
     const { persoon_id } = this.paramsFor('persoon.subject');
