@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import moment from 'moment';
 
 export default class DownloadMiniaturesComponent extends Component {
   @service store;
@@ -45,15 +46,23 @@ export default class DownloadMiniaturesComponent extends Component {
   }
 
   get ttlMetadata() {
-    return `Turtle - ${this.ttlFile.filesizeMb}MB - ${this.ttlFile.createdFormatted}`;
+    return `Turtle - ${this.ttlFile.filesizeMb}MB - ${momentFormat(
+      this.ttlFile.created
+    )}`;
   }
 
   get csvMetadata() {
-    return `CSV - ${this.csvFile.filesizeMb}MB - ${this.csvFile.createdFormatted}`;
+    return `CSV - ${this.csvFile.filesizeMb}MB - ${momentFormat(
+      this.csvFile.created
+    )}`;
   }
 
   @action
   download(file) {
     if (file) window.location = `/files/${file.get('filename')}`;
   }
+}
+
+function momentFormat(date) {
+  return moment(date).format('DD/MM/YYYY HH:mm');
 }
