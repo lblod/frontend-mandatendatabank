@@ -73,7 +73,6 @@
     "ember-mu-transform-helpers": "^2.0.0",
     "ember-page-title": "^6.2.2",
     "ember-power-select": "^7.0.0",
-    "ember-promise-helpers": "^1.0.6",
     "ember-qunit": "^5.1.5",
     "ember-rdfa-helpers": "^0.6.0",
     "ember-resolver": "^8.0.3",
