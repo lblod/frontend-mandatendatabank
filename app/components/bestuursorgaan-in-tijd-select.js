@@ -8,15 +8,18 @@ export default class BestuursorgaanInTijdSelectComponent extends Component {
   @service router;
 
   @tracked bestuursorganenSortingDesc = Object.freeze(['bindingStart:desc']);
-  @sort('bestuursorgaan.heeftTijdsspecialisaties', 'bestuursorganenSortingDesc') descSortedBestuursorganen;
+  @sort('bestuursorgaan.heeftTijdsspecialisaties', 'bestuursorganenSortingDesc')
+  descSortedBestuursorganen;
 
-  get bestuursorgaan(){
-    return this.args.selectedBestuursorgaan.isTijdsspecialisatieVan
-  } 
-
-  @action
-    select(selectedBestuursorgaan) {
-    this.router.transitionTo('bestuursorgaan.subject.index', selectedBestuursorgaan.id);
-    }
+  get bestuursorgaan() {
+    return this.args.selectedBestuursorgaan.isTijdsspecialisatieVan;
   }
 
+  @action
+  select(selectedBestuursorgaan) {
+    this.router.transitionTo(
+      'bestuursorgaan.subject.index',
+      selectedBestuursorgaan.id
+    );
+  }
+}

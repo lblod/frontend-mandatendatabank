@@ -17,27 +17,30 @@ module.exports = function (environment) {
       },
     },
     moment: {
-      allowEmpty: true
+      allowEmpty: true,
     },
     browserUpdate: {
-      vs: {i:11,f:-3,o:-3,s:-3,c:-3},
+      vs: { i: 11, f: -3, o: -3, s: -3, c: -3 },
       style: 'corner',
       l: 'nl',
-      shift_page_down: false
+      shift_page_down: false,
     },
     'vo-webuniversum': {
       version: '2.8.3',
-      header: '//widgets.vlaanderen.be/widget/live/536f9f3a7a7d4842aecd269a28a636d1',
-      footer: '//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f'
+      header:
+        '//widgets.vlaanderen.be/widget/live/536f9f3a7a7d4842aecd269a28a636d1',
+      footer:
+        '//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f',
     },
 
     fastboot: {
-      hostWhitelist: [ "mandaten.lokaalbestuur.vlaanderen.be",
-                        "mandaten.lblod.info",
-                        "dev.mandaten.lblod.info",
-                        `${/^localhost:\d+$/.toString()}`,
-                        "localhost"
-                      ]
+      hostWhitelist: [
+        'mandaten.lokaalbestuur.vlaanderen.be',
+        'mandaten.lblod.info',
+        'dev.mandaten.lblod.info',
+        `${/^localhost:\d+$/.toString()}`,
+        'localhost',
+      ],
     },
 
     APP: {
@@ -71,8 +74,10 @@ module.exports = function (environment) {
   }
 
   if (process.env.DEPLOY_ENV === 'production') {
-    ENV['vo-webuniversum']['header'] = '//widgets.vlaanderen.be/widget/live/08f44cf079f54a0ba954b91dbf3e69ab';
-    ENV['vo-webuniversum']['footer'] = '//widgets.vlaanderen.be/widget/live/a7367e63e7b3444382ef264b25776f38';
+    ENV['vo-webuniversum']['header'] =
+      '//widgets.vlaanderen.be/widget/live/08f44cf079f54a0ba954b91dbf3e69ab';
+    ENV['vo-webuniversum']['footer'] =
+      '//widgets.vlaanderen.be/widget/live/a7367e63e7b3444382ef264b25776f38';
   }
 
   return ENV;

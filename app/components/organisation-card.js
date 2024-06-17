@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 
 export default class OrganisationCardComponent extends Component {
   @action
-  select(organisationId){
+  select(organisationId) {
     this.args.onSelect(organisationId);
   }
 }

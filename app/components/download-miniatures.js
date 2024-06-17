@@ -12,35 +12,35 @@ export default class DownloadMiniaturesComponent extends Component {
 
   constructor() {
     super(...arguments);
-    this.queryCsv()
-    this.queryTtl()
+    this.queryCsv();
+    this.queryTtl();
   }
 
   queryCsv() {
-    const promise = this.store.query('export', {
-      sort: '-created',
-      filter: { format: 'text/turtle' },
-      page: { size: 1 }
-    }).then((files) =>
-      this.ttlFile = files.get('firstObject')
-    )
+    const promise = this.store
+      .query('export', {
+        sort: '-created',
+        filter: { format: 'text/turtle' },
+        page: { size: 1 },
+      })
+      .then((files) => (this.ttlFile = files.get('firstObject')));
 
     if (this.fastboot.isFastBoot) {
-      this.fastboot.deferRendering(promise)
+      this.fastboot.deferRendering(promise);
     }
   }
 
   queryTtl() {
-    const promise = this.store.query('export', {
-      sort: '-created',
-      filter: { format: 'text/csv' },
-      page: { size: 1 }
-    }).then((files) =>
-      this.csvFile = files.get('firstObject')
-    );
+    const promise = this.store
+      .query('export', {
+        sort: '-created',
+        filter: { format: 'text/csv' },
+        page: { size: 1 },
+      })
+      .then((files) => (this.csvFile = files.get('firstObject')));
 
     if (this.fastboot.isFastBoot) {
-      this.fastboot.deferRendering(promise)
+      this.fastboot.deferRendering(promise);
     }
   }
 
@@ -54,7 +54,6 @@ export default class DownloadMiniaturesComponent extends Component {
 
   @action
   download(file) {
-    if (file)
-      window.location = `/files/${file.get('filename')}`;
+    if (file) window.location = `/files/${file.get('filename')}`;
   }
 }

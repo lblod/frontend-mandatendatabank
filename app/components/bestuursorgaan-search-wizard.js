@@ -7,23 +7,22 @@ export default class BestuursorgaanSearchWizardComponent extends Component {
   @tracked selectedBestuurseenheidId = null;
   @tracked selectedBestuursorgaanId = null;
   @alias('args.model.werkingsgebied') werkingsgebied;
-  @sort('args.model.bestuurseenheden', 'generalSort') bestuurseenheden; 
+  @sort('args.model.bestuurseenheden', 'generalSort') bestuurseenheden;
   @sort('args.model.bestuursorganen', 'generalSort') bestuursorganen;
   @tracked generalSort = Object.freeze(['classificatie.label']);
 
   @action
-  listBestuurseenheden(gebied){
+  listBestuurseenheden(gebied) {
     this.args.onListBestuurseenheden(gebied);
   }
-    
+
   @action
-  listBestuursorganen(bestuurseenheidId){
+  listBestuursorganen(bestuurseenheidId) {
     this.args.onListBestuursorganen(bestuurseenheidId);
   }
 
   @action
-  viewBestuursorgaan(bestuursorgaanId){
+  viewBestuursorgaan(bestuursorgaanId) {
     this.args.onViewBestuursorgaan(bestuursorgaanId);
   }
 }
-

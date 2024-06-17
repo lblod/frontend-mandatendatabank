@@ -3,10 +3,12 @@ import { debug } from '@ember/debug';
 import Route from '@ember/routing/route';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
-export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTableRouteMixin) {
+export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
+  DataTableRouteMixin
+) {
   modelName = 'mandataris';
 
-  async getLastBestuursorgaan(bestuursorgaan){
+  async getLastBestuursorgaan(bestuursorgaan) {
     let organenInTijd = await bestuursorgaan.get('heeftTijdsspecialisaties');
 
     return organenInTijd.sortBy('bindingStart').get('lastObject');
@@ -15,7 +17,8 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTa
   async beforeModel() {
     const bestuursorgaan = await this.modelFor('bestuursorgaan.subject');
 
-    if (! await bestuursorgaan.get('isTijdsspecialisatieVan')) { // niet-tijdsgebonden bestuursorgaan
+    if (!(await bestuursorgaan.get('isTijdsspecialisatieVan'))) {
+      // niet-tijdsgebonden bestuursorgaan
       debug('Redirect to most recent time period.');
       let lastOrgaan = await this.getLastBestuursorgaan(bestuursorgaan);
       this.transitionTo('bestuursorgaan.subject.index', lastOrgaan.get('id'));
@@ -29,14 +32,14 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTa
       sort: params.sort,
       page: {
         number: params.page,
-        size: params.size
+        size: params.size,
       },
       filter: {
         bekleedt: {
           'bevat-in': {
-            id: bestuursorgaan_id // tijdsgebonden bestuursorgaan
-          }
-        }
+            id: bestuursorgaan_id, // tijdsgebonden bestuursorgaan
+          },
+        },
       },
       include: [
         'is-bestuurlijke-alias-van',
@@ -44,7 +47,7 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(DataTa
         'heeft-lidmaatschap',
         'beleidsdomein',
         'status',
-      ].join(',')
+      ].join(','),
     };
   }
 }
