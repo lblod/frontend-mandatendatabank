@@ -26,10 +26,17 @@
     "test:ember": "ember test"
   },
   "overrides": {
-    "@embroider/macros": "0.50.0"
+    "babel-plugin-ember-template-compilation": "2.2.1",
+    "ember-cli-babel": "$ember-cli-babel",
+    "ember-source": "$ember-source"
+  },
+  "overridesInfo": {
+    "babel-plugin-ember-template-compilation": "This works around an issue with ember-template-imports v3. We can remove it once we update to Appuniversum v3: https://github.com/appuniversum/ember-appuniversum/issues/491",
+    "ember-cli-babel": "this silences some deprecations caused by outdated deps, and als fixes some compilation issues. Can most likely be removed once we update all our deps further",
+    "ember-source": "ember-focus-trap v1.1 isn't compatible with Ember 3.28, so npm installs a new copy of ember-source which causes issues. We can remove this once we update to Ember v4+"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^1.10.0",
+    "@appuniversum/ember-appuniversum": "^2.18.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
@@ -58,7 +65,7 @@
     "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
-    "ember-concurrency": "^1.0.0",
+    "ember-concurrency": "^3.1.1",
     "ember-data": "~3.28.6",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
@@ -67,7 +74,7 @@
     "ember-moment": "^8.0.0",
     "ember-mu-transform-helpers": "^2.0.0",
     "ember-page-title": "^6.2.2",
-    "ember-power-select": "^4.0.4",
+    "ember-power-select": "^7.0.0",
     "ember-promise-helpers": "^1.0.6",
     "ember-qunit": "^5.1.5",
     "ember-rdfa-helpers": "^0.6.0",
