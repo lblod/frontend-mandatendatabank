@@ -28,18 +28,8 @@
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test"
   },
-  "overrides": {
-    "babel-plugin-ember-template-compilation": "2.2.1",
-    "ember-cli-babel": "$ember-cli-babel",
-    "ember-source": "$ember-source"
-  },
-  "overridesInfo": {
-    "babel-plugin-ember-template-compilation": "This works around an issue with ember-template-imports v3. We can remove it once we update to Appuniversum v3: https://github.com/appuniversum/ember-appuniversum/issues/491",
-    "ember-cli-babel": "this silences some deprecations caused by outdated deps, and als fixes some compilation issues. Can most likely be removed once we update all our deps further",
-    "ember-source": "ember-focus-trap v1.1 isn't compatible with Ember 3.28, so npm installs a new copy of ember-source which causes issues. We can remove this once we update to Ember v4+"
-  },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^2.18.0",
+    "@appuniversum/ember-appuniversum": "^3.4.2",
     "@babel/eslint-parser": "^7.21.3",
     "@babel/plugin-proposal-decorators": "^7.21.0",
     "@ember/optional-features": "^2.0.0",
