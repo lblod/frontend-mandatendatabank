@@ -13,9 +13,9 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
   modelName = 'mandataris';
 
   async getLastBestuursorgaan(bestuursorgaan) {
-    let organenInTijd = await bestuursorgaan.get('heeftTijdsspecialisaties');
+    let organenInTijd = await bestuursorgaan.heeftTijdsspecialisaties;
 
-    return organenInTijd.sortBy('bindingStart').get('lastObject');
+    return organenInTijd.sortBy('bindingStart').at(-1);
   }
 
   async beforeModel() {
