@@ -11,11 +11,11 @@ export default class BestuursorgaanSearchWizardComponent extends Component {
   }
 
   get bestuurseenheden() {
-    return this.args.model.bestuurseenheden.slice().sort(byClassificatie);
+    return this.args.model.bestuurseenheden?.slice().sort(byClassificatie);
   }
 
   get bestuursorganen() {
-    return this.args.model.bestuursorganen.slice().sort(byClassificatie);
+    return this.args.model.bestuursorganen?.slice().sort(byClassificatie);
   }
 
   @action

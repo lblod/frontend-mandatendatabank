@@ -1,0 +1,23 @@
+.organisation-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--au-white);
+  border: 0.1rem solid var(--au-gray-200);
+  border-radius: var(--au-radius);
+  text-align: center;
+  padding: $au-unit;
+}
+
+.organisation-card--selected {
+  border-color: var(--vl-blue-65);
+  outline: var(--au-outline);
+}
+
+.organisation-card__icon {
+  margin-bottom: $au-unit-small;
+  margin-right: 0;
+}
+
+.organisation-card__header {
+  margin-bottom: $au-unit;
+}
