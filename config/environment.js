@@ -16,7 +16,7 @@ module.exports = function (environment) {
         Date: false,
       },
     },
-    moment: {
+    'ember-moment': {
       allowEmpty: true,
     },
     browserUpdate: {
