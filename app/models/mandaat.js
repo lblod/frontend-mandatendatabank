@@ -1,10 +1,18 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Mandaat extends Model {
-  @attr('string') uri;
-  @attr('string') aantalHouders;
-  @belongsTo('bestuursfunctie-code', { inverse: null }) bestuursfunctie;
-  @hasMany('bestuursorgaan', { inverse: null }) bevatIn;
+  @attr uri;
+  @attr aantalHouders;
+  @belongsTo('bestuursfunctie-code', {
+    async: true,
+    inverse: null,
+  })
+  bestuursfunctie;
+  @hasMany('bestuursorgaan', {
+    async: true,
+    inverse: null,
+  })
+  bevatIn;
 
   get rdfaBindings() {
     return {

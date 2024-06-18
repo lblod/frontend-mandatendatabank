@@ -1,12 +1,15 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class BeleidseenheidClassificatieCode extends Model {
-  @attr('string') naam;
-  @belongsTo('werkingsgebied', { inverse: null }) werkingsgebied;
-  @belongsTo('bestuurseenheid-classificatie-code', { inverse: null })
+  @attr naam;
+  @belongsTo('werkingsgebied', { async: true, inverse: null }) werkingsgebied;
+  @belongsTo('bestuurseenheid-classificatie-code', {
+    async: true,
+    inverse: null,
+  })
   classificatie;
-  @hasMany('contact-punt', { inverse: null }) contactinfo;
-  @hasMany('bestuursorgaan', { inverse: null }) bestuursorgaan;
+  @hasMany('contact-punt', { async: true, inverse: null }) contactinfo;
+  @hasMany('bestuursorgaan', { async: true, inverse: null }) bestuursorgaan;
 
   get rdfaBindings() {
     return {

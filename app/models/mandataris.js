@@ -1,20 +1,50 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Mandataris extends Model {
-  @attr('string') uri;
+  @attr uri;
   @attr('language-string') rangorde;
   @attr('datetime') start;
   @attr('datetime') einde;
-  @belongsTo('mandaat', { inverse: null }) bekleedt;
-  @belongsTo('lidmaatschap', { inverse: null }) heeftLidmaatschap;
-  @belongsTo('persoon', { inverse: null }) isBestuurlijkeAliasVan;
-  @hasMany('rechtsgrond-aanstelling', { inverse: null })
+  @belongsTo('mandaat', {
+    async: true,
+    inverse: null,
+  })
+  bekleedt;
+  @belongsTo('lidmaatschap', {
+    async: true,
+    inverse: null,
+  })
+  heeftLidmaatschap;
+  @belongsTo('persoon', {
+    async: true,
+    inverse: null,
+  })
+  isBestuurlijkeAliasVan;
+  @hasMany('rechtsgrond-aanstelling', {
+    async: true,
+    inverse: null,
+  })
   rechtsgrondenAanstelling;
-  @hasMany('rechtsgrond-beeindiging', { inverse: null })
+  @hasMany('rechtsgrond-beeindiging', {
+    async: true,
+    inverse: null,
+  })
   rechtsgrondenBeeindiging;
-  @hasMany('mandataris', { inverse: null }) tijdelijkeVervangingen;
-  @hasMany('beleidsdomein-code', { inverse: null }) beleidsdomein;
-  @belongsTo('mandataris-status-code', { inverse: null }) status;
+  @hasMany('mandataris', {
+    async: true,
+    inverse: null,
+  })
+  tijdelijkeVervangingen;
+  @hasMany('beleidsdomein-code', {
+    async: true,
+    inverse: null,
+  })
+  beleidsdomein;
+  @belongsTo('mandataris-status-code', {
+    async: true,
+    inverse: null,
+  })
+  status;
 
   get rdfaBindings() {
     return {

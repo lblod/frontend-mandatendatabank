@@ -1,18 +1,31 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Bestuursorgaan extends Model {
-  @attr('string') uri;
-  @attr('string') naam;
+  @attr uri;
+  @attr naam;
   @attr('date') bindingStart;
   @attr('date') bindingEinde;
-  @belongsTo('bestuurseenheid', { inverse: null }) bestuurseenheid;
-  @belongsTo('bestuursorgaan-classificatie-code', { inverse: null })
+
+  @belongsTo('bestuurseenheid', { async: true, inverse: null }) bestuurseenheid;
+  @belongsTo('bestuursorgaan-classificatie-code', {
+    async: true,
+    inverse: null,
+  })
   classificatie;
-  @belongsTo('bestuursorgaan', { inverse: null }) isTijdsspecialisatieVan;
-  @belongsTo('rechtstreekse-verkiezing', { inverse: null })
+  @belongsTo('bestuursorgaan', { async: true, inverse: null })
+  isTijdsspecialisatieVan;
+  @belongsTo('rechtstreekse-verkiezing', { async: true, inverse: null })
   wordtSamengesteldDoor;
-  @hasMany('bestuursorgaan', { inverse: null }) heeftTijdsspecialisaties;
-  @hasMany('mandaat', { inverse: null }) bevat;
+  @hasMany('bestuursorgaan', {
+    async: true,
+    inverse: null,
+  })
+  heeftTijdsspecialisaties;
+  @hasMany('mandaat', {
+    async: true,
+    inverse: null,
+  })
+  bevat;
 
   get rdfaBindings() {
     return {

@@ -31,7 +31,7 @@ export default class IndexController extends Controller {
     this.flushQueryParams(1);
     this.model.bestuursorganen = null;
     this.werkingsgebiedId = gebied;
-    this.werkingsgebiedId = gebied ? gebied.get('id') : null;
+    this.werkingsgebiedId = gebied ? gebied.id : null;
   }
 
   @action

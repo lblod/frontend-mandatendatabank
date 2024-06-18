@@ -1,10 +1,14 @@
 import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class Werkingsgebied extends Model {
-  @attr('string') uri;
-  @attr('string') naam;
-  @attr('string') niveau;
-  @hasMany('bestuurseenheid', { inverse: null }) bestuurseenheid;
+  @attr uri;
+  @attr naam;
+  @attr niveau;
+  @hasMany('bestuurseenheid', {
+    async: true,
+    inverse: null,
+  })
+  bestuurseenheid;
 
   get longName() {
     let niveau = this.niveau;

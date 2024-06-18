@@ -1,15 +1,35 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Persoon extends Model {
-  @attr('string') uri;
-  @attr('string') achternaam;
-  @attr('string') alternatieveNaam;
-  @attr('string') gebruikteVoornaam;
-  @belongsTo('geboorte', { inverse: null }) geboorte;
-  @belongsTo('identificator', { inverse: null }) identificator;
-  @belongsTo('geslacht-code', { inverse: null }) geslacht;
-  @hasMany('mandataris', { inverse: null }) isAangesteldAls;
-  @hasMany('kandidatenlijst', { inverse: null }) isKandidaatVoor;
+  @attr uri;
+  @attr achternaam;
+  @attr alternatieveNaam;
+  @attr gebruikteVoornaam;
+  @belongsTo('geboorte', {
+    async: true,
+    inverse: null,
+  })
+  geboorte;
+  @belongsTo('identificator', {
+    async: true,
+    inverse: null,
+  })
+  identificator;
+  @belongsTo('geslacht-code', {
+    async: true,
+    inverse: null,
+  })
+  geslacht;
+  @hasMany('mandataris', {
+    async: true,
+    inverse: null,
+  })
+  isAangesteldAls;
+  @hasMany('kandidatenlijst', {
+    async: true,
+    inverse: null,
+  })
+  isKandidaatVoor;
 
   get rdfaBindings() {
     return {

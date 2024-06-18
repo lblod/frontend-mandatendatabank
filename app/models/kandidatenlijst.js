@@ -1,10 +1,21 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Kandidatenlijst extends Model {
-  @attr('string') lijstnaam;
-  @attr('string') lijstnummer;
-  @belongsTo('lijsttype', { inverse: null }) lijsttype;
-  @belongsTo('rechtstreekse-verkiezing', { inverse: null })
+  @attr lijstnaam;
+  @attr lijstnummer;
+  @belongsTo('lijsttype', {
+    async: true,
+    inverse: null,
+  })
+  lijsttype;
+  @belongsTo('rechtstreekse-verkiezing', {
+    async: true,
+    inverse: null,
+  })
   rechtstreekseVerkiezing;
-  @hasMany('persoon', { inverse: null }) kandidaten;
+  @hasMany('persoon', {
+    async: true,
+    inverse: null,
+  })
+  kandidaten;
 }

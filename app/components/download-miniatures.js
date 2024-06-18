@@ -24,7 +24,7 @@ export default class DownloadMiniaturesComponent extends Component {
         filter: { format: 'text/turtle' },
         page: { size: 1 },
       })
-      .then((files) => (this.ttlFile = files.get('firstObject')));
+      .then((files) => (this.ttlFile = files.at(0)));
 
     if (this.fastboot.isFastBoot) {
       this.fastboot.deferRendering(promise);
@@ -38,7 +38,7 @@ export default class DownloadMiniaturesComponent extends Component {
         filter: { format: 'text/csv' },
         page: { size: 1 },
       })
-      .then((files) => (this.csvFile = files.get('firstObject')));
+      .then((files) => (this.csvFile = files.at(0)));
 
     if (this.fastboot.isFastBoot) {
       this.fastboot.deferRendering(promise);
@@ -59,7 +59,7 @@ export default class DownloadMiniaturesComponent extends Component {
 
   @action
   download(file) {
-    if (file) window.location = `/files/${file.get('filename')}`;
+    if (file) window.location = `/files/${file.filename}`;
   }
 }
 
