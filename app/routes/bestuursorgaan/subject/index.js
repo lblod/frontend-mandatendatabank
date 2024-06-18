@@ -21,7 +21,7 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
   async beforeModel() {
     const bestuursorgaan = await this.modelFor('bestuursorgaan.subject');
 
-    if (!(await bestuursorgaan.get('isTijdsspecialisatieVan'))) {
+    if (!(await bestuursorgaan.isTijdsspecialisatieVan)) {
       // niet-tijdsgebonden bestuursorgaan
       debug('Redirect to most recent time period.');
       let lastOrgaan = await this.getLastBestuursorgaan(bestuursorgaan);
