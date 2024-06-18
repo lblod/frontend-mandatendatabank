@@ -13,12 +13,11 @@ steps:
     group: lint
     commands:
       - npm run lint:hbs
-  # TODO: enable this after updating to the Ember v4 blueprint
-  # lint-css:
-  #   image: danlynn/ember-cli:5.8.0-node_20.12
-  #   group: lint
-  #   commands:
-  #     - npm run lint:css
+  lint-css:
+    image: danlynn/ember-cli:5.8.0-node_20.12
+    group: lint
+    commands:
+      - npm run lint:css
   # TODO: set up dependency lint
   # dependency-lint:
   #   image: danlynn/ember-cli:5.8.0-node_20.12
