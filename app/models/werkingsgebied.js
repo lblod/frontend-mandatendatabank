@@ -4,7 +4,11 @@ export default class Werkingsgebied extends Model {
   @attr uri;
   @attr naam;
   @attr niveau;
-  @hasMany('bestuurseenheid', { inverse: null }) bestuurseenheid;
+  @hasMany('bestuurseenheid', {
+    async: true,
+    inverse: null,
+  })
+  bestuurseenheid;
 
   get longName() {
     let niveau = this.niveau;
