@@ -1,21 +1,26 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { sort } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 
 export default class BestuursorgaanInTijdSelectComponent extends Component {
   @service router;
 
-  @tracked bestuursorganenSortingDesc = Object.freeze(['bindingStart:desc']);
-
-  // TODO: replace this with a getter
-  @sort('bestuursorgaan.heeftTijdsspecialisaties', 'bestuursorganenSortingDesc')
-  descSortedBestuursorganen;
-
   get bestuursorgaan() {
-    return this.args.selectedBestuursorgaan.isTijdsspecialisatieVan;
+    return this.args.selectedBestuursorgaan
+      .belongsTo('isTijdsspecialisatieVan')
+      .value();
+  }
+
+  get tijdsspecialisaties() {
+    if (!this.bestuursorgaan) {
+      return [];
+    }
+
+    return this.bestuursorgaan
+      .hasMany('heeftTijdsspecialisaties')
+      .value()
+      .slice()
+      .sort(byBindingStartDesc);
   }
 
   @action
@@ -25,4 +30,8 @@ export default class BestuursorgaanInTijdSelectComponent extends Component {
       selectedBestuursorgaan.id
     );
   }
+}
+
+function byBindingStartDesc(a, b) {
+  return b.bindingStart - a.bindingStart;
 }

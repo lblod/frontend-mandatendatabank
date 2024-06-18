@@ -15,7 +15,7 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
   async getLastBestuursorgaan(bestuursorgaan) {
     let organenInTijd = await bestuursorgaan.heeftTijdsspecialisaties;
 
-    return organenInTijd.sortBy('bindingStart').at(-1);
+    return organenInTijd.slice().sort(byBindingStart).at(-1);
   }
 
   async beforeModel() {
@@ -54,4 +54,8 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
       ].join(','),
     };
   }
+}
+
+function byBindingStart(a, b) {
+  return a.bindingStart - b.bindingStart;
 }
