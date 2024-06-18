@@ -42,10 +42,10 @@
 
         <div class="au-o-grid au-o-grid--fixed"  {{auto-focus '.au-c-button' }}>
           {{#each this.bestuurseenheden as |eenheid|}}
-            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large focus-bestuursorganen">
+            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large">
               <OrganisationCard
                 @organisationId={{eenheid.id }}
-                @isSelected={{eq this.selectedBestuurseenheidId eenheid.id}}
+                @isSelected={{eq @selectedBestuurseenheidId eenheid.id}}
                 @classification={{eenheid.classificatie.label}}
                 @description={{eenheid.classificatie.scopeNote}}
                 @name={{concat eenheid.classificatie.label " " eenheid.naam}}
@@ -70,13 +70,12 @@
     </c.header>
     {{#if this.bestuursorganen}}
     <c.content>
-
         <div class="au-o-grid au-o-grid--fixed" {{auto-focus '.au-c-button' }}>
           {{#each this.bestuursorganen as |orgaan|}}
-            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium focus-bestuurseenheid">
+            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
               <OrganisationCard
                 @organisationId={{orgaan.id}}
-                @isSelected={{eq this.selectedBestuursorgaanId orgaan.id}}
+                @isSelected={{eq @selectedBestuursorgaanId orgaan.id}}
                 @classification={{orgaan.classificatie.label }}
                 @description={{orgaan.classificatie.scopeNote}}
                 @name={{orgaan.naam }}

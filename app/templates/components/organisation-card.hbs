@@ -1,13 +1,20 @@
-<div class="au-c-card au-c-card--divided au-o-box au-u-text-center {{if @isSelected "selected-organisation-card"}}">
-  <div class="au-c-card__header">
-    <AuBadge @skin="brand" @icon="users" />
+{{! We're not using the AuCard component here, since they can't be nested without causing styling issues in Appuniversum}}
+<div class="organisation-card {{if @isSelected 'organisation-card--selected'}}">
+  <div class="organisation-card__header">
+    <AuBadge @skin="brand" @icon="users" class="organisation-card__icon" />
     <div>
       <AuHeading @level="2" @skin="4">
         {{@name}}
       </AuHeading>
     </div>
   </div>
-  <div class="au-c-content au-c-card__content">
-    <AuButton @width="block" @size="large" @icon="nav-right" @iconAlignment="left" {{on 'click' (fn this.select @organisationId)}}>Kies {{@classification}}</AuButton>
+  <div class="organisation-card__content">
+    <AuButton
+      @width="block"
+      @size="large"
+      @icon="nav-right"
+      @iconAlignment="left"
+      {{on "click" (fn this.select @organisationId)}}
+    >Kies {{@classification}}</AuButton>
   </div>
 </div>
