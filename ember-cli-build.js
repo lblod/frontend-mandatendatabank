@@ -5,10 +5,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
-    // TODO: remove this polyfill, it's no longer needed for modern browsers
-    'ember-cli-babel': {
-      includePolyfill: true,
-    },
     '@appuniversum/ember-appuniversum': {
       disableWormholeElement: true,
     },
