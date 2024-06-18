@@ -1,10 +1,10 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Persoon extends Model {
-  @attr('string') uri;
-  @attr('string') achternaam;
-  @attr('string') alternatieveNaam;
-  @attr('string') gebruikteVoornaam;
+  @attr uri;
+  @attr achternaam;
+  @attr alternatieveNaam;
+  @attr gebruikteVoornaam;
   @belongsTo('geboorte', { inverse: null }) geboorte;
   @belongsTo('identificator', { inverse: null }) identificator;
   @belongsTo('geslacht-code', { inverse: null }) geslacht;

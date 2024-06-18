@@ -1,8 +1,8 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class Mandaat extends Model {
-  @attr('string') uri;
-  @attr('string') aantalHouders;
+  @attr uri;
+  @attr aantalHouders;
   @belongsTo('bestuursfunctie-code', { inverse: null }) bestuursfunctie;
   @hasMany('bestuursorgaan', { inverse: null }) bevatIn;
 

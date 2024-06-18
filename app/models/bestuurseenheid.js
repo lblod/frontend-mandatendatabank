@@ -1,7 +1,7 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class BeleidseenheidClassificatieCode extends Model {
-  @attr('string') naam;
+  @attr naam;
   @belongsTo('werkingsgebied', { inverse: null }) werkingsgebied;
   @belongsTo('bestuurseenheid-classificatie-code', { inverse: null })
   classificatie;

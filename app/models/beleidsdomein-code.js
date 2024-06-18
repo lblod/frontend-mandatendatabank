@@ -1,8 +1,8 @@
 import Model, { attr } from '@ember-data/model';
 
 export default class BeleidsdomeinCodeModel extends Model {
-  @attr('string') uri;
-  @attr('string') label;
+  @attr uri;
+  @attr label;
 
   get rdfaBindings() {
     return {

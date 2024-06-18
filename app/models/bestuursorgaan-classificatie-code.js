@@ -1,9 +1,9 @@
 import Model, { attr } from '@ember-data/model';
 
 export default class BestuursorgaanClassificatieCode extends Model {
-  @attr('string') uri;
-  @attr('string') label;
-  @attr('string') scopeNote;
+  @attr uri;
+  @attr label;
+  @attr scopeNote;
 
   get rdfaBindings() {
     return {

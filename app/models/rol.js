@@ -1,8 +1,8 @@
 import Model, { attr } from '@ember-data/model';
 
 export default class Rol extends Model {
-  @attr('string') uri;
-  @attr('string') label;
+  @attr uri;
+  @attr label;
 
   get rdfaBindings() {
     return {
