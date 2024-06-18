@@ -3,6 +3,9 @@ import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import './config/custom-inflector-rules';
 import config from 'frontend-mandatendatabank/config/environment';
+import { handleDeprecations } from './utils/deprecations';
+
+handleDeprecations();
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;
