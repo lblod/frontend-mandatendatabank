@@ -2,7 +2,7 @@ steps:
   install:
     image: danlynn/ember-cli:5.8.0-node_20.12
     commands:
-      - npm install
+      - npm ci
   lint-js:
     image: danlynn/ember-cli:5.8.0-node_20.12
     group: lint
