@@ -9,8 +9,9 @@
           <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
         </c.header>
         <c.content>
-          {{!TODO, convert this to an a tag + download attribute so it works without JS}}
-          <AuButton {{on 'click' (fn this.download this.csvFile)}} >Download in CSV formaat</AuButton>
+          <AuLinkExternal @icon="download" @skin="button" href={{this.downloadLink this.csvFile}} download>
+            Download in CSV formaat
+          </AuLinkExternal>
           <AuHelpText>{{this.csvMetadata}}</AuHelpText>
         </c.content>
       </AuCard>
@@ -40,8 +41,9 @@
           <p>Gestructureerde data voor dataverwerking en analyse</p>
         </c.header>
         <c.content>
-          {{!TODO, convert this to an a tag + download attribute so it works without JS}}
-          <AuButton {{on 'click' (fn this.download this.ttlFile)}} >Download in Turtle formaat</AuButton>
+          <AuLinkExternal @icon="download" @skin="button" href={{this.downloadLink this.ttlFile}} download>
+            Download in Turtle formaat
+          </AuLinkExternal>
           <AuHelpText>{{this.ttlMetadata}}</AuHelpText>
         </c.content>
       </AuCard>
