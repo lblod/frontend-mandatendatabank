@@ -27,7 +27,7 @@ export default class BestuursorgaanInTijdSelectComponent extends Component {
   select(selectedBestuursorgaan) {
     this.router.transitionTo(
       'bestuursorgaan.subject.index',
-      selectedBestuursorgaan.id
+      selectedBestuursorgaan.id,
     );
   }
 }

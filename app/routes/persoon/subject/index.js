@@ -4,7 +4,7 @@ import { service } from '@ember/service';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
 export default class PersoonSubjectIndexRoute extends Route.extend(
-  DataTableRouteMixin
+  DataTableRouteMixin,
 ) {
   @service store;
 

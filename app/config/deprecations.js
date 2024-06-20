@@ -10,22 +10,20 @@ import { registerDeprecationHandler } from '@ember/debug';
 const SHOULD_THROW = false;
 const SILENCED_DEPRECATIONS = [
   // Add ids of deprecations you temporarily want to silence here.
-  'ember-string.add-package', // TODO: The deprecation is triggered by false positives. We can remove this after updating to Ember v5
+  'warp-drive.ember-inflector', // TODO: Switch to the new inflector system: https://github.com/emberjs/data/blob/5a700c92bb6e495c8d35d3888f255f10aece237b/packages/build-config/src/deprecation-versions.ts#L430-L460
 ];
 
-export function handleDeprecations() {
-  registerDeprecationHandler((message, options, next) => {
-    if (!options) {
-      console.error('Missing options');
-      throw new Error(message);
-    }
+registerDeprecationHandler((message, options, next) => {
+  if (!options) {
+    console.error('Missing options');
+    throw new Error(message);
+  }
 
-    if (SILENCED_DEPRECATIONS.includes(options.id)) {
-      return;
-    } else if (SHOULD_THROW) {
-      throw new Error(message);
-    }
+  if (SILENCED_DEPRECATIONS.includes(options.id)) {
+    return;
+  } else if (SHOULD_THROW) {
+    throw new Error(message);
+  }
 
-    next(message, options);
-  });
-}
+  next(message, options);
+});
