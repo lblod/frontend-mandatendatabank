@@ -42,16 +42,16 @@ export default class IndexRoute extends Route {
     if (params.werkingsgebiedId) {
       modelHash.werkingsgebied = this.store.findRecord(
         'werkingsgebied',
-        params.werkingsgebiedId
+        params.werkingsgebiedId,
       );
       modelHash.bestuurseenheden = this.getBestuurseenheden(
-        params.werkingsgebiedId
+        params.werkingsgebiedId,
       );
     }
 
     if (params.bestuurseenheidId) {
       modelHash.bestuursorganen = this.getBestuursorganen(
-        params.bestuurseenheidId
+        params.bestuurseenheidId,
       );
     }
 

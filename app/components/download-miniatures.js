@@ -47,13 +47,13 @@ export default class DownloadMiniaturesComponent extends Component {
 
   get ttlMetadata() {
     return `Turtle - ${this.ttlFile.filesizeMb}MB - ${momentFormat(
-      this.ttlFile.created
+      this.ttlFile.created,
     )}`;
   }
 
   get csvMetadata() {
     return `CSV - ${this.csvFile.filesizeMb}MB - ${momentFormat(
-      this.csvFile.created
+      this.csvFile.created,
     )}`;
   }
 

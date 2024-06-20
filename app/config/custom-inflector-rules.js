@@ -32,7 +32,7 @@ export function registerInflectorRules() {
   inflector.singular(/([auio])s$/, '$1s');
   inflector.irregular(
     'behandeling-van-agendapunt',
-    'behandelingen-van-agendapunten'
+    'behandelingen-van-agendapunten',
   );
   inflector.irregular('rechtsgrond-aanstelling', 'rechtsgronden-aanstelling');
   inflector.irregular('rechtsgrond-artikel', 'rechtsgronden-artikel');

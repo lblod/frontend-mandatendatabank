@@ -27,4 +27,3 @@ registerDeprecationHandler((message, options, next) => {
 
   next(message, options);
 });
-
