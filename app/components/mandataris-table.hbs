@@ -79,9 +79,9 @@
                             property={{attributes.property}}
                             resource={{attributes.resource}}
                           >
-                            <LinkTo @route='bestuursorgaan.subject.index' @model={{bestuursorgaanId}} class="au-c-link">
+                            <AuLink @route='bestuursorgaan.subject.index' @model={{bestuursorgaanId}}>
                               <classificatie.get @prop="label" />
-                            </LinkTo>
+                            </AuLink>
                           </div>
                         </isTijdsspecialisatieVan.get>
                       </div>
@@ -122,9 +122,9 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <LinkTo @route='persoon.subject.index' @model={{value.id}} class="au-c-link">
+              <AuLink @route='persoon.subject.index' @model={{value.id}}>
                 <persoon.get @prop="gebruikteVoornaam" />
-              </LinkTo>
+              </AuLink>
             </div>
           </ctx.get>
         </WithRdfaContext>
@@ -137,9 +137,9 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <LinkTo @route='persoon.subject.index' @model={{value.id}} class="au-c-link">
+              <AuLink @route='persoon.subject.index' @model={{value.id}}>
                 <persoon.get @prop="achternaam" />
-              </LinkTo>
+              </AuLink>
             </div>
           </ctx.get>
         </WithRdfaContext>

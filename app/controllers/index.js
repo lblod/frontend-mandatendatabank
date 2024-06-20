@@ -10,6 +10,31 @@ export default class IndexController extends Controller {
   @tracked werkingsgebiedId;
   @tracked bestuurseenheidId;
   @tracked bestuursorgaanId;
+  @tracked isLoading = false;
+
+  get hasSelectedWerkingsgebied() {
+    return Boolean(this.werkingsgebiedId);
+  }
+
+  get hasSelectedBestuurseenheid() {
+    return Boolean(this.bestuurseenheidId);
+  }
+
+  get isLoadingBestuurseenheden() {
+    return (
+      this.isLoading &&
+      this.hasSelectedWerkingsgebied &&
+      !this.hasSelectedBestuurseenheid
+    );
+  }
+
+  get isLoadingBestuursorganen() {
+    return (
+      this.isLoading &&
+      this.hasSelectedWerkingsgebied &&
+      this.hasSelectedBestuurseenheid
+    );
+  }
 
   @task(function* (term) {
     yield timeout(250);
@@ -32,11 +57,13 @@ export default class IndexController extends Controller {
     this.model.bestuursorganen = null;
     this.werkingsgebiedId = gebied;
     this.werkingsgebiedId = gebied ? gebied.id : null;
+    this.isLoading = true;
   }
 
   @action
   listBestuursorganen(bestuurseenheidId) {
     this.flushQueryParams(2);
+    this.isLoading = true;
     this.bestuurseenheidId = bestuurseenheidId;
   }
 

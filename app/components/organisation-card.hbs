@@ -9,12 +9,18 @@
     </div>
   </div>
   <div class="organisation-card__content">
+  {{#if (has-block "button")}}
+    {{yield to="button"}}
+  {{else}}
     <AuButton
       @width="block"
       @size="large"
-      @icon="nav-right"
-      @iconAlignment="left"
+      @skin="secondary"
+      @disabled={{@isSelected}}
       {{on "click" (fn this.select @organisationId)}}
-    >Kies {{@classification}}</AuButton>
+    >
+      Kies {{@classification}}
+    </AuButton>
+  {{/if}}
   </div>
 </div>
