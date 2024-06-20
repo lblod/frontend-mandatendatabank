@@ -20,11 +20,18 @@ export default class BestuursorgaanSearchWizardComponent extends Component {
 
   @action
   listBestuurseenheden(gebied) {
+    const scrollTarget = gebied
+      ? document.getElementById('bestuursorgaan-search-wizard-step-2')
+      : document.getElementById('bestuursorgaan-search-wizard-step-1');
+    scrollIntoView(scrollTarget);
     this.args.onListBestuurseenheden(gebied);
   }
 
   @action
   listBestuursorganen(bestuurseenheidId) {
+    scrollIntoView(
+      document.getElementById('bestuursorgaan-search-wizard-step-3'),
+    );
     this.args.onListBestuursorganen(bestuurseenheidId);
   }
 
@@ -39,4 +46,12 @@ function byClassificatie(a, b) {
     .belongsTo('classificatie')
     .value()
     .label.localeCompare(b.belongsTo('classificatie').value().label);
+}
+
+function scrollIntoView(element) {
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+    inline: 'nearest',
+  });
 }

@@ -57,4 +57,10 @@ export default class IndexRoute extends Route {
 
     return RSVP.hash(modelHash);
   }
+
+  setupController(controller) {
+    super.setupController(...arguments);
+
+    controller.isLoading = false;
+  }
 }
