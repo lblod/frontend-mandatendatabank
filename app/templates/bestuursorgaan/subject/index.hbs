@@ -43,9 +43,9 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
+              <AuLink @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}}>
                 <alias.get @prop="gebruikteVoornaam"/>
-              </LinkTo>
+              </AuLink>
             </div>
           </ctx.get>
         </WithRdfaContext>
@@ -58,9 +58,9 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <LinkTo @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}} class="au-c-link">
+              <AuLink @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}}>
                 <alias.get @prop="achternaam"/>
-              </LinkTo>
+              </AuLink>
             </div>
           </ctx.get>
         </WithRdfaContext>
