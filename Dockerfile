@@ -9,8 +9,8 @@ COPY . .
 RUN npm run build
 
 
-FROM cecemel/ember-fastboot-proxy-service:0.6.0
-
-ENV STATIC_FOLDERS_REGEX "^/(assets|font|files|sitemap.xml|@appuniversum)/"
+# TODO: replace this with the tagged version when it's released
+# https://github.com/redpencilio/fastboot-app-server-service/pull/9
+FROM redpencil/fastboot-app-server:feature-node-20
 
 COPY --from=builder /app/dist /app
