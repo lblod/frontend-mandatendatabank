@@ -32,6 +32,10 @@ module.exports = function (environment) {
         'localhost',
       ],
     },
+    plausible: {
+      domain: '{{ANALYTICS_APP_DOMAIN}}',
+      apiHost: '{{ANALYTICS_API_HOST}}',
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
