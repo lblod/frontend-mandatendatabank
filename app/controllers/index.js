@@ -66,10 +66,4 @@ export default class IndexController extends Controller {
     this.isLoading = true;
     this.bestuurseenheidId = bestuurseenheidId;
   }
-
-  @action
-  viewBestuursorgaan(bestuursorgaanId) {
-    this.bestuursorgaanId = bestuursorgaanId;
-    this.router.transitionTo('bestuursorgaan.subject', bestuursorgaanId);
-  }
 }

@@ -34,11 +34,6 @@ export default class BestuursorgaanSearchWizardComponent extends Component {
     );
     this.args.onListBestuursorganen(bestuurseenheidId);
   }
-
-  @action
-  viewBestuursorgaan(bestuursorgaanId) {
-    this.args.onViewBestuursorgaan(bestuursorgaanId);
-  }
 }
 
 function byClassificatie(a, b) {
