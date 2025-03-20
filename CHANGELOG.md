@@ -1,3 +1,11 @@
+## v0.14.1 (2025-03-20)
+
+#### :bug: Bug Fix
+* [#38](https://github.com/lblod/frontend-mandatendatabank/pull/38) Include the `binnen-fractie` relationship ([@Windvis](https://github.com/Windvis))
+
+#### :house: Internal
+* [#37](https://github.com/lblod/frontend-mandatendatabank/pull/37) Remove our ember-mu-transform-helpers workarounds ([@Windvis](https://github.com/Windvis))
+
 ## v0.14.0 (2024-06-27)
 
 #### :boom: Breaking Change
