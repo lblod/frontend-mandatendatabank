@@ -48,7 +48,7 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
       include: [
         'is-bestuurlijke-alias-van',
         'bekleedt.bestuursfunctie',
-        'heeft-lidmaatschap',
+        'heeft-lidmaatschap.binnen-fractie',
         'beleidsdomein',
         'status',
       ].join(','),
