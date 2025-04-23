@@ -1,3 +1,11 @@
+## v0.14.3 (2025-04-23)
+
+#### :house: Internal
+* [#40](https://github.com/lblod/frontend-mandatendatabank/pull/40) Update woodpecker CI configuration ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
 ## v0.14.2 (2025-04-23)
 
 #### :bug: Bug Fix
