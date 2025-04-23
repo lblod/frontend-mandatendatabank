@@ -1,3 +1,11 @@
+## v0.14.2 (2025-04-23)
+
+#### :bug: Bug Fix
+* [#39](https://github.com/lblod/frontend-mandatendatabank/pull/39) [DL-6607] Add wrap class around AuLink button ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
 ## v0.14.1 (2025-03-20)
 
 #### :bug: Bug Fix
