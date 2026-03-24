@@ -1,18 +1,19 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-/* eslint-disable ember/no-mixins */
-import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
-export default class PersoonSubjectIndexRoute extends Route.extend(
-  DataTableRouteMixin,
-) {
+export default class PersoonSubjectIndexRoute extends Route {
   @service store;
 
-  modelName = 'mandataris';
-  mergeQueryOptions(params) {
+  queryParams = {
+    page: { refreshModel: true },
+    size: { refreshModel: true },
+    sort: { refreshModel: true },
+  };
+
+  model(params) {
     const { persoon_id } = this.paramsFor('persoon.subject');
 
-    return {
+    return this.store.query('mandataris', {
       sort: params.sort,
       page: {
         number: params.page,
@@ -34,6 +35,6 @@ export default class PersoonSubjectIndexRoute extends Route.extend(
         'beleidsdomein',
         'status',
       ].join(','),
-    };
+    });
   }
 }
