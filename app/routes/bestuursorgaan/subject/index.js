@@ -2,15 +2,16 @@
 import { debug } from '@ember/debug';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
-export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
-  DataTableRouteMixin,
-) {
+export default class BestuursorgaanSubjectIndexRoute extends Route {
   @service router;
   @service store;
 
-  modelName = 'mandataris';
+  queryParams = {
+    page: { refreshModel: true },
+    size: { refreshModel: true },
+    sort: { refreshModel: true },
+  };
 
   async getLastBestuursorgaan(bestuursorgaan) {
     let organenInTijd = await bestuursorgaan.heeftTijdsspecialisaties;
@@ -29,14 +30,15 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
     }
   }
 
-  mergeQueryOptions(params) {
+  model(params) {
     const { bestuursorgaan_id } = this.paramsFor('bestuursorgaan.subject');
 
-    return {
+    return this.store.query('mandataris', {
       sort: params.sort,
       page: {
         number: params.page,
-        size: params.size,
+        size: 10,
+        // size: params.size,
       },
       filter: {
         bekleedt: {
@@ -52,7 +54,7 @@ export default class BestuursorgaanSubjectIndexRoute extends Route.extend(
         'beleidsdomein',
         'status',
       ].join(','),
-    };
+    });
   }
 }
 
