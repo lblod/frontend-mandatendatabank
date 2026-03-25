@@ -16,7 +16,6 @@ export default class Mandaat extends Model {
 
   get rdfaBindings() {
     return {
-      // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
       class: 'http://data.vlaanderen.be/ns/mandaat#Mandaat',
       aantalHouders: 'http://data.vlaanderen.be/ns/mandaat#aantalHouders',
       bestuursfunctie: 'http://www.w3.org/ns/org#role',

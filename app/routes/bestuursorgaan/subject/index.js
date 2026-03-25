@@ -1,4 +1,3 @@
-/* eslint-disable ember/no-mixins */
 import { debug } from '@ember/debug';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';

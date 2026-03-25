@@ -36,12 +36,11 @@ export default class IndexController extends Controller {
     );
   }
 
-  @task(function* (term) {
-    yield timeout(250);
+  searchWerkingsgebied = task(async (term) => {
+    await timeout(250);
     let queryParams = { 'filter[naam]': term };
     return this.store.query('werkingsgebied', queryParams);
-  })
-  searchWerkingsgebied;
+  });
 
   flushQueryParams(step) {
     this.bestuursorgaanId = '';

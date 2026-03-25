@@ -1,12 +1,24 @@
 <div class="au-o-flow">
-  <AuCard @flex="true" id="bestuursorgaan-search-wizard-step-1" class="bestuursorgaan-search-wizard-scroll-offset" as |c|>
-    <c.header @badgeSkin={{if this.werkingsgebied "success" "action"}} @badgeIcon={{if this.werkingsgebied "check"}} @badgeNumber={{unless this.werkingsgebied "1"}}>
+  <AuCard
+    @flex="true"
+    id="bestuursorgaan-search-wizard-step-1"
+    class="bestuursorgaan-search-wizard-scroll-offset"
+    as |c|
+  >
+    <c.header
+      @badgeSkin={{if this.werkingsgebied "success" "action"}}
+      @badgeIcon={{if this.werkingsgebied "check"}}
+      @badgeNumber={{unless this.werkingsgebied "1"}}
+    >
       <AuHeading @level="2" @skin="4" id="describe-search">
         Stap 1: Zoek een gemeente, provincie of district.
       </AuHeading>
     </c.header>
     <c.content>
-      <div style="position: relative; overflow: hidden;" {{!template-lint-disable no-inline-styles}}>
+      <div
+        style="position: relative; overflow: hidden;"
+        {{!template-lint-disable no-inline-styles}}
+      >
         <PowerSelect
           @ariaLabel="Zoekbalk"
           @ariaDescribedBy="describe-search"
@@ -18,7 +30,9 @@
           @loadingMessage="Aan het laden..."
           @searchMessage="Typ om te zoeken"
           @noMatchesMessage="Geen resultaten"
-          @onChange={{this.listBestuurseenheden}} as |gebied|>
+          @onChange={{this.listBestuurseenheden}}
+          as |gebied|
+        >
           {{gebied.longName}}
         </PowerSelect>
       </div>
@@ -26,15 +40,22 @@
     </c.content>
   </AuCard>
 
-  <AuCard @flex="true" id="bestuursorgaan-search-wizard-step-2" class="bestuursorgaan-search-wizard-scroll-offset" as |c|>
-    <c.header @badgeIcon={{if this.bestuursorganen "check"}}
-    @badgeNumber={{unless this.bestuursorganen "2"}}
-    @badgeSkin={{if this.bestuursorganen "success" "action"}}>
-      <AuHeading @level="2" @skin="4" >
+  <AuCard
+    @flex="true"
+    id="bestuursorgaan-search-wizard-step-2"
+    class="bestuursorgaan-search-wizard-scroll-offset"
+    as |c|
+  >
+    <c.header
+      @badgeIcon={{if this.bestuursorganen "check"}}
+      @badgeNumber={{unless this.bestuursorganen "2"}}
+      @badgeSkin={{if this.bestuursorganen "success" "action"}}
+    >
+      <AuHeading @level="2" @skin="4">
         Stap 2: Kies een bestuurseenheid
       </AuHeading>
       {{#unless this.werkingsgebied}}
-      <p>Kies eerst een gemeente, provincie of district.</p>
+        <p>Kies eerst een gemeente, provincie of district.</p>
       {{/unless}}
     </c.header>
     {{#if @isLoadingBestuurseenheden}}
@@ -45,9 +66,11 @@
       <c.content>
         <div class="au-o-grid au-o-grid--fixed">
           {{#each this.bestuurseenheden as |eenheid|}}
-            <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large">
+            <div
+              class="au-o-grid__item au-u-1-1 au-u-1-2@medium au-u-1-3@large"
+            >
               <OrganisationCard
-                @organisationId={{eenheid.id }}
+                @organisationId={{eenheid.id}}
                 @isSelected={{eq @selectedBestuurseenheidId eenheid.id}}
                 @classification={{eenheid.classificatie.label}}
                 @name={{concat eenheid.classificatie.label " " eenheid.naam}}
@@ -60,14 +83,18 @@
     {{/if}}
   </AuCard>
 
-  <AuCard @flex="true" id="bestuursorgaan-search-wizard-step-3" class="bestuursorgaan-search-wizard-scroll-offset" as |c|>
-    <c.header @badgeNumber="3"
-    @badgeSkin="action">
+  <AuCard
+    @flex="true"
+    id="bestuursorgaan-search-wizard-step-3"
+    class="bestuursorgaan-search-wizard-scroll-offset"
+    as |c|
+  >
+    <c.header @badgeNumber="3" @badgeSkin="action">
       <AuHeading @level="2" @skin="4">
         Stap 3: Kies een bestuursorgaan
       </AuHeading>
       {{#unless this.bestuursorganen}}
-      <p>Kies eerst een bestuurseenheid.</p>
+        <p>Kies eerst een bestuurseenheid.</p>
       {{/unless}}
     </c.header>
     {{#if @isLoadingBestuursorganen}}
@@ -79,9 +106,7 @@
         <div class="au-o-grid au-o-grid--fixed">
           {{#each this.bestuursorganen as |orgaan|}}
             <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-              <OrganisationCard
-                @name={{orgaan.naam}}
-              >
+              <OrganisationCard @name={{orgaan.naam}}>
                 <:button>
                   <AuLink
                     @route="bestuursorgaan.subject"
@@ -91,9 +116,11 @@
                     @iconAlignment="right"
                     @size="large"
                     @width="block"
-                    class="au-c-button--large au-c-button--wrap" {{!TODO: remove this once the link component supports a "large" button style}}
+                    class="au-c-button--large au-c-button--wrap"
+                    {{!TODO: remove this once the link component supports a "large" button style}}
                   >
-                    Kies {{orgaan.classificatie.label}}
+                    Kies
+                    {{orgaan.classificatie.label}}
                   </AuLink>
                 </:button>
               </OrganisationCard>

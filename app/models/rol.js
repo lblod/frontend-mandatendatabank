@@ -6,7 +6,6 @@ export default class Rol extends Model {
 
   get rdfaBindings() {
     return {
-      // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
       label: 'http://www.w3.org/2004/02/skos/core#prefLabel',
     };
   }
