@@ -1,3 +1,11 @@
+## v0.14.4 (2026-03-25)
+
+#### :house: Internal
+* [#44](https://github.com/lblod/frontend-mandatendatabank/pull/44) [DL-6719] Update to Ember 6.7 ([@Windvis](https://github.com/Windvis))
+* [#43](https://github.com/lblod/frontend-mandatendatabank/pull/43) [DL-6719] Remove ember-inflector ([@Windvis](https://github.com/Windvis))
+* [#42](https://github.com/lblod/frontend-mandatendatabank/pull/42) [DL-6719] Dependency maintenance ([@Windvis](https://github.com/Windvis))
+* [#41](https://github.com/lblod/frontend-mandatendatabank/pull/41) [DL-6719] Update to Ember v5.12 ([@Windvis](https://github.com/Windvis))
+
 ## v0.14.3 (2025-04-23)
 
 #### :house: Internal
