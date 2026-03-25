@@ -1,4 +1,13 @@
-{{page-title "" this.model.gebruikteVoornaam "" " " "" this.model.achternaam "" prepend=true}}
+{{page-title
+  ""
+  this.model.gebruikteVoornaam
+  ""
+  " "
+  ""
+  this.model.achternaam
+  ""
+  prepend=true
+}}
 <WithRdfaContext @tagName="div" @model={{this.model}} as |ctx|>
   <div data-tabs-responsive-label="Navigatie">
     <div class="au-o-region-small au-u-background-gray-100">
@@ -7,12 +16,15 @@
           Terug naar zoeken
         </AuLink>
         <AuHeading @level="1" @skin="2" class="au-u-margin-bottom-small">
-          Mandataris: <ctx.get @prop="gebruikteVoornaam"/> <ctx.get @prop="achternaam"/>
+          Mandataris:
+          <ctx.get @prop="gebruikteVoornaam" />
+          <ctx.get @prop="achternaam" />
         </AuHeading>
 
         <ul class="au-c-list-horizontal au-u-margin-bottom-small">
           {{#if this.model.alternatieveNaam}}
-            <li class="au-c-list-horizontal__item">Roepnaam: <ctx.get @prop="alternatieveNaam"/></li>
+            <li class="au-c-list-horizontal__item">Roepnaam:
+              <ctx.get @prop="alternatieveNaam" /></li>
           {{/if}}
         </ul>
       </div>

@@ -9,7 +9,12 @@
           <p>Voor spreadsheet editors zoals Excel of Numbers.</p>
         </c.header>
         <c.content>
-          <AuLinkExternal @icon="download" @skin="button" href={{this.downloadLink this.csvFile}} download>
+          <AuLinkExternal
+            @icon="download"
+            @skin="button"
+            href={{this.downloadLink this.csvFile}}
+            download
+          >
             Download in CSV formaat
           </AuLinkExternal>
           <AuHelpText>{{this.csvMetadata}}</AuHelpText>
@@ -41,7 +46,12 @@
           <p>Gestructureerde data voor dataverwerking en analyse</p>
         </c.header>
         <c.content>
-          <AuLinkExternal @icon="download" @skin="button" href={{this.downloadLink this.ttlFile}} download>
+          <AuLinkExternal
+            @icon="download"
+            @skin="button"
+            href={{this.downloadLink this.ttlFile}}
+            download
+          >
             Download in Turtle formaat
           </AuLinkExternal>
           <AuHelpText>{{this.ttlMetadata}}</AuHelpText>

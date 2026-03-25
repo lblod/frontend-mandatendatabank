@@ -18,7 +18,6 @@ export default class Werkingsgebied extends Model {
 
   get rdfaBindings() {
     return {
-      // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
       class: 'prov:Location',
       naam: 'rdfs:label',
     };

@@ -48,7 +48,6 @@ export default class Mandataris extends Model {
 
   get rdfaBindings() {
     return {
-      // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
       class: 'http://data.vlaanderen.be/ns/mandaat#Mandataris',
       rangorde: 'http://data.vlaanderen.be/ns/mandaat#rangorde',
       start: 'http://data.vlaanderen.be/ns/mandaat#start',

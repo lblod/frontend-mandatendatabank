@@ -1,14 +1,57 @@
-<AuDataTable @content={{this.model}} @fields="Mandatarissen" @noDataMessage="Geen mandatarissen gevonden" @sort={{this.sort}} @size={{this.size}} @page={{this.page}} as |t|>
+<AuDataTable
+  @content={{this.model}}
+  @fields="Mandatarissen"
+  @noDataMessage="Geen mandatarissen gevonden"
+  @sort={{this.sort}}
+  @size={{this.size}}
+  @page={{this.page}}
+  as |t|
+>
   <t.content as |c|>
     <c.header>
-      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{this.sort}} @label="Mandaat" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{this.sort}} @label="Fractie" @class="data-table__header-title u-hidden--mobile" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{this.sort}} @label="Naam" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{this.sort}} @label="Familienaam" @class="data-table__header-title" />
+      <AuDataTableThSortable
+        @field="bekleedt.bestuursfunctie.label"
+        @currentSorting={{this.sort}}
+        @label="Mandaat"
+        @class="data-table__header-title"
+      />
+      <AuDataTableThSortable
+        @field="heeftLidmaatschap.binnenFractie.naam"
+        @currentSorting={{this.sort}}
+        @label="Fractie"
+        @class="data-table__header-title u-hidden--mobile"
+      />
+      <AuDataTableThSortable
+        @field="isBestuurlijkeAliasVan.gebruikteVoornaam"
+        @currentSorting={{this.sort}}
+        @label="Naam"
+        @class="data-table__header-title"
+      />
+      <AuDataTableThSortable
+        @field="isBestuurlijkeAliasVan.achternaam"
+        @currentSorting={{this.sort}}
+        @label="Familienaam"
+        @class="data-table__header-title"
+      />
       <th class="u-visible--desktop-up">Bevoegdheden</th>
-      <AuDataTableThSortable @field="status" @currentSorting={{this.sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="start" @currentSorting={{this.sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="einde" @currentSorting={{this.sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable
+        @field="status"
+        @currentSorting={{this.sort}}
+        @label="Status"
+        @class="data-table__header-title au-u-visible-from@medium"
+      />
+      <AuDataTableThSortable
+        @field="start"
+        @currentSorting={{this.sort}}
+        @label="Start"
+        @class="data-table__header-title au-u-visible-from@medium"
+      />
+      <AuDataTableThSortable
+        @field="einde"
+        @currentSorting={{this.sort}}
+        @label="Einde"
+        @class="data-table__header-title au-u-visible-from@medium"
+      />
     </c.header>
     <c.body as |row|>
       <td>
@@ -25,7 +68,7 @@
                   property={{attributes.property}}
                   resource={{attributes.resource}}
                 >
-                  <rol.get @prop="label"/>
+                  <rol.get @prop="label" />
                 </div>
               </mandaat.get>
             </div>
@@ -43,8 +86,11 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <AuLink @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}}>
-                <alias.get @prop="gebruikteVoornaam"/>
+              <AuLink
+                @route="persoon.subject.index"
+                @model={{row.isBestuurlijkeAliasVan.id}}
+              >
+                <alias.get @prop="gebruikteVoornaam" />
               </AuLink>
             </div>
           </ctx.get>
@@ -58,8 +104,11 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <AuLink @route='persoon.subject.index' @model={{row.isBestuurlijkeAliasVan.id}}>
-                <alias.get @prop="achternaam"/>
+              <AuLink
+                @route="persoon.subject.index"
+                @model={{row.isBestuurlijkeAliasVan.id}}
+              >
+                <alias.get @prop="achternaam" />
               </AuLink>
             </div>
           </ctx.get>
@@ -73,7 +122,7 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <beleidsdomein.get @prop="label"/><br>
+              <beleidsdomein.get @prop="label" /><br />
             </div>
           </ctx.each>
         </WithRdfaContext>
@@ -81,20 +130,20 @@
       <td class="au-u-visible-from@medium">
         {{row.status.label}}
       </td>
-      <td class=" au-u-visible-from@medium">
+      <td class="au-u-visible-from@medium">
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
           <ctx.get @prop="start" as |attributes start|>
             <div property={{attributes.property}}>
-              {{moment-format start 'DD/MM/YYYY'}}
+              {{moment-format start "DD/MM/YYYY"}}
             </div>
           </ctx.get>
         </WithRdfaContext>
       </td>
-      <td class=" au-u-visible-from@medium">
+      <td class="au-u-visible-from@medium">
         <WithRdfaContext @tagName="div" @model={{row}} as |ctx|>
           <ctx.get @prop="einde" as |attributes einde|>
             <div property={{attributes.property}}>
-              {{moment-format einde 'DD/MM/YYYY'}}
+              {{moment-format einde "DD/MM/YYYY"}}
             </div>
           </ctx.get>
         </WithRdfaContext>

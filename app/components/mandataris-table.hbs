@@ -1,16 +1,64 @@
-<AuDataTable @content={{@content}} @fields="Mandaten" @noDataMessage="Geen mandaten gevonden" @sort={{@sort}} @size={{@size}} @page={{@page}} @isLoading={{@isLoading}} as |t|>
+<AuDataTable
+  @content={{@content}}
+  @fields="Mandaten"
+  @noDataMessage="Geen mandaten gevonden"
+  @sort={{@sort}}
+  @size={{@size}}
+  @page={{@page}}
+  @isLoading={{@isLoading}}
+  as |t|
+>
   <t.content as |c|>
     <c.header>
       <th class="data-table__header-title u-hidden--mobile">Locatie</th>
-      <th class="data-table__header-title u-visible--tablet-portrait-up" style="max-width: 5rem;" {{!template-lint-disable no-inline-styles}}>Orgaan</th>
-      <AuDataTableThSortable @field="heeftLidmaatschap.binnenFractie.naam" @currentSorting={{@sort}} @label="Fractie" @class="u-hidden--mobile data-table__header-title" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.gebruikteVoornaam" @currentSorting={{@sort}} @label="Naam" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="isBestuurlijkeAliasVan.achternaam" @currentSorting={{@sort}} @label="Familienaam" @class="data-table__header-title" />
-      <AuDataTableThSortable @field="bekleedt.bestuursfunctie.label" @currentSorting={{@sort}} @label="Mandaat" @class="data-table__header-title" />
+      <th
+        class="data-table__header-title u-visible--tablet-portrait-up"
+        style="max-width: 5rem;"
+        {{!template-lint-disable no-inline-styles}}
+      >Orgaan</th>
+      <AuDataTableThSortable
+        @field="heeftLidmaatschap.binnenFractie.naam"
+        @currentSorting={{@sort}}
+        @label="Fractie"
+        @class="u-hidden--mobile data-table__header-title"
+      />
+      <AuDataTableThSortable
+        @field="isBestuurlijkeAliasVan.gebruikteVoornaam"
+        @currentSorting={{@sort}}
+        @label="Naam"
+        @class="data-table__header-title"
+      />
+      <AuDataTableThSortable
+        @field="isBestuurlijkeAliasVan.achternaam"
+        @currentSorting={{@sort}}
+        @label="Familienaam"
+        @class="data-table__header-title"
+      />
+      <AuDataTableThSortable
+        @field="bekleedt.bestuursfunctie.label"
+        @currentSorting={{@sort}}
+        @label="Mandaat"
+        @class="data-table__header-title"
+      />
       <th class="u-visible--desktop-up">Bevoegdheden</th>
-      <AuDataTableThSortable @field="status" @currentSorting={{@sort}} @label="Status" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="start" @currentSorting={{@sort}} @label="Start" @class="data-table__header-title au-u-visible-from@medium" />
-      <AuDataTableThSortable @field="einde" @currentSorting={{@sort}} @label="Einde" @class="data-table__header-title au-u-visible-from@medium" />
+      <AuDataTableThSortable
+        @field="status"
+        @currentSorting={{@sort}}
+        @label="Status"
+        @class="data-table__header-title au-u-visible-from@medium"
+      />
+      <AuDataTableThSortable
+        @field="start"
+        @currentSorting={{@sort}}
+        @label="Start"
+        @class="data-table__header-title au-u-visible-from@medium"
+      />
+      <AuDataTableThSortable
+        @field="einde"
+        @currentSorting={{@sort}}
+        @label="Einde"
+        @class="data-table__header-title au-u-visible-from@medium"
+      />
     </c.header>
     <c.body as |mandataris|>
       <td class="u-hidden--mobile">
@@ -21,25 +69,37 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <mandaat.each @prop="bevatIn" as |attributes value bestuursorgaan|>
+              <mandaat.each
+                @prop="bevatIn"
+                as |attributes value bestuursorgaan|
+              >
                 <div
                   typeof={{attributes.typeof}}
                   property={{attributes.property}}
                   resource={{attributes.resource}}
                 >
-                  <bestuursorgaan.get @prop="isTijdsspecialisatieVan" as |attributes value isTijdsspecialisatieVan|>
+                  <bestuursorgaan.get
+                    @prop="isTijdsspecialisatieVan"
+                    as |attributes value isTijdsspecialisatieVan|
+                  >
                     <div
                       typeof={{attributes.typeof}}
                       property={{attributes.property}}
                       resource={{attributes.resource}}
                     >
-                      <isTijdsspecialisatieVan.get @prop="bestuurseenheid" as |attributes value bestuurseenheid|>
+                      <isTijdsspecialisatieVan.get
+                        @prop="bestuurseenheid"
+                        as |attributes value bestuurseenheid|
+                      >
                         <div
                           typeof={{attributes.typeof}}
                           property={{attributes.property}}
                           resource={{attributes.resource}}
                         >
-                          <bestuurseenheid.get @prop="werkingsgebied" as |attributes value werkingsgebied|>
+                          <bestuurseenheid.get
+                            @prop="werkingsgebied"
+                            as |attributes value werkingsgebied|
+                          >
                             <werkingsgebied.get @prop="naam" />
                           </bestuurseenheid.get>
                         </div>
@@ -60,26 +120,38 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <mandaat.each @prop="bevatIn" as |attributes value bestuursorgaan|>
+              <mandaat.each
+                @prop="bevatIn"
+                as |attributes value bestuursorgaan|
+              >
                 {{#let value.id as |bestuursorgaanId|}}
                   <div
                     typeof={{attributes.typeof}}
                     property={{attributes.property}}
                     resource={{attributes.resource}}
                   >
-                    <bestuursorgaan.get @prop="isTijdsspecialisatieVan" as |attributes value isTijdsspecialisatieVan|>
+                    <bestuursorgaan.get
+                      @prop="isTijdsspecialisatieVan"
+                      as |attributes value isTijdsspecialisatieVan|
+                    >
                       <div
                         typeof={{attributes.typeof}}
                         property={{attributes.property}}
                         resource={{attributes.resource}}
                       >
-                        <isTijdsspecialisatieVan.get @prop="classificatie" as |attributes value classificatie|>
+                        <isTijdsspecialisatieVan.get
+                          @prop="classificatie"
+                          as |attributes value classificatie|
+                        >
                           <div
                             typeof={{attributes.typeof}}
                             property={{attributes.property}}
                             resource={{attributes.resource}}
                           >
-                            <AuLink @route='bestuursorgaan.subject.index' @model={{bestuursorgaanId}}>
+                            <AuLink
+                              @route="bestuursorgaan.subject.index"
+                              @model={{bestuursorgaanId}}
+                            >
                               <classificatie.get @prop="label" />
                             </AuLink>
                           </div>
@@ -101,7 +173,10 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <lidmaatschap.get @prop="binnenFractie" as |attributes value fractie|>
+              <lidmaatschap.get
+                @prop="binnenFractie"
+                as |attributes value fractie|
+              >
                 <div
                   typeof={{attributes.typeof}}
                   property={{attributes.property}}
@@ -122,7 +197,7 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <AuLink @route='persoon.subject.index' @model={{value.id}}>
+              <AuLink @route="persoon.subject.index" @model={{value.id}}>
                 <persoon.get @prop="gebruikteVoornaam" />
               </AuLink>
             </div>
@@ -137,7 +212,7 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <AuLink @route='persoon.subject.index' @model={{value.id}}>
+              <AuLink @route="persoon.subject.index" @model={{value.id}}>
                 <persoon.get @prop="achternaam" />
               </AuLink>
             </div>
@@ -152,7 +227,10 @@
               property={{attributes.property}}
               resource={{attributes.resource}}
             >
-              <mandaat.get @prop="bestuursfunctie" as |attributes value bestuursfunctie|>
+              <mandaat.get
+                @prop="bestuursfunctie"
+                as |attributes value bestuursfunctie|
+              >
                 <div
                   typeof={{attributes.typeof}}
                   property={{attributes.property}}
@@ -185,7 +263,7 @@
         <WithRdfaContext @tagName="div" @model={{mandataris}} as |ctx|>
           <ctx.get @prop="start" as |attributes start|>
             <div property={{attributes.property}}>
-              {{moment-format start 'DD/MM/YYYY'}}
+              {{moment-format start "DD/MM/YYYY"}}
             </div>
           </ctx.get>
         </WithRdfaContext>
@@ -194,7 +272,7 @@
         <WithRdfaContext @tagName="div" @model={{mandataris}} as |ctx|>
           <ctx.get @prop="einde" as |attributes einde|>
             <div property={{attributes.property}}>
-              {{moment-format einde 'DD/MM/YYYY'}}
+              {{moment-format einde "DD/MM/YYYY"}}
             </div>
           </ctx.get>
         </WithRdfaContext>

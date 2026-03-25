@@ -3,34 +3,52 @@
 <AuModalContainer />
 <BasicDropdownWormhole />
 
-<AuMainHeader @brandLink="https://mandaten.lokaalbestuur.vlaanderen.be/" @homeRoute="index" @appTitle="Mandatendatabank" @contactRoute="contact">
-</AuMainHeader>
+<AuMainHeader
+  @brandLink="https://mandaten.lokaalbestuur.vlaanderen.be/"
+  @homeRoute="index"
+  @appTitle="Mandatendatabank"
+  @contactRoute="contact"
+/>
 
 <div class="au-c-main-container" id="main">
-  <div class="au-c-main-container__content au-c-main-container__content--scroll">
+  <div
+    class="au-c-main-container__content au-c-main-container__content--scroll"
+  >
     <main id="content">
       {{outlet}}
     </main>
     <AuMainFooter>
 
       <AuHeading @level="2" @skin="4">
-        mandaten.lokaalbestuur.vlaanderen.be is een officiële website van de Vlaamse overheid
+        mandaten.lokaalbestuur.vlaanderen.be is een officiële website van de
+        Vlaamse overheid
       </AuHeading>
       <AuContent @skin="small">
         <p>Uitgegeven door
-          <AuLinkExternal href="https://www.vlaanderen.be/organisaties/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur">
+          <AuLinkExternal
+            href="https://www.vlaanderen.be/organisaties/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur"
+          >
             Agentschap Binnenlands Bestuur
           </AuLinkExternal>
         </p>
         <ul class="au-c-list-horizontal">
           <li class="au-c-list-horizontal__item">
-            <AuLink @route="legaal.disclaimer" @skin="secondary">Disclaimer</AuLink>
+            <AuLink
+              @route="legaal.disclaimer"
+              @skin="secondary"
+            >Disclaimer</AuLink>
           </li>
           <li class="au-c-list-horizontal__item">
-            <AuLink @route="legaal.cookieverklaring" @skin="secondary">Cookieverklaring</AuLink>
+            <AuLink
+              @route="legaal.cookieverklaring"
+              @skin="secondary"
+            >Cookieverklaring</AuLink>
           </li>
           <li class="au-c-list-horizontal__item">
-            <AuLink @route="legaal.toegankelijkheidsverklaring" @skin="secondary">Toegankelijkheid</AuLink>
+            <AuLink
+              @route="legaal.toegankelijkheidsverklaring"
+              @skin="secondary"
+            >Toegankelijkheid</AuLink>
           </li>
         </ul>
       </AuContent>
