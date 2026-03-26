@@ -19,6 +19,7 @@ module.exports = function (/* environment */) {
             ? TransformStream
             : require('node:stream/web').TransformStream,
         Headers: typeof Headers !== 'undefined' ? Headers : undefined,
+        BACKEND_URL: 'http://backend',
       });
     },
   };
