@@ -1,3 +1,8 @@
+## v0.14.5 (2026-03-26)
+
+#### :bug: Bug Fix
+* [#45](https://github.com/lblod/frontend-mandatendatabank/pull/45) Fix a Fastboot issue ([@Windvis](https://github.com/Windvis))
+
 ## v0.14.4 (2026-03-25)
 
 #### :house: Internal
